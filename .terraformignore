@@ -1,0 +1,15 @@
+.git/
+.github/
+
+.terraform/
+!.terraform/modules/
+
+.vinxi/
+.wrangler/
+.output/
+node_modules/
+dist/
+public/
+src/
+
+.dev.vars

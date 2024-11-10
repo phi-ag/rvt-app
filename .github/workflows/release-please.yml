@@ -1,0 +1,43 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Please
+        uses: googleapis/release-please-action@7987652d64b4581673a76e33ad5e98e3dd56832f # v4
+        id: release
+        with:
+          target-branch: main
+
+      - name: Checkout
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
+      - name: Restore
+        if: ${{ steps.release.outputs.release_created }}
+        uses: ./.github/actions/restore
+
+      - name: Build
+        if: ${{ steps.release.outputs.release_created }}
+        run: pnpm build
+
+      - name: Deploy
+        if: ${{ steps.release.outputs.release_created }}
+        run: >
+          pnpm wrangler pages deploy
+          --branch production
+          --commit-hash ${GITHUB_SHA}
+          --commit-message "[${GITHUB_SHA::7}] ${{ github.event.head_commit.message }}"
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ed0328e15e9ed659e6622db636c39337
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

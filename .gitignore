@@ -1,0 +1,17 @@
+.terraform
+terraform.tfstate*
+
+.vinxi/
+.wrangler/
+.output/
+.e2e-results/
+.chromium-lighthouse/
+
+node_modules/
+dist/
+reports/
+
+.dev.vars
+junit.xml
+
+app.config.timestamp_*

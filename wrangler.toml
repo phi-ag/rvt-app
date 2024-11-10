@@ -1,0 +1,21 @@
+name = "rvt-app"
+pages_build_output_dir = "./dist"
+compatibility_date = "2024-11-03"
+compatibility_flags = ["nodejs_compat"]
+
+[dev]
+port = 3000
+
+[vars]
+ENVIRONMENT = "preview"
+DOMAIN = "preview.rvt.app"
+
+[env.production.vars]
+ENVIRONMENT = "production"
+DOMAIN = "rvt.app"
+
+[version_metadata]
+binding = "CF_VERSION_METADATA"
+
+[env.production.version_metadata]
+binding = "CF_VERSION_METADATA"

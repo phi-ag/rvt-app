@@ -1,0 +1,36 @@
+name: restore
+
+runs:
+  using: composite
+  steps:
+    - name: Install Node.js
+      uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4
+      with:
+        node-version-file: package.json
+
+    - name: Install pnpm
+      shell: bash
+      run: |
+        corepack enable
+        corepack prepare --activate
+
+    - name: Export pnpm store path
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - name: Setup pnpm cache
+      uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile
+
+    - name: Store prune
+      shell: bash
+      run: pnpm store prune

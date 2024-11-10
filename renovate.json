@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":semanticCommits",
+    "config:best-practices",
+    "group:monorepos",
+    "group:recommended"
+  ],
+  "postUpdateOptions": ["pnpmDedupe"],
+  "packageRules": [
+    { "matchDepNames": ["node", "@types/node"], "ignoreUnstable": false },
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    },
+    {
+      "matchDepNames": ["@solidjs/router", "vinxi"],
+      "automerge": true
+    },
+    {
+      "groupName": "solid-start",
+      "matchPackageNames": ["@solidjs/start", "vinxi"]
+    },
+    {
+      "groupName": "wrangler",
+      "matchPackageNames": ["wrangler", "@cloudflare/workers-types"]
+    }
+  ]
+}
