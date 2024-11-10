@@ -16,24 +16,21 @@ const dropZone = cva(
     "rounded-2xl",
     "border-2",
     "border-dashed",
-    "bg-opacity-25",
     "outline-none",
-    "hover:bg-gray-100",
-    "focus-visible:bg-gray-100",
-    "dark:hover:bg-gray-700",
-    "dark:focus-visible:bg-gray-700",
+    "bg-gray-300",
+    "dark:bg-gray-900",
+    "border-gray-400",
+    "dark:border-gray-600",
+    "hover:ring-4",
+    "focus-visible:ring-4",
     "disabled:pointer-events-none",
-    "[transition-property:background-color,border]",
+    "[transition-property:background-color,border,box-shadow]",
     "[transition-timing-function:ease]",
-    "[transition-duration:200ms]"
+    "[transition-duration:180ms]"
   ],
   {
     variants: {
       dragging: {
-        true: null,
-        false: null
-      },
-      processing: {
         true: null,
         false: null
       }
@@ -41,15 +38,11 @@ const dropZone = cva(
     compoundVariants: [
       {
         dragging: false,
-        class: "border-gray-300 dark:border-gray-600"
+        class: ["ring-blue-400", "dark:ring-blue-600"]
       },
       {
         dragging: true,
-        class: "border-green-300 bg-green-400 dark:border-green-600"
-      },
-      {
-        processing: false,
-        class: "hover:bg-gray-100 dark:hover:bg-gray-700"
+        class: ["ring-4", "ring-lime-500", "dark:ring-lime-600"]
       }
     ]
   }
@@ -118,7 +111,7 @@ export default function () {
 
       for await (const chunk of stream) {
         if (index === 0) {
-          if (chunk.length < 512) throw Error("First chunk too small");
+          if (chunk.length < 512) throw Error(`First chunk too small (${chunk.length})`);
 
           const header = chunk.subarray(0, 8);
           const expectedHeader = [0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1];

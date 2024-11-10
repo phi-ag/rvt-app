@@ -3,7 +3,7 @@
 [![Production](https://shields.io/badge/production-blue?style=for-the-badge)](https://rvt.app)
 [![Preview](https://shields.io/badge/preview-yellow?style=for-the-badge)](https://preview.rvt.app)
 
-Display [Revit](https://www.autodesk.com/products/revit) file information in the browser.
+Display [Revit](https://www.autodesk.com/products/revit) file information in the browser
 
 ## Development
 

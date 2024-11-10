@@ -27,7 +27,6 @@ export const setDark = () => {
   if (window?.localStorage) {
     window.localStorage.theme = "dark";
   }
-
   setDarkStyle();
 };
 
@@ -35,7 +34,6 @@ export const setLight = () => {
   if (window?.localStorage) {
     window.localStorage.theme = "light";
   }
-
   setLightStyle();
 };
 
