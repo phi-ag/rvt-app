@@ -33,7 +33,7 @@
     "class-variance-authority": "0.7.0",
     "lodash-es": "4.17.21",
     "solid-js": "1.9.3",
-    "uuid": "11.0.2"
+    "uuid": "11.0.3"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20241106.0",
