@@ -1,25 +1,34 @@
 import { describe, expect, test } from "vitest";
 
-import { equal } from "./array";
+import { isEqual, isZero } from "./array";
 
 describe("array", () => {
   test("equal", () => {
-    expect(equal([], [])).toBeTruthy();
-    expect(equal([1], [1])).toBeTruthy();
-    expect(equal([1, 2, 3], [1, 2, 3])).toBeTruthy();
+    expect(isEqual([], [])).toBeTruthy();
+    expect(isEqual([1], [1])).toBeTruthy();
+    expect(isEqual([1, 2, 3], [1, 2, 3])).toBeTruthy();
 
-    expect(equal([], [1])).toBeFalsy();
-    expect(equal([1], [2])).toBeFalsy();
+    expect(isEqual([], [1])).toBeFalsy();
+    expect(isEqual([1], [2])).toBeFalsy();
 
     const a = [1, 2, 3];
-    expect(equal(a, a)).toBeTruthy();
-    expect(equal(a, Uint8Array.from(a))).toBeTruthy();
+    expect(isEqual(a, a)).toBeTruthy();
+    expect(isEqual(a, Uint8Array.from(a))).toBeTruthy();
 
     // @ts-expect-error
-    expect(equal(null, [1])).toBeFalsy();
+    expect(isEqual(null, [1])).toBeFalsy();
     // @ts-expect-error
-    expect(equal([1], null)).toBeFalsy();
+    expect(isEqual([1], null)).toBeFalsy();
     // @ts-expect-error
-    expect(equal(null, undefined)).toBeFalsy();
+    expect(isEqual(null, undefined)).toBeFalsy();
+  });
+
+  test("isZero", () => {
+    expect(isZero([0, 0, 0])).toBeTruthy();
+    expect(isZero([0, 0, 1])).toBeFalsy();
+
+    expect(isZero([])).toBeFalsy();
+    // @ts-expect-error
+    expect(isZero(null)).toBeFalsy();
   });
 });
