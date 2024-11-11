@@ -15,7 +15,9 @@ const findVersionMarker = (data: Uint8Array): number | undefined => {
   }
 };
 
-const getVersion10 = (data: Uint8Array, view: DataView) => {
+type ParseVersionResult = [version: string, build: string, end: number];
+
+const parseVersion10 = (data: Uint8Array, view: DataView): ParseVersionResult => {
   const versionLengthStart = 14;
   const versionLength = view.getInt32(versionLengthStart, true);
   console.log(versionLength);
@@ -30,7 +32,7 @@ const getVersion10 = (data: Uint8Array, view: DataView) => {
   return [$version, build, versionEnd] as const;
 };
 
-const getVersion13 = (data: Uint8Array, view: DataView) => {
+const parseVersion13 = (data: Uint8Array, view: DataView): ParseVersionResult => {
   const versionMarkerEnd = findVersionMarker(data);
   if (!versionMarkerEnd) throw Error("Failed to find BasicFileInfo version marker");
 
@@ -43,6 +45,33 @@ const getVersion13 = (data: Uint8Array, view: DataView) => {
   const build = decoder.decode(data.subarray(buildStart, buildEnd));
 
   return [version, build, buildEnd] as const;
+};
+
+const parseVersion = (
+  fileVersion: number,
+  data: Uint8Array,
+  view: DataView
+): ParseVersionResult => {
+  if (fileVersion === 10) {
+    return parseVersion10(data, view);
+  } else {
+    return parseVersion13(data, view);
+  }
+};
+
+type ParsePathResult = [path: string, end: number];
+
+const parsePath = (
+  data: Uint8Array,
+  view: DataView,
+  position: number
+): ParsePathResult => {
+  const lenght = view.getInt32(position, true);
+  const start = position + 4;
+  const end = start + lenght * 2;
+  const path = decoder.decode(data.subarray(start, end));
+
+  return [path, end];
 };
 
 export interface FileInfo {
@@ -72,15 +101,10 @@ export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
   const view = new DataView(data.buffer, data.byteOffset);
   const fileVersion = view.getInt16(0, true);
   if (fileVersion !== 10 && fileVersion !== 13 && fileVersion !== 14)
-    console.warn(`Unknown file version ${fileVersion}`);
+    throw Error(`Unknown file version ${fileVersion}`);
 
-  const [version, build, buildEnd] =
-    fileVersion === 10 ? getVersion10(data, view) : getVersion13(data, view);
-
-  const pathLength = view.getInt32(buildEnd, true);
-  const pathStart = buildEnd + 4;
-  const pathEnd = pathStart + pathLength * 2;
-  const path = decoder.decode(data.subarray(pathStart, pathEnd));
+  const [version, build, buildEnd] = parseVersion(fileVersion, data, view);
+  const [path, pathEnd] = parsePath(data, view, buildEnd);
 
   // Not sure if actual padding, always 3
   const padding = view.getInt16(pathEnd, true);
