@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.0](https://github.com/phi-ag/rvt-app/compare/v0.3.0...v0.4.0) (2024-11-11)
+
+
+### Features
+
+* process all input files ([e292a7d](https://github.com/phi-ag/rvt-app/commit/e292a7dc6b5dfcb60f5fd1a7c7ee223aef545b8e))
+
+
+### Bug Fixes
+
+* dropzone should accept files without extensions unless restricted ([5f0f6a0](https://github.com/phi-ag/rvt-app/commit/5f0f6a0176a945de128d6912869e8bced816dd90))
+
 ## [0.3.0](https://github.com/phi-ag/rvt-app/compare/v0.2.0...v0.3.0) (2024-11-11)
 
 
