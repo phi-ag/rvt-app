@@ -7,16 +7,71 @@ import {
 } from "~/lib/cfb";
 
 import { type FileInfo, parseFileInfo } from "./info";
+import { parsePreview } from "./thumbnail";
 
-export const processFile = async (file: File): Promise<FileInfo> => {
+type Boundaries = [start: number, end: number];
+
+const entryBoundaries = (
+  header: Header,
+  miniFatStart: number,
+  file: Entry
+): Boundaries => {
+  // see https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L651
+  if (file.size < header.sectorSize) {
+    const miniFatSectorSize = 64;
+    const start = miniFatStart + file.start * miniFatSectorSize;
+    const end = start + file.size;
+    return [start, end];
+  }
+
+  const start = (file.start + 1) * header.sectorSize;
+  const end = start + file.size;
+  return [start, end];
+};
+
+interface DesiredFile {
+  name: string;
+  start: number;
+  end: number;
+  fn: (data: Uint8Array) => unknown;
+}
+
+interface DesiredFileResult {
+  name: string;
+  result: unknown;
+}
+
+const addDesiredFile = (files: DesiredFile[], file: DesiredFile) => {
+  files.push(file);
+  files.sort((lhs, rhs) => rhs.start - lhs.start);
+};
+
+const addDesiredDirectoryFile = (
+  header: Header,
+  directory: Directory,
+  miniFatStart: number,
+  files: DesiredFile[],
+  name: string,
+  fn: (data: Uint8Array) => unknown
+) => {
+  const entry = directory.find((entry) => entry.name === name);
+  if (!entry) throw Error(`Compound file ${name} not found`);
+
+  const [start, end] = entryBoundaries(header, miniFatStart, entry);
+  addDesiredFile(files, { name, start, end, fn });
+};
+
+export const processFile = async (file: File): Promise<[FileInfo, Blob]> => {
   let chunkEnd = 0;
 
   let header!: Header;
   let directory!: Directory;
 
-  let root!: Entry;
-  let info!: Entry;
+  const desiredFiles: DesiredFile[] = [];
+  const desiredFileResults: DesiredFileResult[] = [];
 
+  // Temporary storage for data which crosses chunk boundaries.
+  // Use this only for small files (ie. <50kb)!
   let buffer!: Uint8Array | null;
 
   const addToBuffer = (chunk: Uint8Array) => {
@@ -88,53 +143,78 @@ export const processFile = async (file: File): Promise<FileInfo> => {
         directory = parseDirectory(header, directorySector);
         console.debug("Directory", directory);
 
-        const $root = directory.find((entry) => entry.type === 5);
-        if (!$root) throw Error("Compound file root not found");
-        root = $root;
+        const root = directory.find((entry) => entry.type === 5)!;
+        if (!root) throw Error("Compound file root not found");
 
-        const $info = directory.find((entry) => entry.name === "BasicFileInfo");
-        if (!$info) throw Error("Compound file BasicFileInfo not found");
+        const miniFatStart = (root.start + 1) * header.sectorSize;
 
-        info = $info;
+        addDesiredDirectoryFile(
+          header,
+          directory,
+          miniFatStart,
+          desiredFiles,
+          "BasicFileInfo",
+          parseFileInfo
+        );
+
+        addDesiredDirectoryFile(
+          header,
+          directory,
+          miniFatStart,
+          desiredFiles,
+          "RevitPreview4.0",
+          parsePreview
+        );
       }
 
-      if (!info || !header) throw Error("Parsing header failed... (unreachable)");
+      let nextChunk = false;
+      while (!nextChunk && desiredFiles.length) {
+        const desiredFile = desiredFiles[desiredFiles.length - 1];
+        if (!desiredFile) throw Error("Desired file is undefined (unreachable)");
 
-      // TODO: cleanup this hack
-      const miniFatStart = (root.start + 1) * header.sectorSize;
-      const miniFatSectorSize = 64;
-      const infoStart = miniFatStart + info.start * miniFatSectorSize;
+        // NOTE: Start not in this chunk
+        if (desiredFile.start > chunkEnd) {
+          nextChunk = true;
+          continue;
+        }
 
-      // Info start start not in this chunk
-      if (infoStart > chunkEnd) continue;
+        // NOTE: If start was in a previous chunk use zero as start
+        const startChunk = Math.max(desiredFile.start - chunkStart, 0);
 
-      const infoEnd = infoStart + info.size;
-      const infoStartChunk = Math.max(infoStart - chunkStart, 0);
+        // NOTE: End not in this chunk
+        if (desiredFile.end > chunkEnd) {
+          addToBuffer(chunk.subarray(startChunk));
+          nextChunk = true;
+          continue;
+        }
 
-      // Info end not in this chunk
-      if (infoEnd > chunkEnd) {
-        addToBuffer(chunk.subarray(infoStartChunk));
-        continue;
+        const fileEndChunk = desiredFile.end - chunkStart;
+        const data = prependBuffer(chunk.subarray(startChunk, fileEndChunk));
+
+        desiredFileResults.push({ name: desiredFile.name, result: desiredFile.fn(data) });
+        desiredFiles.pop();
       }
 
-      const infoEndChunk = infoEnd - chunkStart;
-      const infoSector = prependBuffer(chunk.subarray(infoStartChunk, infoEndChunk));
-
-      const fileInfo = parseFileInfo(infoSector);
-      console.debug(fileInfo);
-      return fileInfo;
+      if (!desiredFiles.length) break;
     }
   } finally {
     stream.cancel();
   }
 
-  throw Error(`Insufficient data receveid (${file.size})`);
+  const info = desiredFileResults.find((file) => file.name === "BasicFileInfo");
+  if (!info?.result) throw Error("Missing BasicFileInfo result");
+
+  const blob = desiredFileResults.find((file) => file.name === "RevitPreview4.0");
+  if (!blob?.result) throw Error("Missing RevitPreview4.0 result");
+
+  return [info.result as FileInfo, blob.result as Blob] as const;
 };
 
 export interface ProcessFileSuccess {
   ok: true;
   name: string;
   info: FileInfo;
+  thumbnail: Blob;
   error?: never;
 }
 
@@ -142,6 +222,7 @@ export interface ProcessFileError {
   ok: false;
   name: string;
   info?: never;
+  thumbnail?: never;
   error: string;
 }
 
@@ -149,8 +230,8 @@ export type ProcessFileResult = ProcessFileSuccess | ProcessFileError;
 
 export const tryProcessFile = async (file: File): Promise<ProcessFileResult> => {
   try {
-    const info = await processFile(file);
-    return { ok: true, name: file.name, info };
+    const [info, thumbnail] = await processFile(file);
+    return { ok: true, name: file.name, info, thumbnail };
   } catch (e) {
     if (e instanceof Error) {
       console.error(`Failed to process file ${file.name}`, e);

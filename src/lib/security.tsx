@@ -19,7 +19,7 @@ const frameAncestors = [
 
 const fonts = ["font-src", "'self'"].join(" ");
 
-const images = ["img-src", "'self'", "https:", "data:"].join(" ");
+const images = ["img-src", "'self'", "https:", "data:", "blob:"].join(" ");
 
 const connect = compact(["connect-src", "'self'", import.meta.env.DEV && "data: *"]).join(
   " "

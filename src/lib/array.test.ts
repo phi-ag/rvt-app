@@ -3,7 +3,7 @@ import { describe, expect, test } from "vitest";
 import { isEqual, isZero } from "./array";
 
 describe("array", () => {
-  test("equal", () => {
+  test("isEqual", () => {
     expect(isEqual([], [])).toBeTruthy();
     expect(isEqual([1], [1])).toBeTruthy();
     expect(isEqual([1, 2, 3], [1, 2, 3])).toBeTruthy();
