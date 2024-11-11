@@ -10,8 +10,7 @@ export default function () {
   const process = async (files: File[]) => {
     setProcessing(true);
     try {
-      const infos = await processFiles(files);
-      setResults(infos);
+      setResults(await processFiles(files));
     } finally {
       setProcessing(false);
     }

@@ -117,9 +117,7 @@ export const processFile = async (file: File): Promise<[FileInfo, Blob]> => {
       }
 
       if (!directory) {
-        // TODO: implement finding the directory sector
-        // see https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L590
-        const directoryStart = header.sectorSize * 2;
+        const directoryStart = (header.directoryStart + 1) * header.sectorSize;
 
         // Directory start not in this chunk
         if (directoryStart > chunkEnd) continue;
