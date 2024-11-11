@@ -17,8 +17,6 @@ const dropZone = cva(
     "border-2",
     "border-dashed",
     "outline-none",
-    "bg-gray-300",
-    "dark:bg-gray-900",
     "border-gray-400",
     "dark:border-gray-600",
     "hover:ring-4",

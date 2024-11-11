@@ -192,7 +192,7 @@ export interface FileInfo {
  * - 13 -> Revit 2019/2020
  * - 14 -> Revit 2021/2022/2023/2024/2025
  */
-export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
+export const parseFileInfo = (data: Uint8Array): FileInfo => {
   const view = new DataView(data.buffer, data.byteOffset);
   const fileVersion = view.getInt32(0, true);
   if (fileVersion !== 10 && fileVersion !== 13 && fileVersion !== 14)

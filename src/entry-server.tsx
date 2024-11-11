@@ -30,14 +30,14 @@ export default createHandler(
               <ThemeHeaderScript />
               {assets}
             </head>
-            <body class="flex h-full w-full flex-col bg-slate-200 text-base text-slate-900 antialiased dark:bg-slate-800 dark:text-slate-100">
+            <body class="flex h-full w-full flex-col bg-slate-200 text-base text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-100">
               <noscript class="mx-2 my-4 flex flex-col items-center gap-2">
                 <span class="text-title-lg text-center">
                   This app requires JavaScript ⚡
                 </span>
                 <span>Please enable it in your browser settings.</span>
               </noscript>
-              <div class="flex flex-1 overflow-hidden" id="app">
+              <div class="flex flex-1" id="app">
                 {children}
               </div>
               {scripts}
