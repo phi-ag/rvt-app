@@ -15,9 +15,12 @@ const findMarker = (data: Uint8Array): number | undefined => {
   }
 };
 
-export const parsePreview = (data: Uint8Array) => {
+export const parsePreview = (data: Uint8Array): Blob | undefined => {
   const marker = findMarker(data);
-  if (!marker) throw Error("Failed to find preview image marker");
+  if (!marker) {
+    console.warn("Failed to find preview image marker");
+    return;
+  }
 
   return new Blob([data.subarray(marker)], {
     type: "image/png"

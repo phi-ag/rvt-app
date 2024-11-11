@@ -61,7 +61,7 @@ const addDesiredDirectoryFile = (
   addDesiredFile(files, { name, start, end, fn });
 };
 
-export const processFile = async (file: File): Promise<[FileInfo, Blob]> => {
+export const processFile = async (file: File): Promise<[FileInfo, Blob | undefined]> => {
   let chunkEnd = 0;
 
   let header!: Header;
@@ -203,16 +203,16 @@ export const processFile = async (file: File): Promise<[FileInfo, Blob]> => {
   if (!info?.result) throw Error("Missing BasicFileInfo result");
 
   const blob = desiredFileResults.find((file) => file.name === "RevitPreview4.0");
-  if (!blob?.result) throw Error("Missing RevitPreview4.0 result");
+  if (!blob) throw Error("Missing RevitPreview4.0 result");
 
-  return [info.result as FileInfo, blob.result as Blob] as const;
+  return [info.result as FileInfo, blob?.result as Blob] as const;
 };
 
 export interface ProcessFileSuccess {
   ok: true;
   name: string;
   info: FileInfo;
-  thumbnail: Blob;
+  thumbnail?: Blob;
   error?: never;
 }
 

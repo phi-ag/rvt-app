@@ -1,4 +1,4 @@
-import { For, Match, Switch, createSignal } from "solid-js";
+import { For, Match, Show, Switch, createSignal } from "solid-js";
 
 import { DropZone } from "~/components";
 import { type ProcessFileResult, processFiles } from "~/lib/revit";
@@ -32,12 +32,14 @@ export default function () {
             <h2 class="text-2xl">{result.name}</h2>
             <Switch>
               <Match when={result.ok}>
-                <img
-                  width={128}
-                  height={128}
-                  src={URL.createObjectURL(result.thumbnail!)}
-                  alt={result.name}
-                />
+                <Show when={result.thumbnail}>
+                  <img
+                    width={128}
+                    height={128}
+                    src={URL.createObjectURL(result.thumbnail!)}
+                    alt={result.name}
+                  />
+                </Show>
                 <p>Version: {result.info?.version}</p>
                 <p>Build: {result.info?.build}</p>
                 <p>Identity: {result.info?.identityId}</p>
