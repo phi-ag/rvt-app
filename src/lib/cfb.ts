@@ -197,6 +197,17 @@ const parseEntry = (data: Uint8Array): Entry => {
 
 export type Directory = Entry[];
 
+const parseDirectorySector = (entryCount: number, sector: Uint8Array): Directory => {
+  const entries = [];
+  for (let i = 0; i < entryCount; i++) {
+    const start = i * 128;
+    const entry = parseEntry(sector.subarray(start, start + 128));
+    if (entry.type !== 0) entries.push(entry);
+  }
+
+  return entries;
+};
+
 /**
  * Parse the CFB directory
  *
@@ -208,10 +219,11 @@ export const parseDirectory = (header: Header, sector: Uint8Array): Directory =>
   const entryCount = header.version === 3 ? 4 : 32;
 
   const entries = [];
-  for (let i = 0; i < entryCount; i++) {
-    const start = i * 128;
-    const entry = parseEntry(sector.subarray(start, start + 128));
-    if (entry.type !== 0) entries.push(entry);
+  for (let i = 0; i < header.directorySectorCount; i++) {
+    const start = i * header.sectorSize;
+    const end = start + header.sectorSize;
+    const sectorEntries = parseDirectorySector(entryCount, sector.subarray(start, end));
+    for (const entry of sectorEntries) entries.push(entry);
   }
 
   return entries;
