@@ -13,7 +13,7 @@ importers:
         version: 0.15.1(solid-js@1.9.3)
       '@solidjs/start':
         specifier: 1.0.10
-        version: 1.0.10(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3))(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
+        version: 1.0.10(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3))(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))
       class-variance-authority:
         specifier: 0.7.0
         version: 0.7.0
@@ -85,8 +85,8 @@ importers:
         specifier: 0.4.3
         version: 0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3)
       vite:
-        specifier: 5.4.10
-        version: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
+        specifier: 5.4.11
+        version: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
       vitest:
         specifier: 2.1.4
         version: 2.1.4(@types/node@22.9.0)(terser@5.36.0)
@@ -3848,8 +3848,8 @@ packages:
       '@testing-library/jest-dom':
         optional: true
 
-  vite@5.4.10:
-    resolution: {integrity: sha512-1hvaPshuPUtxeQ0hsVH3Mud0ZanOLwVTneA1EgbAM5LhaZEqyPWGRQ7BtaMvUrTDeEaC8pxtj6a6jku3x4z6SQ==}
+  vite@5.4.11:
+    resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -4881,7 +4881,7 @@ snapshots:
     dependencies:
       solid-js: 1.9.3
 
-  '@solidjs/start@1.0.10(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3))(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))':
+  '@solidjs/start@1.0.10(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3))(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))':
     dependencies:
       '@vinxi/plugin-directives': 0.4.3(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3))
       '@vinxi/server-components': 0.4.3(vinxi@0.4.3(@types/node@22.9.0)(ioredis@5.4.1)(terser@5.36.0)(typescript@5.6.3))
@@ -4896,7 +4896,7 @@ snapshots:
       source-map-js: 1.2.1
       terracotta: 1.0.6(solid-js@1.9.3)
       tinyglobby: 0.2.10
-      vite-plugin-solid: 2.10.2(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
+      vite-plugin-solid: 2.10.2(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - solid-js
@@ -5151,13 +5151,13 @@ snapshots:
       chai: 5.1.2
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.4(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))':
+  '@vitest/mocker@2.1.4(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))':
     dependencies:
       '@vitest/spy': 2.1.4
       estree-walker: 3.0.3
       magic-string: 0.30.12
     optionalDependencies:
-      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
+      vite: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
 
   '@vitest/pretty-format@2.1.4':
     dependencies:
@@ -7839,7 +7839,7 @@ snapshots:
       unctx: 2.3.1
       unenv: 1.10.0
       unstorage: 1.13.1(ioredis@5.4.1)
-      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
+      vite: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
       zod: 3.23.8
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -7881,7 +7881,7 @@ snapshots:
       cac: 6.7.14
       debug: 4.3.7(supports-color@9.4.0)
       pathe: 1.1.2
-      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
+      vite: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -7893,7 +7893,7 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-solid@2.10.2(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0)):
+  vite-plugin-solid@2.10.2(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0)):
     dependencies:
       '@babel/core': 7.26.0
       '@types/babel__core': 7.20.5
@@ -7901,14 +7901,14 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.9.3
       solid-refresh: 0.6.3(solid-js@1.9.3)
-      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
-      vitefu: 0.2.5(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
+      vite: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
+      vitefu: 0.2.5(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))
     optionalDependencies:
       '@testing-library/jest-dom': 6.6.3
     transitivePeerDependencies:
       - supports-color
 
-  vite@5.4.10(@types/node@22.9.0)(terser@5.36.0):
+  vite@5.4.11(@types/node@22.9.0)(terser@5.36.0):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.48
@@ -7918,14 +7918,14 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.36.0
 
-  vitefu@0.2.5(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0)):
+  vitefu@0.2.5(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0)):
     optionalDependencies:
-      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
+      vite: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
 
   vitest@2.1.4(@types/node@22.9.0)(terser@5.36.0):
     dependencies:
       '@vitest/expect': 2.1.4
-      '@vitest/mocker': 2.1.4(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
+      '@vitest/mocker': 2.1.4(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))
       '@vitest/pretty-format': 2.1.4
       '@vitest/runner': 2.1.4
       '@vitest/snapshot': 2.1.4
@@ -7941,7 +7941,7 @@ snapshots:
       tinyexec: 0.3.1
       tinypool: 1.0.1
       tinyrainbow: 1.2.0
-      vite: 5.4.10(@types/node@22.9.0)(terser@5.36.0)
+      vite: 5.4.11(@types/node@22.9.0)(terser@5.36.0)
       vite-node: 2.1.4(@types/node@22.9.0)(terser@5.36.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
