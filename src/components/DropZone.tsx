@@ -50,9 +50,10 @@ const dropZone = cva(
 
 const isValidFile = (file: File, acceptExtensions?: string[]): boolean => {
   if (!file.size) return false;
-  const ext = extension(file.name);
-  if (!ext) return false;
-  if (acceptExtensions && !acceptExtensions.includes(ext)) return false;
+  if (acceptExtensions) {
+    const ext = extension(file.name);
+    if (!ext || !acceptExtensions.includes(ext)) return false;
+  }
   return true;
 };
 
@@ -126,7 +127,7 @@ const DropZone: ParentComponent<DropZoneProps> = (props) => {
       {...rest}
       onDragEnter={() => setDragging(true)}
       onDragLeave={() => setDragging(false)}
-      onDragOver={(event) => event.preventDefault()}
+      onDragOver={(e) => e.preventDefault()}
       onDrop={onDrop}
       onClick={() => inputRef.click()}
       class={dropZone({
