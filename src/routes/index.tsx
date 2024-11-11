@@ -41,6 +41,8 @@ export default function () {
                 />
                 <p>Version: {result.info?.version}</p>
                 <p>Build: {result.info?.build}</p>
+                <p>Identity: {result.info?.identityId}</p>
+                <p>Document: {result.info?.documentId}</p>
                 <p>Path: {result.info?.path}</p>
                 <pre class="mt-2 whitespace-pre-wrap text-sm">{result.info?.content}</pre>
               </Match>
