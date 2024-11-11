@@ -15,30 +15,22 @@ const findVersionMarker = (data: Uint8Array): number | undefined => {
   }
 };
 
-export interface FileInfo {
-  fileVersion: number;
-  version: string;
-  build: string;
-  path: string;
-  guid1: string;
-  guid2: string;
-  appName: string;
-  appName2?: string;
-  content: string;
-}
+const getVersion10 = (data: Uint8Array, view: DataView) => {
+  const versionLengthStart = 14;
+  const versionLength = view.getInt32(versionLengthStart, true);
+  console.log(versionLength);
 
-/**
- * Parse BasicFileInfo
- *
- * This was implemented while staring at a hex editor and guessing what each byte could mean.
- * Therefore very likely incomplete and buggy.
- */
-export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
-  const view = new DataView(data.buffer, data.byteOffset);
-  const fileVersion = view.getInt16(0, true);
-  if (fileVersion !== 13 && fileVersion !== 14)
-    console.warn(`Unknown file version ${fileVersion}`);
+  const versionStart = versionLengthStart + 4;
+  const versionEnd = versionStart + versionLength * 2;
+  const version = decoder.decode(data.subarray(versionStart, versionEnd));
 
+  const $version = version.slice(15, 20);
+  const build = version.slice(28, version.length - 1);
+
+  return [$version, build, versionEnd] as const;
+};
+
+const getVersion13 = (data: Uint8Array, view: DataView) => {
   const versionMarkerEnd = findVersionMarker(data);
   if (!versionMarkerEnd) throw Error("Failed to find BasicFileInfo version marker");
 
@@ -49,6 +41,41 @@ export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
   const buildStart = versionEnd + 4;
   const buildEnd = buildStart + buildLength * 2;
   const build = decoder.decode(data.subarray(buildStart, buildEnd));
+
+  return [version, build, buildEnd] as const;
+};
+
+export interface FileInfo {
+  fileVersion: number;
+  version: string;
+  build: string;
+  path: string;
+  guid1: string;
+  guid2: string;
+  appName?: string;
+  appName2?: string;
+  content: string;
+}
+
+/**
+ * Parse BasicFileInfo
+ *
+ * This was implemented while staring at a hex editor and guessing what each byte could mean.
+ * Therefore very likely incomplete and buggy.
+ *
+ * File versions:
+ * - 10 -> Revit 2017/2018
+ * - 13 -> Revit 2019/2020
+ * - 14 -> Revit 2021/2022/2023/2024/2025
+ */
+export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
+  const view = new DataView(data.buffer, data.byteOffset);
+  const fileVersion = view.getInt16(0, true);
+  if (fileVersion !== 10 && fileVersion !== 13 && fileVersion !== 14)
+    console.warn(`Unknown file version ${fileVersion}`);
+
+  const [version, build, buildEnd] =
+    fileVersion === 10 ? getVersion10(data, view) : getVersion13(data, view);
 
   const pathLength = view.getInt32(buildEnd, true);
   const pathStart = buildEnd + 4;
@@ -90,16 +117,24 @@ export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
 
   //const _unknownFlag = view.getInt8(guid4End);
 
-  const appNameLength = view.getInt32(guid4End + 1, true);
-  const appNameStart = guid4End + 1 + 4;
-  const appNameEnd = appNameStart + appNameLength * 2;
-  const appName = decoder.decode(data.subarray(appNameStart, appNameEnd));
+  let appName!: string;
+  let appNameEnd!: number;
+
+  if (fileVersion !== 10) {
+    const appNameLength = view.getInt32(guid4End + 1, true);
+    const appNameStart = guid4End + 1 + 4;
+    appNameEnd = appNameStart + appNameLength * 2;
+    appName = decoder.decode(data.subarray(appNameStart, appNameEnd));
+  }
 
   let appName2!: string;
   let contentStart!: number;
   let contentTrim!: number;
 
-  if (fileVersion === 13) {
+  if (fileVersion === 10) {
+    contentTrim = 2;
+    contentStart = guid4End + 2;
+  } else if (fileVersion === 13) {
     contentTrim = 2;
     contentStart = appNameEnd + 2;
   } else if (fileVersion === 14) {
