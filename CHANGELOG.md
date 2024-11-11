@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.5.0](https://github.com/phi-ag/rvt-app/compare/v0.4.0...v0.5.0) (2024-11-11)
+
+
+### Features
+
+* extract and render thumbnails ([73a9619](https://github.com/phi-ag/rvt-app/commit/73a9619ec1955656c6e22d62c50b14150bbbc8f3))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency typescript-eslint to v8.14.0 ([d1a30b7](https://github.com/phi-ag/rvt-app/commit/d1a30b778964ac1c67ddc239dea501274a253c3c))
+* **deps:** update dependency wrangler to v3.86.1 ([4e77529](https://github.com/phi-ag/rvt-app/commit/4e7752966e841ae8722870303126b2e859bf0bee))
+* disable some debug logging ([272194f](https://github.com/phi-ag/rvt-app/commit/272194f25899eb793ec057e1859910360a33fd88))
+
 ## [0.4.0](https://github.com/phi-ag/rvt-app/compare/v0.3.0...v0.4.0) (2024-11-11)
 
 
