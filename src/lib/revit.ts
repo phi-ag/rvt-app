@@ -23,7 +23,7 @@ export interface FileInfo {
   guid1: string;
   guid2: string;
   appName: string;
-  appName2: string;
+  appName2?: string;
   content: string;
 }
 
@@ -78,17 +78,17 @@ export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
   const guid3Length = view.getInt32(guid2End, true);
   const guid3Start = guid2End + 4;
   const guid3End = guid3Start + guid3Length * 2;
-  const _guid3 = decoder.decode(data.subarray(guid3Start, guid3End));
+  //const guid3 = decoder.decode(data.subarray(guid3Start, guid3End));
 
-  const guid4padding = view.getInt16(guid3End, true);
-  const guid4LengthStart = guid3End + 4 + guid4padding * 2;
+  const guid4Padding = view.getInt16(guid3End, true);
+  const guid4LengthStart = guid3End + 4 + guid4Padding * 2;
   const guid4Length = view.getInt32(guid4LengthStart, true);
 
   const guid4Start = guid4LengthStart + 4;
   const guid4End = guid4Start + guid4Length * 2;
-  const _guid4 = decoder.decode(data.subarray(guid4Start, guid4End));
+  //const guid4 = decoder.decode(data.subarray(guid4Start, guid4End));
 
-  const _unknownFlag = view.getInt8(guid4End);
+  //const _unknownFlag = view.getInt8(guid4End);
 
   const appNameLength = view.getInt32(guid4End + 1, true);
   const appNameStart = guid4End + 1 + 4;
@@ -126,8 +126,6 @@ export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
     path,
     guid1,
     guid2,
-    //guid3,
-    //guid4,
     appName,
     appName2,
     content

@@ -8,11 +8,11 @@ export default function () {
   const [processing, setProcessing] = createSignal(false);
   const [info, setInfo] = createSignal<FileInfo>();
 
-  // TODO:move processing to web worker
+  // TODO: move processing to web worker
   const process = async (files: File[]) => {
     setProcessing(true);
     try {
-      // TODO:handle multiple input files
+      // TODO: handle multiple input files
       const file = files[0];
       if (!file) return;
       console.debug(file);

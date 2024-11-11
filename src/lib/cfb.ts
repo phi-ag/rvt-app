@@ -32,6 +32,17 @@ const assertEqual = (
     throw Error(`Unexpected compound file ${message} [${data}]`);
 };
 
+const assertZero = (
+  chunk: Uint8Array,
+  position: number,
+  length: number,
+  message: string
+) => {
+  const data = chunk.subarray(position, position + length);
+  if (!array.isZero(data))
+    throw Error(`Unexpected compound file non-zero ${message} [${data}]`);
+};
+
 // see https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L669
 const readDate = (view: DataView, offset: number) => {
   return new Date(
@@ -80,10 +91,7 @@ export const parseHeader = (chunk: Uint8Array, fileSize: number): Header => {
   assertEqual(chunk, 28, [0xfe, 0xff], "byte order");
   assertEqual(chunk, 30, [0x0c, 0x00], "sector shift");
   assertEqual(chunk, 32, [0x06, 0x00], "mini sector shift");
-
-  const reserved = chunk.subarray(34, 40);
-  if (!array.isZero(reserved))
-    throw Error(`Unexpected compound file reserved (${reserved})`);
+  assertZero(chunk, 34, 6, "reserved");
 
   const directorySectorCount = view.getInt32(40, true);
   if (version === 3 && directorySectorCount !== 0)
@@ -95,7 +103,7 @@ export const parseHeader = (chunk: Uint8Array, fileSize: number): Header => {
   const fatSectorCount = view.getInt32(44, true);
   const directoryStart = view.getInt32(48, true);
 
-  assertEqual(chunk, 52, Array(4).fill(0), "transaction signature");
+  assertZero(chunk, 52, 4, "transaction signature");
   assertEqual(chunk, 56, [0x00, 0x10, 0x00, 0x00], "mini stream cutoff size");
 
   const miniFatStart = view.getInt32(60, true);
@@ -128,7 +136,7 @@ export const parseHeader = (chunk: Uint8Array, fileSize: number): Header => {
 
 const entryNameMaxLength = 64;
 
-export const decoder = new TextDecoder("utf-16le");
+const decoder = new TextDecoder("utf-16le");
 
 export interface Entry {
   name: string;
