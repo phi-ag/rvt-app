@@ -106,14 +106,14 @@ export const processFile = async (file: File): Promise<[FileInfo, Blob]> => {
       chunkEnd += chunk.byteLength;
 
       if (!header) {
-        console.debug("Initial chunk", chunk.length);
+        //console.debug("Initial chunk", chunk.length);
 
         // TODO: accumulate data if necessary
         if (chunk.length < 512)
           throw Error(`Compound file first chunk too small (${chunk.length})`);
 
         header = parseHeader(chunk, file.size);
-        console.debug("Header", header);
+        //console.debug("Header", header);
       }
 
       if (!directory) {
@@ -141,7 +141,7 @@ export const processFile = async (file: File): Promise<[FileInfo, Blob]> => {
         );
 
         directory = parseDirectory(header, directorySector);
-        console.debug("Directory", directory);
+        //console.debug("Directory", directory);
 
         const root = directory.find((entry) => entry.type === 5)!;
         if (!root) throw Error("Compound file root not found");
