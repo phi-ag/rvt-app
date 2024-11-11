@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/phi-ag/rvt-app/compare/v0.1.0...v0.2.0) (2024-11-11)
+
+
+### Features
+
+* parse basic file info ([7e5941b](https://github.com/phi-ag/rvt-app/commit/7e5941bccd82913d1aa4923f8b6c7fa4f54c3fab))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency vite to v5.4.11 ([d5cb420](https://github.com/phi-ag/rvt-app/commit/d5cb420c5a3cfb7494547dce6bc76a98c1ae6262))
+
 ## [0.1.0](https://github.com/phi-ag/rvt-app/compare/v0.0.1...v0.1.0) (2024-11-10)
 
 
