@@ -74,41 +74,16 @@ const parsePath = (
   return [path, end];
 };
 
-export interface FileInfo {
-  fileVersion: number;
-  version: string;
-  build: string;
-  path: string;
-  guid1: string;
-  guid2: string;
-  appName?: string;
-  appName2?: string;
-  content: string;
-}
+type ParseGuidsResult = [guid1: string, guid2: string, end: number];
 
-/**
- * Parse BasicFileInfo
- *
- * This was implemented while staring at a hex editor and guessing what each byte could mean.
- * Therefore very likely incomplete and buggy.
- *
- * File versions:
- * - 10 -> Revit 2017/2018
- * - 13 -> Revit 2019/2020
- * - 14 -> Revit 2021/2022/2023/2024/2025
- */
-export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
-  const view = new DataView(data.buffer, data.byteOffset);
-  const fileVersion = view.getInt16(0, true);
-  if (fileVersion !== 10 && fileVersion !== 13 && fileVersion !== 14)
-    throw Error(`Unknown file version ${fileVersion}`);
-
-  const [version, build, buildEnd] = parseVersion(fileVersion, data, view);
-  const [path, pathEnd] = parsePath(data, view, buildEnd);
-
+const parseGuids = (
+  data: Uint8Array,
+  view: DataView,
+  position: number
+): ParseGuidsResult => {
   // Not sure if actual padding, always 3
-  const padding = view.getInt16(pathEnd, true);
-  const guid1LengthStart = pathEnd + 2 + padding;
+  const padding = view.getInt16(position, true);
+  const guid1LengthStart = position + 2 + padding;
   const guid1Length = view.getInt32(guid1LengthStart, true);
 
   const guid1Start = guid1LengthStart + 4;
@@ -139,14 +114,49 @@ export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
   const guid4End = guid4Start + guid4Length * 2;
   //const guid4 = decoder.decode(data.subarray(guid4Start, guid4End));
 
-  //const _unknownFlag = view.getInt8(guid4End);
+  return [guid1, guid2, guid4End] as const;
+};
+
+export interface FileInfo {
+  fileVersion: number;
+  version: string;
+  build: string;
+  path: string;
+  guid1: string;
+  guid2: string;
+  appName?: string;
+  appName2?: string;
+  content: string;
+}
+
+/**
+ * Parse BasicFileInfo
+ *
+ * This was implemented while staring at a hex editor and guessing what each byte could mean.
+ * Therefore very likely incomplete and buggy.
+ *
+ * File versions:
+ * - 10 -> Revit 2017/2018
+ * - 13 -> Revit 2019/2020
+ * - 14 -> Revit 2021/2022/2023/2024/2025
+ */
+export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
+  const view = new DataView(data.buffer, data.byteOffset);
+  const fileVersion = view.getInt16(0, true);
+  if (fileVersion !== 10 && fileVersion !== 13 && fileVersion !== 14)
+    throw Error(`Unknown file version ${fileVersion}`);
+
+  const [version, build, versionEnd] = parseVersion(fileVersion, data, view);
+  const [path, pathEnd] = parsePath(data, view, versionEnd);
+  const [guid1, guid2, guidsEnd] = parseGuids(data, view, pathEnd);
+  //const _unknownFlag = view.getInt8(guidsEnd);
 
   let appName!: string;
   let appNameEnd!: number;
 
   if (fileVersion !== 10) {
-    const appNameLength = view.getInt32(guid4End + 1, true);
-    const appNameStart = guid4End + 1 + 4;
+    const appNameLength = view.getInt32(guidsEnd + 1, true);
+    const appNameStart = guidsEnd + 1 + 4;
     appNameEnd = appNameStart + appNameLength * 2;
     appName = decoder.decode(data.subarray(appNameStart, appNameEnd));
   }
@@ -157,7 +167,7 @@ export const parseBasicFileInfo = (data: Uint8Array): FileInfo => {
 
   if (fileVersion === 10) {
     contentTrim = 2;
-    contentStart = guid4End + 2;
+    contentStart = guidsEnd + 2;
   } else if (fileVersion === 13) {
     contentTrim = 2;
     contentStart = appNameEnd + 2;
