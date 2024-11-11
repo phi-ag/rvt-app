@@ -1,18 +1,12 @@
 import { Show, createSignal } from "solid-js";
 
 import { DropZone } from "~/components";
-import {
-  Directory,
-  Entry,
-  Header,
-  decoder,
-  parseDirectory,
-  parseHeader
-} from "~/lib/cfb";
+import { Directory, Entry, Header, parseDirectory, parseHeader } from "~/lib/cfb";
+import { FileInfo, parseBasicFileInfo } from "~/lib/revit";
 
 export default function () {
   const [processing, setProcessing] = createSignal(false);
-  const [info, setInfo] = createSignal<string>("");
+  const [info, setInfo] = createSignal<FileInfo>();
 
   // TODO:move processing to web worker
   const process = async (files: File[]) => {
@@ -30,8 +24,6 @@ export default function () {
 
       let root!: Entry;
       let info!: Entry;
-
-      let infoContent!: string;
 
       let buffer!: Uint8Array | null;
 
@@ -138,9 +130,9 @@ export default function () {
           const infoEndChunk = infoEnd - chunkStart;
           const infoSector = prependBuffer(chunk.subarray(infoStartChunk, infoEndChunk));
 
-          infoContent = decoder.decode(infoSector);
-          console.log(infoContent);
-          setInfo(infoContent);
+          const fileInfo = parseBasicFileInfo(infoSector);
+          console.debug(fileInfo);
+          setInfo(fileInfo);
           break;
         }
       } finally {
@@ -154,7 +146,7 @@ export default function () {
   return (
     <main class="flex flex-1 items-center p-4">
       <DropZone
-        class="flex flex-1 items-center justify-center self-stretch p-4"
+        class="flex flex-1 items-center justify-center self-stretch overflow-hidden p-4"
         acceptExtensions={["rvt", "rte", "rfa", "rft"]}
         onFiles={process}
         disabled={processing()}
@@ -167,7 +159,12 @@ export default function () {
               : "Drag 'n' drop files or click to select files"
           }
         >
-          <pre class="text-left text-sm">{info()}</pre>
+          <div class="flex flex-1 flex-col gap-1">
+            <p>Version: {info()!.version}</p>
+            <p>Build: {info()!.build}</p>
+            <p>Path: {info()!.path}</p>
+            <pre class="mt-2 whitespace-pre-wrap text-sm">{info()!.content}</pre>
+          </div>
         </Show>
       </DropZone>
     </main>
