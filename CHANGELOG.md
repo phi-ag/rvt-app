@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.5.1](https://github.com/phi-ag/rvt-app/compare/v0.5.0...v0.5.1) (2024-11-11)
+
+
+### Bug Fixes
+
+* directory start ([8740479](https://github.com/phi-ag/rvt-app/commit/8740479b7e4eb213eab428dd29fefb15d813eca0))
+* parse multiple directory sectors ([b091225](https://github.com/phi-ag/rvt-app/commit/b09122500fdf159817dcea1b92b6a98f00f469e1))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency postcss to v8.4.49 ([d6687b3](https://github.com/phi-ag/rvt-app/commit/d6687b30810d915106be0dfb085b165c43a15418))
+* don't throw when parsing thumbnail fails ([95af8ed](https://github.com/phi-ag/rvt-app/commit/95af8ed857835ab73d356b5302604342b73a6fd7))
+* render identity and document guids ([01dbbab](https://github.com/phi-ag/rvt-app/commit/01dbbabb5df32d5f80256e1a81818eebf9c73d62))
+
 ## [0.5.0](https://github.com/phi-ag/rvt-app/compare/v0.4.0...v0.5.0) (2024-11-11)
 
 
