@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.3.0](https://github.com/phi-ag/rvt-app/compare/v0.2.0...v0.3.0) (2024-11-11)
+
+
+### Features
+
+* add support for basic file info version 10 (Revit 2017, 2018) ([2d5fb43](https://github.com/phi-ag/rvt-app/commit/2d5fb439885d95c74b1d520da188c8f375fd2886))
+
+
+### Miscellaneous Chores
+
+* disable hover on mobile devices ([ed3139c](https://github.com/phi-ag/rvt-app/commit/ed3139c8c545c009525ea28e6447a3d26811641d))
+
+
+### Code Refactoring
+
+* add assert zero ([8a16f20](https://github.com/phi-ag/rvt-app/commit/8a16f209764666fcfdbf8248d8586c86ce275987))
+* parse app name and content ([23a1449](https://github.com/phi-ag/rvt-app/commit/23a1449253040775f21ba3c9a0b0cd752b6541be))
+* parse guids ([611f789](https://github.com/phi-ag/rvt-app/commit/611f7891bd589869121bb65684dfab969ec08374))
+* parse path ([a468513](https://github.com/phi-ag/rvt-app/commit/a468513a88e68eb835caaaca4abf993686ede506))
+
 ## [0.2.0](https://github.com/phi-ag/rvt-app/compare/v0.1.0...v0.2.0) (2024-11-11)
 
 
