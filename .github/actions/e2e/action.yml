@@ -12,4 +12,6 @@ runs:
           corepack prepare --activate
           pnpm config set store-dir /home/runner/.local/share/pnpm/store/v3
           pnpm install --frozen-lockfile
+
+          echo Target ${BASE_URL:-localhost}
           pnpm test:e2e
