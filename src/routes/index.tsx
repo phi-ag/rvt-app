@@ -23,13 +23,16 @@ export default function () {
         acceptExtensions={["rvt", "rte", "rfa", "rft"]}
         onFiles={process}
         disabled={processing()}
+        data-testid="dropzone"
       >
         {processing() ? "Processing ..." : "Drag 'n' drop files or click to select files"}
       </DropZone>
       <For each={results()}>
         {(result) => (
           <div class="flex flex-col gap-1">
-            <h2 class="text-2xl">{result.name}</h2>
+            <h2 class="text-2xl" data-testid="name">
+              {result.name}
+            </h2>
             <Switch>
               <Match when={result.ok}>
                 <Show when={result.thumbnail}>
@@ -40,15 +43,31 @@ export default function () {
                     alt={result.name}
                   />
                 </Show>
-                <p>Version: {result.info?.version}</p>
-                <p>Build: {result.info?.build}</p>
-                <p>Identity: {result.info?.identityId}</p>
-                <p>Document: {result.info?.documentId}</p>
-                <p>Path: {result.info?.path}</p>
-                <pre class="mt-2 whitespace-pre-wrap text-sm">{result.info?.content}</pre>
+                <div>
+                  Version: <span data-testid="version">{result.info?.version}</span>
+                </div>
+                <div>
+                  Build: <span data-testid="build">{result.info?.build}</span>
+                </div>
+                <div>
+                  Identity:{" "}
+                  <span data-testid="identityId">{result.info?.identityId}</span>
+                </div>
+                <div>
+                  Document:{" "}
+                  <span data-testid="documentId">{result.info?.documentId}</span>
+                </div>
+                <div>
+                  Path: <span data-testid="path">{result.info?.path}</span>
+                </div>
+                <pre class="mt-2 whitespace-pre-wrap text-sm" data-testid="content">
+                  {result.info?.content}
+                </pre>
               </Match>
               <Match when={!result.ok}>
-                <p>Error: {result.error}</p>
+                <div>
+                  Error: <span data-testid="error">{result.error}</span>
+                </div>
               </Match>
             </Switch>
           </div>

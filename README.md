@@ -27,6 +27,17 @@ Watch
 
     pnpm dev
 
+Test
+
+    pnpm test
+    pnpm test:dev
+
+End-to-end tests
+
+    pnpm playwright install chromium
+    pnpm test:e2e --project=chromium
+    pnpm test:e2e:dev --project=chromium
+
 Deploy
 
     pnpm build
