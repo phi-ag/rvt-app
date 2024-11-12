@@ -61,8 +61,8 @@ importers:
         specifier: 6.10.2
         version: 6.10.2(eslint@9.14.0(jiti@2.4.0))
       eslint-plugin-solid:
-        specifier: 0.14.3
-        version: 0.14.3(eslint@9.14.0(jiti@2.4.0))(typescript@5.6.3)
+        specifier: 0.14.4
+        version: 0.14.4(eslint@9.14.0(jiti@2.4.0))(typescript@5.6.3)
       globals:
         specifier: 15.12.0
         version: 15.12.0
@@ -2077,8 +2077,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
-  eslint-plugin-solid@0.14.3:
-    resolution: {integrity: sha512-eDeyPrijSjVGeyb4oKoyidgLlMDZwAg/YdxiY9QvGXl2kLgpcHvLpgpaGK4KJ8xSsg0ym3B2dPRBAIlT7iUrEQ==}
+  eslint-plugin-solid@0.14.4:
+    resolution: {integrity: sha512-uWsNA2okBgwBRPxjsQ7DxlRksq1EKdMhwQlViHdkkRDLnWqwnZEjQASWeckZ0DI24sVzPeETJhPv1BWKKiu99A==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -6000,7 +6000,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.1
 
-  eslint-plugin-solid@0.14.3(eslint@9.14.0(jiti@2.4.0))(typescript@5.6.3):
+  eslint-plugin-solid@0.14.4(eslint@9.14.0(jiti@2.4.0))(typescript@5.6.3):
     dependencies:
       '@typescript-eslint/utils': 8.14.0(eslint@9.14.0(jiti@2.4.0))(typescript@5.6.3)
       eslint: 9.14.0(jiti@2.4.0)
