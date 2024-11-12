@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.5.2](https://github.com/phi-ag/rvt-app/compare/v0.5.1...v0.5.2) (2024-11-12)
+
+
+### Miscellaneous Chores
+
+* add coverage badge ([eaefe9b](https://github.com/phi-ag/rvt-app/commit/eaefe9b942d65a6682b23940cd2032bc2122308a))
+* **deps:** update dependency eslint-plugin-solid to v0.14.4 ([3444cd3](https://github.com/phi-ag/rvt-app/commit/3444cd3988c5ebf466ee39237416ac923c3045ed))
+* **deps:** update dependency node to v23.2.0 ([cba7383](https://github.com/phi-ag/rvt-app/commit/cba7383eae2b415729c31b9948792fdabf83fa38))
+
+
+### Tests
+
+* add script to run e2e tests in docker ([4e1a08c](https://github.com/phi-ag/rvt-app/commit/4e1a08c28590dfb6689eefd4222b65a57ba77e9b))
+* **e2e:** add initial e2e test ([6ed43e7](https://github.com/phi-ag/rvt-app/commit/6ed43e7ae2d7da423d9edf594c67e673aa084b03))
+* **e2e:** add test for Revit 2025 family ([444c472](https://github.com/phi-ag/rvt-app/commit/444c472934650ec3a32e0d43c4481a1c237c5196))
+* enable test coverage ([273a7f7](https://github.com/phi-ag/rvt-app/commit/273a7f765d1d560ff0f7dc402ae2dd38e325ad41))
+* skip file parse test in webkit ([8ca2ff0](https://github.com/phi-ag/rvt-app/commit/8ca2ff0c7a8f6d47c6500c5b14c21f1b21500c54))
+
+
+### Continuous Integration
+
+* checkout with lfs ([175047c](https://github.com/phi-ag/rvt-app/commit/175047c07d064a4cc639ba7e9f8b2b45ad6d9fce))
+* log e2e target url ([51a523f](https://github.com/phi-ag/rvt-app/commit/51a523fd46e07c124c100486e1170cfd59a90ff1))
+* mount pnpm store in playwright container ([333f8a0](https://github.com/phi-ag/rvt-app/commit/333f8a0142d6995ab09c096d3f190230d47a3806))
+* use env variable for mapping pnpm store path in playwright ([3d54656](https://github.com/phi-ag/rvt-app/commit/3d54656959b510784e303579057f71f153a582a7))
+
 ## [0.5.1](https://github.com/phi-ag/rvt-app/compare/v0.5.0...v0.5.1) (2024-11-11)
 
 
