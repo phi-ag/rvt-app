@@ -11,7 +11,7 @@ export default defineConfig({
       all: true,
       include: ["src/**"],
       reportsDirectory: "reports/coverage",
-      reporter: ["text", "cobertura", "html"]
+      reporter: ["text", "cobertura"]
     }
   }
 });

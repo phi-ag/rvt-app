@@ -7,9 +7,12 @@
 .vinxi/
 .wrangler/
 .output/
+
 node_modules/
 dist/
+reports/
 public/
+utils/
 src/
 
 .dev.vars

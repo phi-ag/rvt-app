@@ -11,7 +11,6 @@ Install [fnm](https://github.com/Schniz/fnm?tab=readme-ov-file#installation) or 
 
 Install `Node.js`
 
-    fnm install
     fnm use
 
 Install `pnpm`
