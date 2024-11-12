@@ -4,6 +4,7 @@ terraform.tfstate*
 .vinxi/
 .wrangler/
 .output/
+.run-playwright/
 .e2e-results/
 
 node_modules/

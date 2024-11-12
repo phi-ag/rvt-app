@@ -7,6 +7,15 @@
     "group:recommended"
   ],
   "postUpdateOptions": ["pnpmDedupe"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^e2e_docker\\.sh$"],
+      "matchStrings": ["VERSION=(?<currentValue>[^@\\s]+)(@(?<currentDigest>[^\\s]+))?"],
+      "packageNameTemplate": "mcr.microsoft.com/playwright",
+      "datasourceTemplate": "docker"
+    }
+  ],
   "packageRules": [
     { "matchDepNames": ["node", "@types/node"], "ignoreUnstable": false },
     {
@@ -28,7 +37,11 @@
     },
     {
       "groupName": "playwright",
-      "matchPackageNames": ["phi-ag/run-playwright", "@playwright/test"],
+      "matchPackageNames": [
+        "mcr.microsoft.com/playwright",
+        "phi-ag/run-playwright",
+        "@playwright/test"
+      ],
       "minimumReleaseAge": "1 day"
     }
   ]

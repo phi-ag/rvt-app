@@ -14,8 +14,8 @@ test.describe("e2e", () => {
 
   test("dropzone", async ({ page }) => {
     throwOnConsoleError(page);
-
     await page.goto("/");
+
     page.on("filechooser", async (fileChooser) => {
       await fileChooser.setFiles(
         join(import.meta.dirname, "files/racbasicsamplefamily-2025.rfa")
