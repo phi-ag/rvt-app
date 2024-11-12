@@ -7,7 +7,13 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
-    ignores: ["dist/**", ".vinxi/**", ".output/**", "app.config.timestamp_*"]
+    ignores: [
+      "dist/**",
+      ".vinxi/**",
+      ".output/**",
+      "reports/**",
+      "app.config.timestamp_*"
+    ]
   },
   eslint.configs.recommended,
   ...tseslint.configs.strict,

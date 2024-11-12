@@ -1,0 +1,14 @@
+name: e2e
+
+runs:
+  using: composite
+  steps:
+    - name: End-to-End
+      uses: phi-ag/run-playwright@59bf640412ac96309bb6c357ed0c6fdc52d3365d # v1
+      with:
+        run: |
+          corepack enable
+          corepack prepare --activate
+          pnpm config set store-dir .pnpm-store
+          pnpm install --frozen-lockfile
+          pnpm test:e2e

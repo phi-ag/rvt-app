@@ -25,6 +25,11 @@
     {
       "groupName": "wrangler",
       "matchPackageNames": ["wrangler", "@cloudflare/workers-types"]
+    },
+    {
+      "groupName": "playwright",
+      "matchPackageNames": ["phi-ag/run-playwright", "@playwright/test"],
+      "minimumReleaseAge": "1 day"
     }
   ]
 }

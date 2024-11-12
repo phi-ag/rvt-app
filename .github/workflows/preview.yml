@@ -36,19 +36,24 @@ jobs:
 
       - name: Deploy
         if: ${{ github.ref_name == github.event.repository.default_branch }}
-        run: >
-          pnpm wrangler pages deploy
-          --branch main
-          --commit-hash ${GITHUB_SHA}
-          --commit-message "[${GITHUB_SHA::7}] ${{ github.event.head_commit.message }}"
+        run: |
+          pnpm wrangler pages deploy \
+            --branch main \
+            --commit-hash ${GITHUB_SHA} \
+            --commit-message "[${GITHUB_SHA::7}] ${{ github.event.head_commit.message }}"
+
+          echo "BASE_URL=https://preview.rvt.app" >> $GITHUB_ENV
         env:
           CLOUDFLARE_ACCOUNT_ID: ed0328e15e9ed659e6622db636c39337
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
+      - name: End-to-End
+        uses: ./.github/actions/e2e
+
       - name: Codecov test results
         uses: codecov/test-results-action@9739113ad922ea0a9abb4b2c0f8bf6a4aa8ef820 # v1
         with:
-          files: ./junit.xml
+          files: ./junit.xml,./junit.e2e.xml
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Codecov coverage

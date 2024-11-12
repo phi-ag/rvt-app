@@ -41,3 +41,9 @@ jobs:
         env:
           CLOUDFLARE_ACCOUNT_ID: ed0328e15e9ed659e6622db636c39337
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      - name: End-to-End
+        if: ${{ steps.release.outputs.release_created }}
+        uses: ./.github/actions/e2e
+        env:
+          BASE_URL: https://rvt.app

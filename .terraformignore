@@ -7,12 +7,19 @@
 .vinxi/
 .wrangler/
 .output/
+.e2e-results/
 
 node_modules/
 dist/
 reports/
+
 public/
 utils/
 src/
+e2e/
 
 .dev.vars
+junit.xml
+junit.e2e.xml
+
+app.config.timestamp_*
