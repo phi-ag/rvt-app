@@ -6,9 +6,10 @@ runs:
     - name: End-to-End
       uses: phi-ag/run-playwright@59bf640412ac96309bb6c357ed0c6fdc52d3365d # v1
       with:
+        options: -v /home/runner/.local/share/pnpm/store/v3:/home/runner/.local/share/pnpm/store/v3
         run: |
           corepack enable
           corepack prepare --activate
-          pnpm config set store-dir .pnpm-store
+          pnpm config set store-dir /home/runner/.local/share/pnpm/store/v3
           pnpm install --frozen-lockfile
           pnpm test:e2e
