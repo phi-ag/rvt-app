@@ -12,7 +12,12 @@ test.describe("e2e", () => {
     await expect(page).toHaveTitle("rvt.app");
   });
 
-  test("dropzone", async ({ page }) => {
+  test("dropzone", async ({ page, browserName }) => {
+    test.skip(
+      browserName === "webkit",
+      "see https://github.com/phi-ag/rvt-app/issues/19"
+    );
+
     throwOnConsoleError(page);
     await page.goto("/");
 
