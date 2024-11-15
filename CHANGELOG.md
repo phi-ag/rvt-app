@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.5.3](https://github.com/phi-ag/rvt-app/compare/v0.5.2...v0.5.3) (2024-11-15)
+
+
+### Miscellaneous Chores
+
+* **deps:** update codecov/codecov-action action to v5 ([8a0232c](https://github.com/phi-ag/rvt-app/commit/8a0232c0c2936dc426316bc09c28df8756d23fbe))
+* **deps:** update codecov/codecov-action digest to 5c47607 ([06ca643](https://github.com/phi-ag/rvt-app/commit/06ca643d770e7eab418d8486642bb28ec5650cb8))
+* **deps:** update dependency @cloudflare/workers-types to v4.20241112.0 ([b07c2d1](https://github.com/phi-ag/rvt-app/commit/b07c2d13370bf31b4d93b7d3437a7ece9513afb5))
+* **deps:** update dependency tailwindcss to v3.4.15 ([a7242de](https://github.com/phi-ag/rvt-app/commit/a7242de7a2e79851394a0f507ecfc2b21ea0e4bc))
+* **deps:** update dependency wrangler to v3.87.0 ([4c75047](https://github.com/phi-ag/rvt-app/commit/4c750471a10a6e72b961572f16b9f3c302a67026))
+* **deps:** update eslint monorepo to v9.15.0 ([af27409](https://github.com/phi-ag/rvt-app/commit/af27409d0abc81ee4361e1bd5993160d79897bec))
+* **deps:** update pnpm to v9.13.0 ([65b61ae](https://github.com/phi-ag/rvt-app/commit/65b61ae01d4e18ad86623f8d2eb3a932578568d4))
+* **deps:** update pnpm to v9.13.1 ([3b1e013](https://github.com/phi-ag/rvt-app/commit/3b1e013da4e5cb40b0912075af4e228fa2163cd2))
+* **deps:** update pnpm to v9.13.2 ([1284b6d](https://github.com/phi-ag/rvt-app/commit/1284b6d825d7fafcb01096a69cc7290864ec2557))
+* **deps:** update terraform cloudflare to v4.46.0 ([bd1e794](https://github.com/phi-ag/rvt-app/commit/bd1e794b9c9e0e8342a682219dd2d52351f412df))
+* **deps:** update vitest monorepo to v2.1.5 ([a085115](https://github.com/phi-ag/rvt-app/commit/a0851156c5b504bf4de8ef8120e9b6044b937288))
+
 ## [0.5.2](https://github.com/phi-ag/rvt-app/compare/v0.5.1...v0.5.2) (2024-11-12)
 
 
