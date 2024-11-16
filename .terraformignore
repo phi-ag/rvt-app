@@ -17,6 +17,7 @@ public/
 utils/
 src/
 e2e/
+examples/
 
 .dev.vars
 junit.xml
