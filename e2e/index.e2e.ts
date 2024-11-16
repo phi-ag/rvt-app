@@ -23,7 +23,7 @@ test.describe("e2e", () => {
 
     page.on("filechooser", async (fileChooser) => {
       await fileChooser.setFiles(
-        join(import.meta.dirname, "files/racbasicsamplefamily-2025.rfa")
+        join(import.meta.dirname, "..", "examples", "racbasicsamplefamily-2025.rfa")
       );
     });
 
