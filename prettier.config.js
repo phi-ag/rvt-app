@@ -11,5 +11,5 @@ export default {
   importOrder: ["^node:", "<THIRD_PARTY_MODULES>", "^~/", "^\\."],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
-  importOrderParserPlugins: ["typescript", "jsx"]
+  importOrderParserPlugins: ["typescript", "jsx", "explicitResourceManagement"]
 };

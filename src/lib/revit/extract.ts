@@ -61,7 +61,10 @@ const addDesiredDirectoryFile = (
   addDesiredFile(files, { name, start, end, fn });
 };
 
-export const processFile = async (file: File): Promise<[FileInfo, Blob | undefined]> => {
+export const processStream = async (
+  fileSize: number,
+  stream: ReadableStream
+): Promise<[FileInfo, Blob | undefined]> => {
   let chunkEnd = 0;
 
   let header!: Header;
@@ -99,104 +102,99 @@ export const processFile = async (file: File): Promise<[FileInfo, Blob | undefin
     }
   };
 
-  const stream = file.stream();
-  try {
-    for await (const chunk of stream) {
-      const chunkStart = chunkEnd;
-      chunkEnd += chunk.byteLength;
+  for await (const chunk of stream) {
+    const chunkStart = chunkEnd;
+    chunkEnd += chunk.byteLength;
 
-      if (!header) {
-        //console.debug("Initial chunk", chunk.length);
+    if (!header) {
+      //console.debug("Initial chunk", chunk.length);
 
-        // TODO: accumulate data if necessary
-        if (chunk.length < 512)
-          throw Error(`Compound file first chunk too small (${chunk.length})`);
+      // TODO: accumulate data if necessary
+      if (chunk.length < 512)
+        throw Error(`Compound file first chunk too small (${chunk.length})`);
 
-        header = parseHeader(chunk, file.size);
-        //console.debug("Header", header);
-      }
-
-      if (!directory) {
-        const directoryStart = (header.directoryStart + 1) * header.sectorSize;
-
-        // Directory start not in this chunk
-        if (directoryStart > chunkEnd) continue;
-
-        const directorySize = header.sectorSize * header.directorySectorCount;
-        const directoryEnd = directoryStart + directorySize;
-
-        const directoryStartChunk = Math.max(directoryStart - chunkStart, 0);
-
-        // Directory end not in this chunk
-        if (directoryEnd > chunkEnd) {
-          addToBuffer(chunk.subarray(directoryStartChunk));
-          continue;
-        }
-
-        const directoryEndChunk = directoryEnd - chunkStart;
-        const directorySector = prependBuffer(
-          chunk.subarray(directoryStartChunk, directoryEndChunk)
-        );
-
-        directory = parseDirectory(header, directorySector);
-        //console.debug("Directory", directory);
-
-        const root = directory.find((entry) => entry.type === 5)!;
-        if (!root) throw Error("Compound file root not found");
-
-        const miniFatStart = (root.start + 1) * header.sectorSize;
-
-        addDesiredDirectoryFile(
-          header,
-          directory,
-          miniFatStart,
-          desiredFiles,
-          "BasicFileInfo",
-          parseFileInfo
-        );
-
-        addDesiredDirectoryFile(
-          header,
-          directory,
-          miniFatStart,
-          desiredFiles,
-          "RevitPreview4.0",
-          parsePreview
-        );
-      }
-
-      let nextChunk = false;
-      while (!nextChunk && desiredFiles.length) {
-        const desiredFile = desiredFiles[desiredFiles.length - 1];
-        if (!desiredFile) throw Error("Desired file is undefined (unreachable)");
-
-        // NOTE: Start not in this chunk
-        if (desiredFile.start > chunkEnd) {
-          nextChunk = true;
-          continue;
-        }
-
-        // NOTE: If start was in a previous chunk use zero as start
-        const startChunk = Math.max(desiredFile.start - chunkStart, 0);
-
-        // NOTE: End not in this chunk
-        if (desiredFile.end > chunkEnd) {
-          addToBuffer(chunk.subarray(startChunk));
-          nextChunk = true;
-          continue;
-        }
-
-        const fileEndChunk = desiredFile.end - chunkStart;
-        const data = prependBuffer(chunk.subarray(startChunk, fileEndChunk));
-
-        desiredFileResults.push({ name: desiredFile.name, result: desiredFile.fn(data) });
-        desiredFiles.pop();
-      }
-
-      if (!desiredFiles.length) break;
+      header = parseHeader(chunk, fileSize);
+      //console.debug("Header", header);
     }
-  } finally {
-    stream.cancel();
+
+    if (!directory) {
+      const directoryStart = (header.directoryStart + 1) * header.sectorSize;
+
+      // Directory start not in this chunk
+      if (directoryStart > chunkEnd) continue;
+
+      const directorySize = header.sectorSize * header.directorySectorCount;
+      const directoryEnd = directoryStart + directorySize;
+
+      const directoryStartChunk = Math.max(directoryStart - chunkStart, 0);
+
+      // Directory end not in this chunk
+      if (directoryEnd > chunkEnd) {
+        addToBuffer(chunk.subarray(directoryStartChunk));
+        continue;
+      }
+
+      const directoryEndChunk = directoryEnd - chunkStart;
+      const directorySector = prependBuffer(
+        chunk.subarray(directoryStartChunk, directoryEndChunk)
+      );
+
+      directory = parseDirectory(header, directorySector);
+      //console.debug("Directory", directory);
+
+      const root = directory.find((entry) => entry.type === 5)!;
+      if (!root) throw Error("Compound file root not found");
+
+      const miniFatStart = (root.start + 1) * header.sectorSize;
+
+      addDesiredDirectoryFile(
+        header,
+        directory,
+        miniFatStart,
+        desiredFiles,
+        "BasicFileInfo",
+        parseFileInfo
+      );
+
+      addDesiredDirectoryFile(
+        header,
+        directory,
+        miniFatStart,
+        desiredFiles,
+        "RevitPreview4.0",
+        parsePreview
+      );
+    }
+
+    let nextChunk = false;
+    while (!nextChunk && desiredFiles.length) {
+      const desiredFile = desiredFiles[desiredFiles.length - 1];
+      if (!desiredFile) throw Error("Desired file is undefined (unreachable)");
+
+      // NOTE: Start not in this chunk
+      if (desiredFile.start > chunkEnd) {
+        nextChunk = true;
+        continue;
+      }
+
+      // NOTE: If start was in a previous chunk use zero as start
+      const startChunk = Math.max(desiredFile.start - chunkStart, 0);
+
+      // NOTE: End not in this chunk
+      if (desiredFile.end > chunkEnd) {
+        addToBuffer(chunk.subarray(startChunk));
+        nextChunk = true;
+        continue;
+      }
+
+      const fileEndChunk = desiredFile.end - chunkStart;
+      const data = prependBuffer(chunk.subarray(startChunk, fileEndChunk));
+
+      desiredFileResults.push({ name: desiredFile.name, result: desiredFile.fn(data) });
+      desiredFiles.pop();
+    }
+
+    if (!desiredFiles.length) break;
   }
 
   const info = desiredFileResults.find((file) => file.name === "BasicFileInfo");
@@ -206,6 +204,15 @@ export const processFile = async (file: File): Promise<[FileInfo, Blob | undefin
   if (!blob) throw Error("Missing RevitPreview4.0 result");
 
   return [info.result as FileInfo, blob?.result as Blob] as const;
+};
+
+export const processFile = async (file: File): Promise<[FileInfo, Blob | undefined]> => {
+  const stream = file.stream();
+  try {
+    return await processStream(file.size, stream);
+  } finally {
+    stream.cancel();
+  }
 };
 
 export interface ProcessFileSuccess {

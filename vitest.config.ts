@@ -1,3 +1,5 @@
+import { resolve } from "node:path";
+
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -12,6 +14,11 @@ export default defineConfig({
       include: ["src/**"],
       reportsDirectory: "reports/coverage",
       reporter: ["text", "cobertura"]
+    }
+  },
+  resolve: {
+    alias: {
+      "~": resolve(import.meta.dirname, "./src")
     }
   }
 });
