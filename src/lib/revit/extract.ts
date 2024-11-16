@@ -1,33 +1,13 @@
 import {
   type Directory,
-  type Entry,
   type Header,
+  entryBoundaries,
   parseDirectory,
   parseHeader
 } from "~/lib/cfb";
 
 import { type FileInfo, parseFileInfo } from "./info";
 import { parsePreview } from "./thumbnail";
-
-type Boundaries = [start: number, end: number];
-
-const entryBoundaries = (
-  header: Header,
-  miniFatStart: number,
-  file: Entry
-): Boundaries => {
-  // see https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L651
-  if (file.size < header.sectorSize) {
-    const miniFatSectorSize = 64;
-    const start = miniFatStart + file.start * miniFatSectorSize;
-    const end = start + file.size;
-    return [start, end];
-  }
-
-  const start = (file.start + 1) * header.sectorSize;
-  const end = start + file.size;
-  return [start, end];
-};
 
 interface DesiredFile {
   name: string;

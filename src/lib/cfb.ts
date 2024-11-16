@@ -53,19 +53,38 @@ const readDate = (view: DataView, offset: number) => {
   );
 };
 
+export type Boundaries = [start: number, end: number];
+
+export const entryBoundaries = (
+  header: Header,
+  miniFatStart: number,
+  file: Entry
+): Boundaries => {
+  // see https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L651
+  if (file.size <= header.miniFatCutoff) {
+    const start = miniFatStart + file.start * header.miniFatSectorSize;
+    const end = start + file.size;
+    return [start, end];
+  }
+
+  const start = (file.start + 1) * header.sectorSize;
+  const end = start + file.size;
+  return [start, end];
+};
+
 const signature = [0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1];
 
 export type Version = 3 | 4;
 
-export type SectorSize = 512 | 4096;
-
 export interface Header {
   version: Version;
-  sectorSize: SectorSize;
+  sectorSize: number;
+  miniFatSectorSize: number;
   sectorCount: number;
   directorySectorCount: number;
   fatSectorCount: number;
   directoryStart: number;
+  miniFatCutoff: number;
   miniFatStart: number;
   miniFatSectorCount: number;
   diFatStart: number;
@@ -89,23 +108,23 @@ export const parseHeader = (chunk: Uint8Array, fileSize: number): Header => {
     throw Error(`Unexpected compound file major version (${version})`);
 
   assertEqual(chunk, 28, [0xfe, 0xff], "byte order");
-  assertEqual(chunk, 30, [0x0c, 0x00], "sector shift");
-  assertEqual(chunk, 32, [0x06, 0x00], "mini sector shift");
+
+  const sectorSize = 1 << view.getInt16(30, true);
+  const sectorCount = Math.ceil(fileSize / sectorSize) - 1;
+  const miniFatSectorSize = 1 << view.getInt16(32, true);
+
   assertZero(chunk, 34, 6, "reserved");
 
   const directorySectorCount = view.getInt32(40, true);
   if (version === 3 && directorySectorCount !== 0)
     throw Error(`Unexpected compound file sector count (${directorySectorCount})`);
 
-  const sectorSize = version === 3 ? 512 : 4096;
-  const sectorCount = Math.ceil(fileSize / sectorSize) - 1;
-
   const fatSectorCount = view.getInt32(44, true);
   const directoryStart = view.getInt32(48, true);
 
   assertZero(chunk, 52, 4, "transaction signature");
-  assertEqual(chunk, 56, [0x00, 0x10, 0x00, 0x00], "mini stream cutoff size");
 
+  const miniFatCutoff = view.getInt32(56, true);
   const miniFatStart = view.getInt32(60, true);
   const miniFatSectorCount = view.getInt32(64, true);
   const diFatStart = view.getInt32(68, true);
@@ -122,10 +141,12 @@ export const parseHeader = (chunk: Uint8Array, fileSize: number): Header => {
   return {
     version,
     sectorSize,
+    miniFatSectorSize,
     sectorCount,
     directorySectorCount,
     fatSectorCount,
     directoryStart,
+    miniFatCutoff,
     miniFatStart,
     miniFatSectorCount,
     diFatStart,
