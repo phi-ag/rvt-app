@@ -27,7 +27,7 @@ const parseVersion10 = (data: Uint8Array, view: DataView): ParseVersionResult =>
   const versionEnd = versionStart + versionLength * 2;
   const version = decoder.decode(data.subarray(versionStart, versionEnd));
 
-  const $version = version.slice(15, 20);
+  const $version = version.slice(15, 19);
   const build = version.slice(28, version.length - 1);
 
   return [$version, build, versionEnd] as const;
