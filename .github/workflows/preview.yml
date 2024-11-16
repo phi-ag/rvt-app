@@ -24,7 +24,6 @@ jobs:
         run: pnpm format:check
 
       - name: Lint
-        continue-on-error: true
         run: pnpm lint
 
       - name: Typecheck
