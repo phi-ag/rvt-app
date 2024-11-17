@@ -1,69 +1,32 @@
-import {
-  addDiFatEntries,
-  createDirectory,
-  createFat,
-  createMiniFat,
-  entryData,
-  findEntry,
-  miniStreamSectorChain,
-  parseHeader,
-  sliceUint8
-} from "~/lib/cfb";
+import { Cfb } from "~/lib/cfb";
 
 import { type FileInfo, parseFileInfo } from "./info";
 import { parsePreview } from "./thumbnail";
 
+const createInfo = async (cfb: Cfb): Promise<FileInfo> => {
+  const entry = cfb.findEntry("BasicFileInfo");
+  if (!entry) throw Error("Basic file info not found");
+  return parseFileInfo(await cfb.entryData(entry));
+};
+
+const createThumbnail = async (cfb: Cfb): Promise<Blob | undefined> => {
+  const entry = cfb.findEntry("RevitPreview4.0");
+  if (!entry) return;
+  return parsePreview(await cfb.entryData(entry));
+};
+
 export const processBlob = async (
-  fileSize: number,
   blob: Blob
 ): Promise<[info: FileInfo, thumbnail: Blob | undefined]> => {
-  if (fileSize < 512) throw Error(`Compound file too small (${fileSize})`);
-
-  const [header, fatSectors] = parseHeader(await sliceUint8(blob, 0, 512), fileSize);
-  //console.debug("Header", header);
-
-  await addDiFatEntries(blob, header, fatSectors);
-  const fat = await createFat(blob, header, fatSectors);
-  const directory = await createDirectory(blob, header, fat);
-
-  const root = directory.find((entry) => entry.type === 5);
-  if (!root) throw Error("Compound file root not found");
-  //console.log("root", root);
-
-  const miniFat = await createMiniFat(blob, header, fat, root);
-  const miniStreamSectors = miniStreamSectorChain(header, fat, root);
-
-  const infoEntry = findEntry(directory, "BasicFileInfo");
-  if (!infoEntry) throw Error("BasicFileInfo not found");
-
-  const infoData = await entryData(
-    blob,
-    header,
-    fat,
-    miniFat,
-    miniStreamSectors,
-    infoEntry
-  );
-  const info = parseFileInfo(infoData);
-
-  const thumbnailEntry = findEntry(directory, "RevitPreview4.0");
-  if (!thumbnailEntry) return [info, undefined] as const;
-
-  const thumbnailData = await entryData(
-    blob,
-    header,
-    fat,
-    miniFat,
-    miniStreamSectors,
-    thumbnailEntry
-  );
-  const thumbnail = parsePreview(thumbnailData);
+  const cfb = await Cfb.initialize(blob);
+  const info = await createInfo(cfb);
+  const thumbnail = await createThumbnail(cfb);
 
   return [info, thumbnail] as const;
 };
 
 export const processFile = (file: File): Promise<[FileInfo, Blob | undefined]> =>
-  processBlob(file.size, file);
+  processBlob(file);
 
 export interface ProcessFileSuccess {
   ok: true;

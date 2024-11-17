@@ -1,5 +1,4 @@
 import { openAsBlob } from "node:fs";
-import { stat } from "node:fs/promises";
 import { join } from "node:path";
 
 import { describe, expect, test } from "vitest";
@@ -10,13 +9,9 @@ import { type FileInfo } from "./info";
 export const examplePath = (fileName: string): string =>
   join(import.meta.dirname, "..", "..", "..", "examples", fileName);
 
-export const exampleBlob = async (
-  fileName: string
-): Promise<[size: number, blob: Blob]> => {
+export const exampleBlob = async (fileName: string): Promise<Blob> => {
   const path = examplePath(fileName);
-  const { size } = await stat(path);
-  const blob = await openAsBlob(path);
-  return [size, blob] as const;
+  return await openAsBlob(path);
 };
 
 type ExpectedFileInfo = Omit<FileInfo, "fileVersion" | "content">;
@@ -136,8 +131,8 @@ describe("revit", () => {
   ];
 
   test.each(families)("family %s", async (fileName, expected) => {
-    const [size, blob] = await exampleBlob(fileName);
-    const [info, thumbnail] = await processBlob(size, blob);
+    const blob = await exampleBlob(fileName);
+    const [info, thumbnail] = await processBlob(blob);
 
     expect(info.version).toEqual(expected.version);
     expect(info.build).toEqual(expected.build);

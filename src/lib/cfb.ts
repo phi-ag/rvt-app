@@ -110,7 +110,6 @@ export interface Header {
   sectorSizeBits: number;
   miniSectorSize: number;
   miniSectorSizeBits: number;
-  sectorCount: number;
   directorySectorCount: number;
   fatSectorCount: number;
   directoryStart: number;
@@ -128,8 +127,7 @@ export interface Header {
  * - https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L355
  */
 export const parseHeader = (
-  chunk: Uint8Array,
-  fileSize: number
+  chunk: Uint8Array
 ): [header: Header, fatSectors: Uint32Array] => {
   assertEqual(chunk, 0, signature, "signature");
   assertEqual(chunk, 24, [0x3e, 0x00], "minor version");
@@ -144,9 +142,6 @@ export const parseHeader = (
   const sectorSizeBits = view.getUint16(30, true);
   const sectorSize = 1 << sectorSizeBits;
   const maxSectorEntries = 1 << (sectorSizeBits - 2);
-
-  // TODO: remove
-  const sectorCount = Math.ceil(fileSize / sectorSize) - 1;
 
   const miniSectorSizeBits = view.getUint16(32, true);
   const miniSectorSize = 1 << miniSectorSizeBits;
@@ -181,7 +176,6 @@ export const parseHeader = (
     maxSectorEntries,
     miniSectorSize,
     miniSectorSizeBits,
-    sectorCount,
     directorySectorCount,
     fatSectorCount,
     directoryStart,
@@ -291,9 +285,6 @@ export const parseDirectory = (header: Header, sectors: Uint8Array): Directory =
 
   return entries;
 };
-
-export const findEntry = (directory: Directory, name: string) =>
-  directory.find((entry) => entry.name === name);
 
 const fatSectorChain = (
   name: string,
@@ -439,47 +430,6 @@ const miniStreamOffset = (
   return offset * header.miniSectorSize;
 };
 
-const miniStreamBounds = (
-  header: Header,
-  miniFat: Uint32Array,
-  miniStreamSectors: Uint32Array,
-  start: number,
-  size: number
-): Boundaries => {
-  const bounds = new Boundaries();
-
-  for (let i = 0, current = start, remaining = size; ; i++) {
-    if (current === endOfChain) {
-      if (remaining !== 0) throw Error("MiniStream bounds unexpected end of chain");
-      break;
-    }
-
-    const start = miniStreamOffset(header, miniStreamSectors, current);
-
-    const size = remaining < header.miniSectorSize ? remaining : header.miniSectorSize;
-    remaining -= size;
-
-    bounds.add([start, start + size]);
-
-    if (current >= miniFat.length) throw Error(`MiniStream out-of-bounds (${current})`);
-    current = miniFat[current];
-  }
-
-  return bounds;
-};
-
-const miniStreamData = async (
-  blob: Blob,
-  header: Header,
-  miniFat: Uint32Array,
-  miniStreamSectors: Uint32Array,
-  start: number,
-  size: number
-): Promise<Uint8Array> => {
-  const bounds = miniStreamBounds(header, miniFat, miniStreamSectors, start, size);
-  return await boundsData(blob, bounds);
-};
-
 /**
  * NOTE: Never tested with more than one DIFAT sector
  */
@@ -540,28 +490,88 @@ export const createMiniFat = async (
   return await boundsEntries(blob, miniFatBounds);
 };
 
-/**
- * NOTE: Argument count is getting out of hand
- */
-export const entryData = async (
-  blob: Blob,
-  header: Header,
-  fat: Uint32Array,
-  miniFat: Uint32Array,
-  miniStreamSectors: Uint32Array,
-  entry: Entry
-): Promise<Uint8Array> => {
-  if (entry.size < header.miniFatCutoff) {
-    return await miniStreamData(
-      blob,
-      header,
-      miniFat,
-      miniStreamSectors,
-      entry.start,
-      entry.size
-    );
+export class Cfb {
+  readonly #blob: Blob;
+  readonly #header: Header;
+  readonly #directory: Directory;
+  readonly #fat: Uint32Array;
+  readonly #miniFat: Uint32Array;
+  readonly #miniStreamSectors: Uint32Array;
+
+  constructor(
+    blob: Blob,
+    header: Header,
+    directory: Directory,
+    fat: Uint32Array,
+    miniFat: Uint32Array,
+    miniStreamSectors: Uint32Array
+  ) {
+    this.#blob = blob;
+    this.#header = header;
+    this.#directory = directory;
+    this.#fat = fat;
+    this.#miniFat = miniFat;
+    this.#miniStreamSectors = miniStreamSectors;
   }
 
-  const bounds = fatBounds(header, fat, entry.start, entry.size);
-  return await boundsData(blob, bounds);
-};
+  static initialize = async (blob: Blob) => {
+    if (blob.size < 512) throw Error(`Compound file too small (${blob.size})`);
+
+    const [header, fatSectors] = parseHeader(await sliceUint8(blob, 0, 512));
+    //console.debug("Header", header);
+
+    await addDiFatEntries(blob, header, fatSectors);
+    const fat = await createFat(blob, header, fatSectors);
+    const directory = await createDirectory(blob, header, fat);
+
+    const root = directory.find((entry) => entry.type === 5);
+    if (!root) throw Error("Compound file root not found");
+    //console.log("root", root);
+
+    const miniFat = await createMiniFat(blob, header, fat, root);
+    const miniStreamSectors = miniStreamSectorChain(header, fat, root);
+
+    return new Cfb(blob, header, directory, fat, miniFat, miniStreamSectors);
+  };
+
+  findEntry = (name: string) => this.#directory.find((entry) => entry.name === name);
+
+  miniStreamBounds = (start: number, size: number): Boundaries => {
+    const bounds = new Boundaries();
+
+    for (let i = 0, current = start, remaining = size; ; i++) {
+      if (current === endOfChain) {
+        if (remaining !== 0) throw Error("MiniStream bounds unexpected end of chain");
+        break;
+      }
+
+      const start = miniStreamOffset(this.#header, this.#miniStreamSectors, current);
+
+      const miniSectorSize = this.#header.miniSectorSize;
+      const size = remaining < miniSectorSize ? remaining : miniSectorSize;
+      remaining -= size;
+
+      bounds.add([start, start + size]);
+
+      if (current >= this.#miniFat.length)
+        throw Error(`MiniStream out-of-bounds (${current})`);
+
+      current = this.#miniFat[current];
+    }
+
+    return bounds;
+  };
+
+  miniStreamData = async (start: number, size: number): Promise<Uint8Array> => {
+    const bounds = this.miniStreamBounds(start, size);
+    return await boundsData(this.#blob, bounds);
+  };
+
+  entryData = async (entry: Entry): Promise<Uint8Array> => {
+    if (entry.size < this.#header.miniFatCutoff)
+      return await this.miniStreamData(entry.start, entry.size);
+
+    const bounds = fatBounds(this.#header, this.#fat, entry.start, entry.size);
+    return await boundsData(this.#blob, bounds);
+  };
+}
