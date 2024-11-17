@@ -50,6 +50,9 @@ export default function () {
                   Build: <span data-testid="build">{result.info?.build}</span>
                 </div>
                 <div>
+                  Locale: <span data-testid="locale">{result.info?.locale}</span>
+                </div>
+                <div>
                   Identity:{" "}
                   <span data-testid="identityId">{result.info?.identityId}</span>
                 </div>

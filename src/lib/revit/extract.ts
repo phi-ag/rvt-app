@@ -1,7 +1,10 @@
 import {
+  Boundaries,
   type Directory,
+  type Entry,
   type Header,
-  entryBoundaries,
+  endOfChain,
+  maxFatSectorsHeader,
   parseDirectory,
   parseHeader
 } from "~/lib/cfb";
@@ -9,191 +12,333 @@ import {
 import { type FileInfo, parseFileInfo } from "./info";
 import { parsePreview } from "./thumbnail";
 
-interface DesiredFile {
-  name: string;
-  start: number;
-  end: number;
-  fn: (data: Uint8Array) => unknown;
-}
+const sliceUint8 = async (blob: Blob, start: number, end: number): Promise<Uint8Array> =>
+  new Uint8Array(await blob.slice(start, end).arrayBuffer());
 
-interface DesiredFileResult {
-  name: string;
-  result: unknown;
-}
+const sliceView = async (blob: Blob, start: number, end: number): Promise<DataView> =>
+  new DataView(await blob.slice(start, end).arrayBuffer());
 
-const addDesiredFile = (files: DesiredFile[], file: DesiredFile) => {
-  files.push(file);
-  files.sort((lhs, rhs) => rhs.start - lhs.start);
-};
+const findEntry = (directory: Directory, name: string) =>
+  directory.find((entry) => entry.name === name);
 
-const addDesiredDirectoryFile = (
-  header: Header,
-  directory: Directory,
-  miniFatStart: number,
-  files: DesiredFile[],
+const fatSectorChain = (
   name: string,
-  fn: (data: Uint8Array) => unknown
+  fat: Uint32Array,
+  start: number,
+  length: number
+): Uint32Array => {
+  const sectors = new Uint32Array(length);
+
+  for (let i = 0, current = start; ; i++) {
+    if (current === endOfChain) {
+      if (i !== length)
+        throw Error(`${name} unexpected end of fat chain (${i} !== ${length})`);
+      break;
+    }
+
+    if (i >= length) throw Error(`${name} fat chain too long (${i} >= ${length})`);
+    sectors[i] = current;
+
+    if (current >= fat.length)
+      throw Error(`${name} fat chain out-of-bounds (${current} >= ${fat.length})`);
+    current = fat[current];
+  }
+
+  return sectors;
+};
+
+const directorySectorChain = (header: Header, fat: Uint32Array): Uint32Array =>
+  fatSectorChain("Directory", fat, header.directoryStart, header.directorySectorCount);
+
+const miniFatSectorChain = (header: Header, fat: Uint32Array): Uint32Array =>
+  fatSectorChain("MiniFat", fat, header.miniFatStart, header.miniFatSectorCount);
+
+const miniStreamSectorChain = (
+  header: Header,
+  fat: Uint32Array,
+  root: Entry
+): Uint32Array => {
+  const sectorCount = (root.size + header.sectorSize - 1) >> header.sectorSizeBits;
+  return fatSectorChain("MiniStream", fat, root.start, sectorCount);
+};
+
+const sectorBounds = (
+  header: Header,
+  sectors: Uint32Array,
+  byteLength?: number
+): Boundaries => {
+  const bounds = new Boundaries();
+  const sectorSize = header.sectorSize;
+
+  for (let i = 0; i < sectors.length; i++) {
+    const start = (sectors[i] + 1) * sectorSize;
+    const size = byteLength
+      ? Math.min(byteLength - i * sectorSize, sectorSize)
+      : sectorSize;
+
+    const end = start + size;
+    bounds.add([start, end]);
+  }
+
+  return bounds;
+};
+
+const boundsData = async (blob: Blob, bounds: Boundaries): Promise<Uint8Array> => {
+  const data = new Uint8Array(bounds.size());
+
+  for (const [start, end, offset] of bounds.items) {
+    const chunk = await sliceUint8(blob, start, end);
+    data.set(chunk, offset);
+  }
+
+  return data;
+};
+
+const boundsEntries = async (blob: Blob, bounds: Boundaries): Promise<Uint32Array> => {
+  const entries = new Uint32Array(bounds.size() >> 2);
+
+  for (const [start, end, offset] of bounds.items) {
+    const view = await sliceView(blob, start, end);
+    const chunkEntries = view.byteLength >> 2;
+    const chunkOffset = offset >> 2;
+    for (let i = 0; i < chunkEntries; i++) {
+      entries[i + chunkOffset] = view.getUint32(i * 4, true);
+    }
+  }
+
+  return entries;
+};
+
+const createDirectory = async (
+  blob: Blob,
+  header: Header,
+  fat: Uint32Array
+): Promise<Directory> => {
+  const sectors = directorySectorChain(header, fat);
+  const bounds = sectorBounds(header, sectors);
+  const data = await boundsData(blob, bounds);
+  return parseDirectory(header, data);
+};
+
+const fatBounds = (
+  header: Header,
+  fat: Uint32Array,
+  start: number,
+  size: number
+): Boundaries => {
+  const bounds = new Boundaries();
+
+  for (let i = 0, current = start, remaining = size; ; i++) {
+    if (current === endOfChain) {
+      if (remaining !== 0) throw Error("Fat bounds unexpected end of chain");
+      break;
+    }
+
+    const start = (current + 1) * header.sectorSize;
+    const size = remaining < header.sectorSize ? remaining : header.sectorSize;
+    remaining -= size;
+
+    bounds.add([start, start + size]);
+
+    if (current >= fat.length) throw Error(`Fat out-of-bounds (${current})`);
+    current = fat[current];
+  }
+
+  return bounds;
+};
+
+const miniStreamOffset = (
+  header: Header,
+  miniStreamSectors: Uint32Array,
+  start: number
 ) => {
-  const entry = directory.find((entry) => entry.name === name);
-  if (!entry) throw Error(`Compound file ${name} not found`);
+  const subBits = header.sectorSizeBits - header.miniSectorSizeBits;
+  const sector = start >> subBits;
+  if (sector >= miniStreamSectors.length)
+    throw Error(`MiniStream sector out-of-bounds (${sector})`);
 
-  const [start, end] = entryBoundaries(header, miniFatStart, entry);
-  addDesiredFile(files, { name, start, end, fn });
+  // Some kind of magic 👀
+  // see https://github.com/p7zip-project/p7zip/blob/master/CPP/7zip/Archive/ComHandler.cpp#L152
+  const offset =
+    ((miniStreamSectors[sector] + 1) << subBits) + (start & ((1 << subBits) - 1));
+
+  return offset * header.miniSectorSize;
 };
 
-export const processStream = async (
+const miniStreamBounds = (
+  header: Header,
+  miniFat: Uint32Array,
+  miniStreamSectors: Uint32Array,
+  start: number,
+  size: number
+): Boundaries => {
+  const bounds = new Boundaries();
+
+  for (let i = 0, current = start, remaining = size; ; i++) {
+    if (current === endOfChain) {
+      if (remaining !== 0) throw Error("MiniStream bounds unexpected end of chain");
+      break;
+    }
+
+    const start = miniStreamOffset(header, miniStreamSectors, current);
+
+    const size = remaining < header.miniSectorSize ? remaining : header.miniSectorSize;
+    remaining -= size;
+
+    bounds.add([start, start + size]);
+
+    if (current >= miniFat.length) throw Error(`MiniStream out-of-bounds (${current})`);
+    current = miniFat[current];
+  }
+
+  return bounds;
+};
+
+const miniStreamData = async (
+  blob: Blob,
+  header: Header,
+  miniFat: Uint32Array,
+  miniStreamSectors: Uint32Array,
+  start: number,
+  size: number
+): Promise<Uint8Array> => {
+  const bounds = miniStreamBounds(header, miniFat, miniStreamSectors, start, size);
+  return await boundsData(blob, bounds);
+};
+
+/**
+ * NOTE: Never tested with more than one DIFAT sector
+ */
+const addDiFatEntries = async (blob: Blob, header: Header, fatSectors: Uint32Array) => {
+  for (let i = 0, current = header.diFatStart; ; i++) {
+    if (current === endOfChain) {
+      if (i !== header.diFatCount)
+        throw Error(`Unexpected end of diFat chain (${i} !== ${header.diFatCount})`);
+      break;
+    }
+
+    const diFatStart = (current + 1) * header.sectorSize;
+    const diFatEnd = diFatStart + header.sectorSize;
+    const diFat = await sliceView(blob, diFatStart, diFatEnd);
+
+    const max = header.maxSectorEntries - 1;
+    const offset = i * max + maxFatSectorsHeader;
+
+    const remaining = Math.min(header.fatSectorCount - offset, max);
+    if (remaining < 0)
+      throw Error(`Unexpected remaining sectors in diFat chain (${remaining})`);
+
+    for (let j = 0; j < remaining; j++) {
+      fatSectors[j + offset] = diFat.getUint32(j * 4, true);
+    }
+
+    current = diFat.getUint32(max * 4, true);
+  }
+};
+
+const createFat = async (
+  blob: Blob,
+  header: Header,
+  fatSectors: Uint32Array
+): Promise<Uint32Array> => {
+  const fatBounds = sectorBounds(header, fatSectors);
+  return await boundsEntries(blob, fatBounds);
+};
+
+/**
+ * NOTE: Never tested with more than one MiniFat sector
+ */
+const createMiniFat = async (
+  blob: Blob,
+  header: Header,
+  fat: Uint32Array,
+  root: Entry
+): Promise<Uint32Array> => {
+  const miniFatSectors = miniFatSectorChain(header, fat);
+  const miniFatCount =
+    (root.size + (1 << header.miniSectorSizeBits) - 1) >> header.miniSectorSizeBits;
+
+  const miniFatBounds = sectorBounds(header, miniFatSectors, miniFatCount * 4);
+  return await boundsEntries(blob, miniFatBounds);
+};
+
+/**
+ * NOTE: Argument count is getting out of hand
+ */
+const entryData = async (
+  blob: Blob,
+  header: Header,
+  fat: Uint32Array,
+  miniFat: Uint32Array,
+  miniStreamSectors: Uint32Array,
+  entry: Entry
+): Promise<Uint8Array> => {
+  if (entry.size < header.miniFatCutoff) {
+    return await miniStreamData(
+      blob,
+      header,
+      miniFat,
+      miniStreamSectors,
+      entry.start,
+      entry.size
+    );
+  }
+
+  const bounds = fatBounds(header, fat, entry.start, entry.size);
+  return await boundsData(blob, bounds);
+};
+
+export const processBlob = async (
   fileSize: number,
-  stream: ReadableStream
-): Promise<[FileInfo, Blob | undefined]> => {
-  let chunkEnd = 0;
+  blob: Blob
+): Promise<[info: FileInfo, thumbnail: Blob | undefined]> => {
+  if (fileSize < 512) throw Error(`Compound file too small (${fileSize})`);
 
-  let header!: Header;
-  let directory!: Directory;
+  const [header, fatSectors] = parseHeader(await sliceUint8(blob, 0, 512), fileSize);
+  //console.debug("Header", header);
 
-  const desiredFiles: DesiredFile[] = [];
-  const desiredFileResults: DesiredFileResult[] = [];
+  await addDiFatEntries(blob, header, fatSectors);
+  const fat = await createFat(blob, header, fatSectors);
+  const directory = await createDirectory(blob, header, fat);
 
-  // Temporary storage for data which crosses chunk boundaries.
-  // Use this only for small files (ie. <50kb)!
-  let buffer!: Uint8Array | null;
+  const root = directory.find((entry) => entry.type === 5);
+  if (!root) throw Error("Compound file root not found");
+  //console.log("root", root);
 
-  const addToBuffer = (chunk: Uint8Array) => {
-    if (buffer) {
-      const next = new Uint8Array(buffer.byteLength + chunk.byteLength);
-      next.set(buffer);
-      next.set(chunk, buffer.byteLength);
-      buffer = next;
-    } else {
-      buffer = chunk.slice();
-    }
-  };
+  const miniFat = await createMiniFat(blob, header, fat, root);
+  const miniStreamSectors = miniStreamSectorChain(header, fat, root);
 
-  const clearBuffer = () => (buffer = null);
+  const infoEntry = findEntry(directory, "BasicFileInfo");
+  if (!infoEntry) throw Error("BasicFileInfo not found");
 
-  const prependBuffer = (chunk: Uint8Array) => {
-    if (buffer) {
-      const result = new Uint8Array(buffer.byteLength + chunk.byteLength);
-      result.set(buffer);
-      result.set(chunk, buffer.byteLength);
-      clearBuffer();
-      return result;
-    } else {
-      return chunk;
-    }
-  };
+  const infoData = await entryData(
+    blob,
+    header,
+    fat,
+    miniFat,
+    miniStreamSectors,
+    infoEntry
+  );
+  const info = parseFileInfo(infoData);
 
-  for await (const chunk of stream) {
-    const chunkStart = chunkEnd;
-    chunkEnd += chunk.byteLength;
+  const thumbnailEntry = findEntry(directory, "RevitPreview4.0");
+  if (!thumbnailEntry) return [info, undefined] as const;
 
-    if (!header) {
-      //console.debug("Initial chunk", chunk.length);
+  const thumbnailData = await entryData(
+    blob,
+    header,
+    fat,
+    miniFat,
+    miniStreamSectors,
+    thumbnailEntry
+  );
+  const thumbnail = parsePreview(thumbnailData);
 
-      // TODO: accumulate data if necessary
-      if (chunk.length < 512)
-        throw Error(`Compound file first chunk too small (${chunk.length})`);
-
-      header = parseHeader(chunk, fileSize);
-      //console.debug("Header", header);
-    }
-
-    if (!directory) {
-      const directoryStart = (header.directoryStart + 1) * header.sectorSize;
-
-      // Directory start not in this chunk
-      if (directoryStart > chunkEnd) continue;
-
-      const directorySize = header.sectorSize * header.directorySectorCount;
-      const directoryEnd = directoryStart + directorySize;
-
-      const directoryStartChunk = Math.max(directoryStart - chunkStart, 0);
-
-      // Directory end not in this chunk
-      if (directoryEnd > chunkEnd) {
-        addToBuffer(chunk.subarray(directoryStartChunk));
-        continue;
-      }
-
-      const directoryEndChunk = directoryEnd - chunkStart;
-      const directorySector = prependBuffer(
-        chunk.subarray(directoryStartChunk, directoryEndChunk)
-      );
-
-      directory = parseDirectory(header, directorySector);
-      //console.debug("Directory", directory);
-
-      const root = directory.find((entry) => entry.type === 5)!;
-      if (!root) throw Error("Compound file root not found");
-
-      const miniFatStart = (root.start + 1) * header.sectorSize;
-
-      addDesiredDirectoryFile(
-        header,
-        directory,
-        miniFatStart,
-        desiredFiles,
-        "BasicFileInfo",
-        parseFileInfo
-      );
-
-      addDesiredDirectoryFile(
-        header,
-        directory,
-        miniFatStart,
-        desiredFiles,
-        "RevitPreview4.0",
-        parsePreview
-      );
-    }
-
-    let nextChunk = false;
-    while (!nextChunk && desiredFiles.length) {
-      const desiredFile = desiredFiles[desiredFiles.length - 1];
-      if (!desiredFile) throw Error("Desired file is undefined (unreachable)");
-
-      // NOTE: Start not in this chunk
-      if (desiredFile.start > chunkEnd) {
-        nextChunk = true;
-        continue;
-      }
-
-      // NOTE: If start was in a previous chunk use zero as start
-      const startChunk = Math.max(desiredFile.start - chunkStart, 0);
-
-      // NOTE: End not in this chunk
-      if (desiredFile.end > chunkEnd) {
-        addToBuffer(chunk.subarray(startChunk));
-        nextChunk = true;
-        continue;
-      }
-
-      const fileEndChunk = desiredFile.end - chunkStart;
-      const data = prependBuffer(chunk.subarray(startChunk, fileEndChunk));
-
-      desiredFileResults.push({ name: desiredFile.name, result: desiredFile.fn(data) });
-      desiredFiles.pop();
-    }
-
-    if (!desiredFiles.length) break;
-  }
-
-  const info = desiredFileResults.find((file) => file.name === "BasicFileInfo");
-  if (!info?.result) throw Error("Missing BasicFileInfo result");
-
-  const blob = desiredFileResults.find((file) => file.name === "RevitPreview4.0");
-  if (!blob) throw Error("Missing RevitPreview4.0 result");
-
-  return [info.result as FileInfo, blob?.result as Blob] as const;
+  return [info, thumbnail] as const;
 };
 
-export const processFile = async (file: File): Promise<[FileInfo, Blob | undefined]> => {
-  const stream = file.stream();
-  try {
-    return await processStream(file.size, stream);
-  } finally {
-    stream.cancel();
-  }
-};
+export const processFile = (file: File): Promise<[FileInfo, Blob | undefined]> =>
+  processBlob(file.size, file);
 
 export interface ProcessFileSuccess {
   ok: true;

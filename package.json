@@ -20,6 +20,7 @@
     "test:coverage": "vitest --run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:dev": "PWTEST_WATCH=1 playwright test",
+    "bench": "pnpm vitest bench --run",
     "typegen": "wrangler types src/worker-configuration.d.ts",
     "deploy": "wrangler pages deploy --branch main",
     "deploy:production": "wrangler pages deploy --branch production",

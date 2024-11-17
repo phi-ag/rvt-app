@@ -75,15 +75,22 @@ const parsePath = (
   return [path, end];
 };
 
-type ParseGuidsResult = [identityId: string, documentId: string, end: number];
+type ParseGuidsResult = [
+  locale: string,
+  identityId: string,
+  documentId: string,
+  end: number
+];
 
 const parseGuids = (
   data: Uint8Array,
   view: DataView,
   position: number
 ): ParseGuidsResult => {
-  // Not sure if actual padding, always 3
-  const padding = view.getInt16(position, true);
+  // Usually 3, sometimes 4
+  //const _unknown = view.getInt16(position, true);
+
+  const padding = 3;
   const guid1LengthStart = position + 2 + padding;
   const guid1Length = view.getInt32(guid1LengthStart, true);
 
@@ -91,10 +98,16 @@ const parseGuids = (
   const guid1End = guid1Start + guid1Length * 2;
   const guid1 = decoder.decode(data.subarray(guid1Start, guid1End));
 
-  const padding2 = view.getInt16(guid1End, true);
+  const localeLength = view.getInt32(guid1End, true);
 
-  // Skipping 10 more bytes, contains language maybe (ENU, ENG)? Couldn't figure out how to parse.
-  const guid2LengthStart = guid1End + 2 + padding2 + 10;
+  const localeStart = guid1End + 4;
+  const localeEnd = localeStart + localeLength * 2;
+  const locale = decoder.decode(data.subarray(localeStart, localeEnd));
+
+  // Skipping 5 unknown bytes
+  //const _unknown = view.getUint32(localeEnd, true);
+
+  const guid2LengthStart = localeEnd + 5;
   const guid2Length = view.getInt32(guid2LengthStart, true);
 
   const guid2Start = guid2LengthStart + 4;
@@ -115,7 +128,7 @@ const parseGuids = (
   const guid4End = guid4Start + guid4Length * 2;
   //const guid4 = decoder.decode(data.subarray(guid4Start, guid4End));
 
-  return [guid1, guid2, guid4End] as const;
+  return [locale, guid1, guid2, guid4End] as const;
 };
 
 type ParseAppNameResult = [name1: string | undefined, end: number];
@@ -160,6 +173,11 @@ const parseContentStart = (
   return [position + padding, data.byteLength - padding] as const;
 };
 
+/*
+ * TODO: Replace utf-8 "True" and "False" ()
+ * - [0x46, 0x61, 0x6C, 0x73] -> False
+ * - [0x54, 0x72, 0x75, 0x65] -> True
+ */
 const parseContent = (
   fileVersion: FileVersion,
   data: Uint8Array,
@@ -175,6 +193,7 @@ export interface FileInfo {
   version: string;
   build: string;
   path: string;
+  locale: string;
   identityId: string;
   documentId: string;
   appName?: string;
@@ -200,7 +219,7 @@ export const parseFileInfo = (data: Uint8Array): FileInfo => {
 
   const [version, build, versionEnd] = parseVersion(fileVersion, data, view);
   const [path, pathEnd] = parsePath(data, view, versionEnd);
-  const [identityId, documentId, guidsEnd] = parseGuids(data, view, pathEnd);
+  const [locale, identityId, documentId, guidsEnd] = parseGuids(data, view, pathEnd);
   const [appName, appNameEnd] = parseAppName(fileVersion, data, view, guidsEnd);
   const content = parseContent(fileVersion, data, view, appNameEnd);
 
@@ -209,6 +228,7 @@ export const parseFileInfo = (data: Uint8Array): FileInfo => {
     version,
     build,
     path,
+    locale,
     identityId,
     documentId,
     appName,

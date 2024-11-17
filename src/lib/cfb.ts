@@ -4,6 +4,7 @@
  * - https://en.wikipedia.org/wiki/Compound_File_Binary_Format
  * - https://github.com/SheetJS/js-cfb
  * - https://github.com/ifedoroff/compound-file-js
+ * - https://github.com/p7zip-project/p7zip/blob/master/CPP/7zip/Archive/ComHandler.cpp
  *
  * @module
  */
@@ -44,42 +45,64 @@ const assertZero = (
 };
 
 // see https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L669
-const readDate = (view: DataView, offset: number) => {
-  return new Date(
-    ((view.getUint32(offset + 4, true) / 1e7) * Math.pow(2, 32) +
-      view.getUint32(offset, true) / 1e7 -
-      11644473600) *
-      1000
-  );
+export const readDate = (view: DataView, offset: number) => {
+  const leftShift32Factor = 4294967296; // Math.pow(2, 32)
+  const filetimeOffset = 116444736e5;
+
+  const low = view.getUint32(offset, true);
+  const high = view.getUint32(offset + 4, true);
+
+  return new Date((high * leftShift32Factor + low) / 1e4 - filetimeOffset);
 };
 
-export type Boundaries = [start: number, end: number];
+export type Boundary = [start: number, end: number];
 
-export const entryBoundaries = (
-  header: Header,
-  miniFatStart: number,
-  file: Entry
-): Boundaries => {
-  // see https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L651
-  if (file.size <= header.miniFatCutoff) {
-    const start = miniFatStart + file.start * header.miniFatSectorSize;
-    const end = start + file.size;
-    return [start, end];
+export type BoundaryWithOffset = [start: number, end: number, offset: number];
+
+export class Boundaries {
+  readonly items: BoundaryWithOffset[] = [];
+
+  add([start, end]: Boundary) {
+    const previous = this.items[this.items.length - 1];
+    if (previous === undefined) {
+      this.items.push([start, end, 0]);
+      return;
+    }
+
+    const [prevStart, prevEnd, prevOffset] = previous;
+
+    if (prevEnd !== start) {
+      const offset = prevEnd - prevStart + prevOffset;
+      this.items.push([start, end, offset]);
+    } else {
+      previous[1] = end;
+    }
   }
 
-  const start = (file.start + 1) * header.sectorSize;
-  const end = start + file.size;
-  return [start, end];
-};
+  size(): number {
+    const last = this.items[this.items.length - 1];
+    if (last === undefined) return 0;
+
+    const [start, end, offset] = last;
+    return end - start + offset;
+  }
+}
 
 const signature = [0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1];
+
+export const freeSector = 0xffffffff;
+export const endOfChain = 0xfffffffe;
+export const maxFatSectorsHeader = 109;
 
 export type Version = 3 | 4;
 
 export interface Header {
   version: Version;
   sectorSize: number;
-  miniFatSectorSize: number;
+  maxSectorEntries: number;
+  sectorSizeBits: number;
+  miniSectorSize: number;
+  miniSectorSizeBits: number;
   sectorCount: number;
   directorySectorCount: number;
   fatSectorCount: number;
@@ -89,7 +112,6 @@ export interface Header {
   miniFatSectorCount: number;
   diFatStart: number;
   diFatCount: number;
-  fatSectors: number[];
 }
 
 /**
@@ -98,50 +120,60 @@ export interface Header {
  * - https://github.com/ifedoroff/compound-file-js/blob/master/src/Header.ts
  * - https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L355
  */
-export const parseHeader = (chunk: Uint8Array, fileSize: number): Header => {
+export const parseHeader = (
+  chunk: Uint8Array,
+  fileSize: number
+): [header: Header, fatSectors: Uint32Array] => {
   assertEqual(chunk, 0, signature, "signature");
   assertEqual(chunk, 24, [0x3e, 0x00], "minor version");
 
-  const view = new DataView(chunk.buffer);
+  const view = new DataView(chunk.buffer, chunk.byteOffset);
   const version = view.getUint16(26, true) as Version;
   if (version !== 3 && version !== 4)
     throw Error(`Unexpected compound file major version (${version})`);
 
   assertEqual(chunk, 28, [0xfe, 0xff], "byte order");
 
-  const sectorSize = 1 << view.getInt16(30, true);
+  const sectorSizeBits = view.getUint16(30, true);
+  const sectorSize = 1 << sectorSizeBits;
+  const maxSectorEntries = 1 << (sectorSizeBits - 2);
+
+  // TODO: remove
   const sectorCount = Math.ceil(fileSize / sectorSize) - 1;
-  const miniFatSectorSize = 1 << view.getInt16(32, true);
+
+  const miniSectorSizeBits = view.getUint16(32, true);
+  const miniSectorSize = 1 << miniSectorSizeBits;
 
   assertZero(chunk, 34, 6, "reserved");
 
-  const directorySectorCount = view.getInt32(40, true);
+  const directorySectorCount = view.getUint32(40, true);
   if (version === 3 && directorySectorCount !== 0)
     throw Error(`Unexpected compound file sector count (${directorySectorCount})`);
 
-  const fatSectorCount = view.getInt32(44, true);
-  const directoryStart = view.getInt32(48, true);
+  const fatSectorCount = view.getUint32(44, true);
+  const directoryStart = view.getUint32(48, true);
 
   assertZero(chunk, 52, 4, "transaction signature");
 
-  const miniFatCutoff = view.getInt32(56, true);
-  const miniFatStart = view.getInt32(60, true);
-  const miniFatSectorCount = view.getInt32(64, true);
-  const diFatStart = view.getInt32(68, true);
-  const diFatCount = view.getInt32(72, true);
+  const miniFatCutoff = view.getUint32(56, true);
+  const miniFatStart = view.getUint32(60, true);
+  const miniFatSectorCount = view.getUint32(64, true);
+  const diFatStart = view.getUint32(68, true);
+  const diFatCount = view.getUint32(72, true);
 
-  const fatSectors = [];
-  const stride = 4;
-  for (let q = -1, i = 0; i < 109; ++i) {
-    q = view.getInt32(76 + i * stride, true);
-    if (q < 0) break;
-    fatSectors[i] = q;
+  const fatSectors = new Uint32Array(fatSectorCount);
+  const fatSectorsHeaderCount = Math.min(fatSectorCount, maxFatSectorsHeader);
+  for (let i = 0; i < fatSectorsHeaderCount; ++i) {
+    fatSectors[i] = view.getUint32(76 + i * 4, true);
   }
 
-  return {
+  const header: Header = {
     version,
     sectorSize,
-    miniFatSectorSize,
+    sectorSizeBits,
+    maxSectorEntries,
+    miniSectorSize,
+    miniSectorSizeBits,
     sectorCount,
     directorySectorCount,
     fatSectorCount,
@@ -150,9 +182,10 @@ export const parseHeader = (chunk: Uint8Array, fileSize: number): Header => {
     miniFatStart,
     miniFatSectorCount,
     diFatStart,
-    diFatCount,
-    fatSectors
+    diFatCount
   };
+
+  return [header, fatSectors] as const;
 };
 
 const entryNameMaxLength = 64;
@@ -235,15 +268,17 @@ const parseDirectorySector = (entryCount: number, sector: Uint8Array): Directory
  * - https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-cfb/60fe8611-66c3-496b-b70d-a504c94c9ace
  * - https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L618
  *
+ * TODO: full path
+ *
  */
-export const parseDirectory = (header: Header, sector: Uint8Array): Directory => {
+export const parseDirectory = (header: Header, sectors: Uint8Array): Directory => {
   const entryCount = header.version === 3 ? 4 : 32;
 
   const entries = [];
   for (let i = 0; i < header.directorySectorCount; i++) {
     const start = i * header.sectorSize;
     const end = start + header.sectorSize;
-    const sectorEntries = parseDirectorySector(entryCount, sector.subarray(start, end));
+    const sectorEntries = parseDirectorySector(entryCount, sectors.subarray(start, end));
     for (const entry of sectorEntries) entries.push(entry);
   }
 

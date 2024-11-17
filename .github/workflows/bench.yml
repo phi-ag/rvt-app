@@ -1,0 +1,21 @@
+name: Benchmark
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  bench:
+    if: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.event.head_commit.message, 'release:') }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          lfs: true
+
+      - name: Restore
+        uses: ./.github/actions/restore
+
+      - name: Benchmark
+        run: pnpm bench

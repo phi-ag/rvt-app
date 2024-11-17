@@ -12,20 +12,16 @@ test.describe("e2e", () => {
     await expect(page).toHaveTitle("rvt.app");
   });
 
-  test("dropzone", async ({ page, browserName }) => {
-    test.skip(
-      browserName === "webkit",
-      "see https://github.com/phi-ag/rvt-app/issues/19"
-    );
-
+  test("dropzone", async ({ page }) => {
     throwOnConsoleError(page);
-    await page.goto("/");
 
     page.on("filechooser", async (fileChooser) => {
       await fileChooser.setFiles(
         join(import.meta.dirname, "..", "examples", "racbasicsamplefamily-2025.rfa")
       );
     });
+
+    await page.goto("/");
 
     const dropzone = page.getByTestId("dropzone");
     await expect(dropzone).toHaveText(/Drag 'n' drop/);
