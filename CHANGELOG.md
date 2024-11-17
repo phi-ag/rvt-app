@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.0](https://github.com/phi-ag/rvt-app/compare/v0.5.3...v0.6.0) (2024-11-17)
+
+
+### Features
+
+* implement fat chains, use blob instead of stream ([b4bc7d6](https://github.com/phi-ag/rvt-app/commit/b4bc7d6579f3689cd46f1ebc1e1bcedbac27f8dd))
+
+
+### Code Refactoring
+
+* parse sector size, minifat sector size and cutoff from cfb header ([882d7ac](https://github.com/phi-ag/rvt-app/commit/882d7acfecb8d160b910ec5a48b924c55681f634))
+
 ## [0.5.3](https://github.com/phi-ag/rvt-app/compare/v0.5.2...v0.5.3) (2024-11-16)
 
 
