@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { readDate } from "./cfb";
+import { readDate } from "./utils";
 
 describe("cfb", () => {
   test("read date 2023", () => {

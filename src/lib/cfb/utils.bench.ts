@@ -1,6 +1,6 @@
 import { bench, describe } from "vitest";
 
-import { readDate } from "./cfb";
+import { readDate } from "./utils";
 
 describe.skip("read date", async () => {
   const readDateBigInt = (view: DataView, offset: number) => {
