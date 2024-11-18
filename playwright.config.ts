@@ -10,7 +10,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   webServer: !process.env.BASE_URL
     ? {
-        command: "pnpm dev",
+        command: process.env.CI ? "pnpm start:e2e" : "pnpm dev",
         url: "http://localhost:3000",
         reuseExistingServer: !process.env.CI,
         stdout: "pipe",
