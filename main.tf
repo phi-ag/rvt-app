@@ -103,3 +103,11 @@ output "domain_preview" {
 output "domain_production" {
   value = cloudflare_pages_domain.production.domain
 }
+
+output "web_analytics_tag" {
+  value = cloudflare_pages_project.page.build_config[0].web_analytics_tag
+}
+
+output "web_analytics_token" {
+  value = cloudflare_pages_project.page.build_config[0].web_analytics_token
+}
