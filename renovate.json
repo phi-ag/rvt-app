@@ -10,8 +10,11 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^e2e_docker\\.sh$"],
-      "matchStrings": ["VERSION=(?<currentValue>[^@\\s]+)(@(?<currentDigest>[^\\s]+))?"],
+      "fileMatch": ["^e2e_docker\\.sh$", "^\\.github/actions/e2e/action\\.yml$"],
+      "matchStrings": [
+        "VERSION=(?<currentValue>[^@\\s]+)(@(?<currentDigest>[^\\s]+))?",
+        "version: (?<currentValue>[^@\\s]+)(@(?<currentDigest>[^\\s]+))?"
+      ],
       "packageNameTemplate": "mcr.microsoft.com/playwright",
       "datasourceTemplate": "docker"
     }
@@ -37,11 +40,7 @@
     },
     {
       "groupName": "playwright",
-      "matchPackageNames": [
-        "mcr.microsoft.com/playwright",
-        "phi-ag/run-playwright",
-        "@playwright/test"
-      ]
+      "matchPackageNames": ["mcr.microsoft.com/playwright", "@playwright/test"]
     }
   ]
 }
