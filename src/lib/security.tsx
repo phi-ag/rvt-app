@@ -5,7 +5,13 @@ import { getRequestEvent } from "solid-js/web";
 
 // SECURITY: seroval requires 'unsafe-eval'
 const scripts = (nonce: string) =>
-  ["script-src", "'self'", "'unsafe-eval'", `'nonce-${nonce}'`].join(" ");
+  [
+    "script-src",
+    "'self'",
+    "https://static.cloudflareinsights.com",
+    "'unsafe-eval'",
+    `'nonce-${nonce}'`
+  ].join(" ");
 
 // SECURITY: Safari requires 'unsafe-inline'
 const styles = ["style-src", "'self'", "'unsafe-inline'"].join(" ");
@@ -21,9 +27,12 @@ const fonts = ["font-src", "'self'"].join(" ");
 
 const images = ["img-src", "'self'", "https:", "data:", "blob:"].join(" ");
 
-const connect = compact(["connect-src", "'self'", import.meta.env.DEV && "data: *"]).join(
-  " "
-);
+const connect = compact([
+  "connect-src",
+  "'self'",
+  "https://cloudflareinsights.com",
+  import.meta.env.DEV && "data: *"
+]).join(" ");
 
 const worker = ["worker-src", "'self'"].join(" ");
 

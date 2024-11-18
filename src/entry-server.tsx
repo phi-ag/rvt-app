@@ -2,6 +2,7 @@
 import { StartServer, createHandler } from "@solidjs/start/server";
 import { v7 as uuidv7 } from "uuid";
 
+import { Analytics } from "~/components";
 import Favicon from "~/images/Phi.svg";
 import { SecurityHeader } from "~/lib/security";
 import { ThemeHeaderScript } from "~/lib/theme";
@@ -41,6 +42,7 @@ export default createHandler(
                 {children}
               </div>
               {scripts}
+              <Analytics />
             </body>
           </html>
         </>

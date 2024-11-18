@@ -3,5 +3,6 @@
 interface Env {
 	ENVIRONMENT: "preview";
 	DOMAIN: "preview.rvt.app";
+	ANALYTICS_TOKEN: "246c9f46859c4532b110bec709213a6a";
 	CF_VERSION_METADATA: { id: string; tag: string };
 }
