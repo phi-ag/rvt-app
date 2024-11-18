@@ -11,6 +11,7 @@ export default tseslint.config(
       "dist/**",
       ".vinxi/**",
       ".output/**",
+      ".wrangler/**",
       "reports/**",
       "app.config.timestamp_*"
     ]

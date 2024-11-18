@@ -17,15 +17,28 @@ const findVersionMarker = (data: Uint8Array): number | undefined => {
   }
 };
 
+type ParseStringResult = [value: string, end: number];
+
+const parseString = (
+  data: Uint8Array,
+  view: DataView,
+  position: number
+): ParseStringResult => {
+  const length = view.getInt32(position, true);
+  if (length > view.byteLength)
+    throw Error(`Invalid string length ${length} at ${position}`);
+
+  const start = position + 4;
+  const end = start + length * 2;
+  const value = decoder.decode(data.subarray(start, end));
+  return [value, end] as const;
+};
+
 type ParseVersionResult = [version: string, build: string, end: number];
 
 const parseVersion10 = (data: Uint8Array, view: DataView): ParseVersionResult => {
   const versionLengthStart = 14;
-  const versionLength = view.getInt32(versionLengthStart, true);
-
-  const versionStart = versionLengthStart + 4;
-  const versionEnd = versionStart + versionLength * 2;
-  const version = decoder.decode(data.subarray(versionStart, versionEnd));
+  const [version, versionEnd] = parseString(data, view, versionLengthStart);
 
   const $version = version.slice(15, 19);
   const build = version.slice(28, version.length - 1);
@@ -40,10 +53,7 @@ const parseVersion13 = (data: Uint8Array, view: DataView): ParseVersionResult =>
   const versionEnd = versionMarkerEnd + 8;
   const version = decoder.decode(data.subarray(versionMarkerEnd, versionEnd));
 
-  const buildLength = view.getInt32(versionEnd, true);
-  const buildStart = versionEnd + 4;
-  const buildEnd = buildStart + buildLength * 2;
-  const build = decoder.decode(data.subarray(buildStart, buildEnd));
+  const [build, buildEnd] = parseString(data, view, versionEnd);
 
   return [version, build, buildEnd] as const;
 };
@@ -58,21 +68,6 @@ const parseVersion = (
   } else {
     return parseVersion13(data, view);
   }
-};
-
-type ParsePathResult = [path: string, end: number];
-
-const parsePath = (
-  data: Uint8Array,
-  view: DataView,
-  position: number
-): ParsePathResult => {
-  const length = view.getInt32(position, true);
-  const start = position + 4;
-  const end = start + length * 2;
-  const path = decoder.decode(data.subarray(start, end));
-
-  return [path, end];
 };
 
 type ParseGuidsResult = [
@@ -92,41 +87,22 @@ const parseGuids = (
 
   const padding = 3;
   const guid1LengthStart = position + 2 + padding;
-  const guid1Length = view.getInt32(guid1LengthStart, true);
-
-  const guid1Start = guid1LengthStart + 4;
-  const guid1End = guid1Start + guid1Length * 2;
-  const guid1 = decoder.decode(data.subarray(guid1Start, guid1End));
-
-  const localeLength = view.getInt32(guid1End, true);
-
-  const localeStart = guid1End + 4;
-  const localeEnd = localeStart + localeLength * 2;
-  const locale = decoder.decode(data.subarray(localeStart, localeEnd));
+  const [guid1, guid1End] = parseString(data, view, guid1LengthStart);
+  const [locale, localeEnd] = parseString(data, view, guid1End);
 
   // Skipping 5 unknown bytes
   //const _unknown = view.getUint32(localeEnd, true);
 
   const guid2LengthStart = localeEnd + 5;
-  const guid2Length = view.getInt32(guid2LengthStart, true);
-
-  const guid2Start = guid2LengthStart + 4;
-  const guid2End = guid2Start + guid2Length * 2;
-  const guid2 = decoder.decode(data.subarray(guid2Start, guid2End));
+  const [guid2, guid2End] = parseString(data, view, guid2LengthStart);
 
   // Guid3 === Guid2 and Guid4 === Guid1 (?)
-  const guid3Length = view.getInt32(guid2End, true);
-  const guid3Start = guid2End + 4;
-  const guid3End = guid3Start + guid3Length * 2;
-  //const guid3 = decoder.decode(data.subarray(guid3Start, guid3End));
+  const [_guid3, guid3End] = parseString(data, view, guid2End);
 
+  // Probably some info in this padding
   const guid4Padding = view.getInt16(guid3End, true);
   const guid4LengthStart = guid3End + 4 + guid4Padding * 2;
-  const guid4Length = view.getInt32(guid4LengthStart, true);
-
-  const guid4Start = guid4LengthStart + 4;
-  const guid4End = guid4Start + guid4Length * 2;
-  //const guid4 = decoder.decode(data.subarray(guid4Start, guid4End));
+  const [_guid4, guid4End] = parseString(data, view, guid4LengthStart);
 
   return [locale, guid1, guid2, guid4End] as const;
 };
@@ -142,29 +118,22 @@ const parseAppName = (
   if (fileVersion === 10) return [undefined, position];
 
   //const _unknownFlag = view.getInt8(position);
-  const appNameLength = view.getInt32(position + 1, true);
-  const appNameStart = position + 1 + 4;
-  const appNameEnd = appNameStart + appNameLength * 2;
-  const appName = decoder.decode(data.subarray(appNameStart, appNameEnd));
+  const [appName, appNameEnd] = parseString(data, view, position + 1);
 
   if (fileVersion === 13) return [appName, appNameEnd];
 
-  const appName2Length = view.getInt32(appNameEnd, true);
-  const appName2Start = appNameEnd + 4;
-  const appName2End = appName2Start + appName2Length * 2;
-  //const appName2 = decoder.decode(data.subarray(appName2Start, appName2End));
-
+  const [_appName2, appName2End] = parseString(data, view, appNameEnd);
   return [appName, appName2End];
 };
 
-type ParseContentStart = [start: number, end: number];
+type ContentBounds = [start: number, end: number];
 
-const parseContentStart = (
+const contentBounds = (
   fileVersion: FileVersion,
   data: Uint8Array,
   view: DataView,
   position: number
-): ParseContentStart => {
+): ContentBounds => {
   if (fileVersion === 10 || fileVersion === 13)
     return [position + 2, data.byteLength - 2] as const;
 
@@ -184,7 +153,7 @@ const parseContent = (
   view: DataView,
   position: number
 ): string => {
-  const [start, end] = parseContentStart(fileVersion, data, view, position);
+  const [start, end] = contentBounds(fileVersion, data, view, position);
   return decoder.decode(data.subarray(start, end));
 };
 
@@ -218,7 +187,7 @@ export const parseFileInfo = (data: Uint8Array): FileInfo => {
     throw Error(`Unknown file version ${fileVersion}`);
 
   const [version, build, versionEnd] = parseVersion(fileVersion, data, view);
-  const [path, pathEnd] = parsePath(data, view, versionEnd);
+  const [path, pathEnd] = parseString(data, view, versionEnd);
   const [locale, identityId, documentId, guidsEnd] = parseGuids(data, view, pathEnd);
   const [appName, appNameEnd] = parseAppName(fileVersion, data, view, guidsEnd);
   const content = parseContent(fileVersion, data, view, appNameEnd);
