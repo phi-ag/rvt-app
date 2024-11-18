@@ -16,16 +16,26 @@ export default function () {
     }
   };
 
+  const acceptExtensions = ["rvt", "rte", "rfa", "rft"];
+
+  const extensions = acceptExtensions.map((ext) => `.${ext}`).join(" | ");
+
   return (
     <main class="flex flex-1 flex-col gap-4 p-5">
       <DropZone
         class="min-h-64 flex-1 items-center justify-center self-stretch"
-        acceptExtensions={["rvt", "rte", "rfa", "rft"]}
+        acceptExtensions={acceptExtensions}
         onFiles={process}
         disabled={processing()}
         data-testid="dropzone"
       >
-        {processing() ? "Processing ..." : "Drag 'n' drop files or click to select files"}
+        <div class="flex flex-col gap-1">
+          <h1 class="text-3xl">Revit File Info</h1>
+          <p class="mt-2">
+            {processing() ? "Processing ..." : "Drag 'n' drop or click to select files"}
+          </p>
+          <p class="text-sm">{extensions}</p>
+        </div>
       </DropZone>
       <For each={results()}>
         {(result) => (
