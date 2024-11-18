@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.6.1](https://github.com/phi-ag/rvt-app/compare/v0.6.0...v0.6.1) (2024-11-18)
+
+
+### Bug Fixes
+
+* compare file extensions case-insensitive ([f3a3d23](https://github.com/phi-ag/rvt-app/commit/f3a3d2387d8fa02e3d3ce467c6a03c454505834b))
+
+
+### Miscellaneous Chores
+
+* show title and supported file extensions ([bdef050](https://github.com/phi-ag/rvt-app/commit/bdef0509ee3b7979160aab8c9d652ee3edfaff60))
+
+
+### Code Refactoring
+
+* add minimal cfb class ([5366304](https://github.com/phi-ag/rvt-app/commit/5366304ba0fe7c44906e02ae4ce993b498ea12a9))
+* move cfb functions ([c9ce5a5](https://github.com/phi-ag/rvt-app/commit/c9ce5a55d1fe8655e18ff229f27a38ce45fcb27a))
+* move fat bounds and mini stream offset functions into cfb class ([358055b](https://github.com/phi-ag/rvt-app/commit/358055be8c974414b6c01b821a183bd146f4b8b1))
+
 ## [0.6.0](https://github.com/phi-ag/rvt-app/compare/v0.5.3...v0.6.0) (2024-11-17)
 
 
