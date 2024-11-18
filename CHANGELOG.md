@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.6.2](https://github.com/phi-ag/rvt-app/compare/v0.6.1...v0.6.2) (2024-11-18)
+
+
+### Miscellaneous Chores
+
+* add cloudflare analytics ([bb25cba](https://github.com/phi-ag/rvt-app/commit/bb25cbaea5ca587f3cec99646664a6b0f7a1d02f))
+* **terraform:** ignore changes for page build config ([91b9de2](https://github.com/phi-ag/rvt-app/commit/91b9de2f40fa0466976405fb5dc3932a49d1ee35))
+* **terraform:** output analytics tag and token ([51902a0](https://github.com/phi-ag/rvt-app/commit/51902a0ad4135c990f292959ad92e6d54c7d3819))
+
+
+### Code Refactoring
+
+* **revit:** add generic string parse for basic file info ([f30bbb6](https://github.com/phi-ag/rvt-app/commit/f30bbb6ba3a1c56338c38cb37116dbd3937b30bf))
+
+
+### Tests
+
+* **e2e:** use wrangler for ci e2e tests ([c03e076](https://github.com/phi-ag/rvt-app/commit/c03e076e8c1b07ffa2168837abb892f7d5454658))
+
 ## [0.6.1](https://github.com/phi-ag/rvt-app/compare/v0.6.0...v0.6.1) (2024-11-18)
 
 
