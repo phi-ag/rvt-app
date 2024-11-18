@@ -385,51 +385,6 @@ export const createDirectory = async (
   return parseDirectory(header, data);
 };
 
-const fatBounds = (
-  header: Header,
-  fat: Uint32Array,
-  start: number,
-  size: number
-): Boundaries => {
-  const bounds = new Boundaries();
-
-  for (let i = 0, current = start, remaining = size; ; i++) {
-    if (current === endOfChain) {
-      if (remaining !== 0) throw Error("Fat bounds unexpected end of chain");
-      break;
-    }
-
-    const start = (current + 1) * header.sectorSize;
-    const size = remaining < header.sectorSize ? remaining : header.sectorSize;
-    remaining -= size;
-
-    bounds.add([start, start + size]);
-
-    if (current >= fat.length) throw Error(`Fat out-of-bounds (${current})`);
-    current = fat[current];
-  }
-
-  return bounds;
-};
-
-const miniStreamOffset = (
-  header: Header,
-  miniStreamSectors: Uint32Array,
-  start: number
-) => {
-  const subBits = header.sectorSizeBits - header.miniSectorSizeBits;
-  const sector = start >> subBits;
-  if (sector >= miniStreamSectors.length)
-    throw Error(`MiniStream sector out-of-bounds (${sector})`);
-
-  // Some kind of magic 👀
-  // see https://github.com/p7zip-project/p7zip/blob/master/CPP/7zip/Archive/ComHandler.cpp#L152
-  const offset =
-    ((miniStreamSectors[sector] + 1) << subBits) + (start & ((1 << subBits) - 1));
-
-  return offset * header.miniSectorSize;
-};
-
 /**
  * NOTE: Never tested with more than one DIFAT sector
  */
@@ -536,6 +491,42 @@ export class Cfb {
 
   findEntry = (name: string) => this.#directory.find((entry) => entry.name === name);
 
+  fatBounds = (start: number, size: number): Boundaries => {
+    const bounds = new Boundaries();
+
+    for (let i = 0, current = start, remaining = size; ; i++) {
+      if (current === endOfChain) {
+        if (remaining !== 0) throw Error("Fat bounds unexpected end of chain");
+        break;
+      }
+
+      const start = (current + 1) * this.#header.sectorSize;
+      const size = Math.min(remaining, this.#header.sectorSize);
+      remaining -= size;
+
+      bounds.add([start, start + size]);
+
+      if (current >= this.#fat.length) throw Error(`Fat out-of-bounds (${current})`);
+      current = this.#fat[current];
+    }
+
+    return bounds;
+  };
+
+  miniStreamOffset = (start: number) => {
+    const subBits = this.#header.sectorSizeBits - this.#header.miniSectorSizeBits;
+    const sector = start >> subBits;
+    if (sector >= this.#miniStreamSectors.length)
+      throw Error(`MiniStream sector out-of-bounds (${sector})`);
+
+    // Some kind of magic 👀
+    // see https://github.com/p7zip-project/p7zip/blob/master/CPP/7zip/Archive/ComHandler.cpp#L152
+    const offset =
+      ((this.#miniStreamSectors[sector] + 1) << subBits) + (start & ((1 << subBits) - 1));
+
+    return offset * this.#header.miniSectorSize;
+  };
+
   miniStreamBounds = (start: number, size: number): Boundaries => {
     const bounds = new Boundaries();
 
@@ -545,7 +536,7 @@ export class Cfb {
         break;
       }
 
-      const start = miniStreamOffset(this.#header, this.#miniStreamSectors, current);
+      const start = this.miniStreamOffset(current);
 
       const miniSectorSize = this.#header.miniSectorSize;
       const size = remaining < miniSectorSize ? remaining : miniSectorSize;
@@ -571,7 +562,7 @@ export class Cfb {
     if (entry.size < this.#header.miniFatCutoff)
       return await this.miniStreamData(entry.start, entry.size);
 
-    const bounds = fatBounds(this.#header, this.#fat, entry.start, entry.size);
+    const bounds = this.fatBounds(entry.start, entry.size);
     return await boundsData(this.#blob, bounds);
   };
 }
