@@ -12,7 +12,8 @@
   "scripts": {
     "dev": "vinxi dev --no-clear",
     "build": "vinxi build",
-    "start": "wrangler pages dev ./dist",
+    "start": "wrangler pages dev",
+    "start:e2e": "wrangler pages dev --ip=0.0.0.0 --log-level=warn",
     "typecheck": "tsc --noEmit",
     "lint": "eslint --max-warnings 0 .",
     "test": "vitest --run",
