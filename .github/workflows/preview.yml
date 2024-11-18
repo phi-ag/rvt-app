@@ -20,7 +20,6 @@ jobs:
         run: pnpm audit
 
       - name: Format
-        continue-on-error: true
         run: pnpm format:check
 
       - name: Lint
