@@ -41,8 +41,7 @@
         "mcr.microsoft.com/playwright",
         "phi-ag/run-playwright",
         "@playwright/test"
-      ],
-      "minimumReleaseAge": "1 day"
+      ]
     }
   ]
 }
