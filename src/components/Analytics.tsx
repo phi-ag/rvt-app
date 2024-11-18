@@ -9,8 +9,10 @@ const Analytics: Component = () => {
   const token = event?.locals.env.ANALYTICS_TOKEN;
   const data = token ? `{"token": "${token}"}` : undefined;
 
+  const hostname = event ? new URL(event.request.url).hostname : undefined;
+
   return (
-    <Show when={!import.meta.env.DEV && nonce && data}>
+    <Show when={hostname !== "localhost" && nonce && data}>
       <script
         defer
         async
