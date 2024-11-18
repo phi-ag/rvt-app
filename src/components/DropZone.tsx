@@ -46,11 +46,11 @@ const dropZone = cva(
   }
 );
 
-const isValidFile = (file: File, acceptExtensions?: string[]): boolean => {
+export const isValidFile = (file: File, acceptExtensions?: string[]): boolean => {
   if (!file.size) return false;
   if (acceptExtensions) {
     const ext = extension(file.name);
-    if (!ext || !acceptExtensions.includes(ext)) return false;
+    if (!ext || !acceptExtensions.includes(ext.toLowerCase())) return false;
   }
   return true;
 };
