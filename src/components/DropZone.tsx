@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, cx } from "class-variance-authority";
 import {
   type JSX,
   type ParentComponent,
@@ -9,42 +9,22 @@ import {
 
 import { extension } from "~/lib/file";
 
-const dropZone = cva(
-  [
-    "select-none",
-    "appearance-none",
-    "rounded-2xl",
-    "border-2",
-    "border-dashed",
-    "outline-none",
-    "border-gray-400",
-    "dark:border-gray-600",
-    "hover:ring-4",
-    "focus-visible:ring-4",
-    "disabled:pointer-events-none",
-    "[transition-property:background-color,border,box-shadow]",
-    "[transition-timing-function:ease]",
-    "[transition-duration:180ms]"
-  ],
-  {
-    variants: {
-      dragging: {
-        true: null,
-        false: null
-      }
-    },
-    compoundVariants: [
-      {
-        dragging: false,
-        class: ["ring-blue-400", "dark:ring-blue-600"]
-      },
-      {
-        dragging: true,
-        class: ["ring-4", "ring-lime-500", "dark:ring-lime-600"]
-      }
-    ]
-  }
-);
+const dropZone = cva([
+  "select-none",
+  "appearance-none",
+  "rounded-2xl",
+  "border-2",
+  "border-dashed",
+  "outline-none",
+  "border-gray-400",
+  "dark:border-gray-600",
+  "hover:ring-4",
+  "focus-visible:ring-4",
+  "disabled:pointer-events-none",
+  "[transition-property:background-color,border,box-shadow]",
+  "[transition-timing-function:ease]",
+  "[transition-duration:180ms]"
+]);
 
 export const isValidFile = (file: File, acceptExtensions?: string[]): boolean => {
   if (!file.size) return false;
@@ -123,15 +103,20 @@ const DropZone: ParentComponent<DropZoneProps> = (props) => {
   return (
     <button
       {...rest}
-      onDragEnter={() => setDragging(true)}
-      onDragLeave={() => setDragging(false)}
-      onDragOver={(e) => e.preventDefault()}
-      onDrop={onDrop}
+      on:dragenter={() => setDragging(true)}
+      on:dragleave={() => setDragging(false)}
+      on:dragover={(e) => {
+        e.preventDefault();
+        setDragging(true);
+      }}
+      on:drop={onDrop}
       onClick={() => inputRef.click()}
-      class={dropZone({
-        class: local.class,
-        dragging: dragging()
-      })}
+      class={cx(
+        dropZone({
+          class: local.class
+        }),
+        dragging() ? "ring-4 ring-secondary" : "ring-primary"
+      )}
     >
       <input
         ref={inputRef!}

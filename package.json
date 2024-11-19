@@ -32,6 +32,7 @@
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test"
   },
   "dependencies": {
+    "@fontsource/roboto": "5.1.0",
     "@solidjs/router": "0.15.1",
     "@solidjs/start": "1.0.10",
     "class-variance-authority": "0.7.0",

@@ -21,26 +21,26 @@ export default function () {
   const extensions = acceptExtensions.map((ext) => `.${ext}`).join(" | ");
 
   return (
-    <main class="flex flex-1 flex-col gap-4 p-5">
+    <main class="flex flex-1 flex-col gap-4 overflow-hidden p-5">
       <DropZone
-        class="min-h-64 flex-1 items-center justify-center self-stretch"
+        class="min-h-64 flex-1 items-center justify-center self-stretch bg-surface-container"
         acceptExtensions={acceptExtensions}
         onFiles={process}
         disabled={processing()}
         data-testid="dropzone"
       >
         <div class="flex flex-col gap-1">
-          <h1 class="text-3xl">Revit File Info</h1>
-          <p class="mt-2">
+          <h1 class="text-display-sm">Revit File Info</h1>
+          <p class="text-title">
             {processing() ? "Processing ..." : "Drag 'n' drop or click to select files"}
           </p>
-          <p class="text-sm">{extensions}</p>
+          <p>{extensions}</p>
         </div>
       </DropZone>
       <For each={results()}>
         {(result) => (
-          <div class="flex flex-col gap-1">
-            <h2 class="text-2xl" data-testid="name">
+          <div class="flex flex-col gap-1 [&>div]:truncate">
+            <h2 class="truncate text-headline-sm" data-testid="name">
               {result.name}
             </h2>
             <Switch>
@@ -51,6 +51,7 @@ export default function () {
                     height={128}
                     src={URL.createObjectURL(result.thumbnail!)}
                     alt={result.name}
+                    class="rounded-lg"
                   />
                 </Show>
                 <div>
@@ -73,7 +74,10 @@ export default function () {
                 <div>
                   Path: <span data-testid="path">{result.info?.path}</span>
                 </div>
-                <pre class="mt-2 whitespace-pre-wrap text-sm" data-testid="content">
+                <pre
+                  class="mt-2 truncate whitespace-pre-wrap break-words"
+                  data-testid="content"
+                >
                   {result.info?.content}
                 </pre>
               </Match>

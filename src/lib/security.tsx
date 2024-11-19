@@ -23,7 +23,7 @@ const frameAncestors = [
   import.meta.env.DEV ? "https://*.github.dev" : "'none'"
 ].join(" ");
 
-const fonts = ["font-src", "'self'"].join(" ");
+const fonts = ["font-src", "'self'", "data:"].join(" ");
 
 const images = ["img-src", "'self'", "https:", "data:", "blob:"].join(" ");
 
