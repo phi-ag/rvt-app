@@ -32,7 +32,7 @@ Test
     pnpm test
     pnpm test:dev
 
-End-to-end tests
+End-to-End tests
 
     pnpm playwright install chromium
     pnpm test:e2e --project=chromium

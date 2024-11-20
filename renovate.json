@@ -40,7 +40,11 @@
     },
     {
       "groupName": "playwright",
-      "matchPackageNames": ["mcr.microsoft.com/playwright", "@playwright/test"]
+      "matchPackageNames": [
+        "phi-ag/run-playwright",
+        "mcr.microsoft.com/playwright",
+        "@playwright/test"
+      ]
     }
   ]
 }
