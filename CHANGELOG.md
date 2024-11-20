@@ -1,5 +1,48 @@
 # Changelog
 
+## [0.6.3](https://github.com/phi-ag/rvt-app/compare/v0.6.2...v0.6.3) (2024-11-20)
+
+
+### Bug Fixes
+
+* disable analytics for localhost ([95a0ff0](https://github.com/phi-ag/rvt-app/commit/95a0ff02fd30a13bea13c977e17721bc66a128b9))
+
+
+### Styles
+
+* material colors and typography ([2a00d08](https://github.com/phi-ag/rvt-app/commit/2a00d084504ece61e8e3739006f01811a4b1c49e))
+* move shield icon slightly up ([da5a2c1](https://github.com/phi-ag/rvt-app/commit/da5a2c1c189846f7d655c4f667b72ca23bbebca1))
+
+
+### Miscellaneous Chores
+
+* add message that files are processed locally ([fc5f4b2](https://github.com/phi-ag/rvt-app/commit/fc5f4b2bb7d6f7bb13a73b57ea6f4ef489a58241))
+* **deps:** update codecov/codecov-action digest to 05f5a9c ([a8fd7ec](https://github.com/phi-ag/rvt-app/commit/a8fd7ec0ec3cf3cc2553f7a456ed8f6a0787d9b2))
+* **deps:** update codecov/codecov-action digest to 288befb ([9b26f71](https://github.com/phi-ag/rvt-app/commit/9b26f71aa7191ab5345b05893896c8da51356596))
+* **deps:** update codecov/codecov-action digest to 985343d ([6c6f591](https://github.com/phi-ag/rvt-app/commit/6c6f59198959adbeab3a8e8e7f293833d4cce192))
+* **deps:** update dependency @types/node to v22.9.1 ([4bfd89a](https://github.com/phi-ag/rvt-app/commit/4bfd89a4567e01cde84878a565f380bdf468d856))
+* **deps:** update dependency eslint to v9.15.0 ([00c4c99](https://github.com/phi-ag/rvt-app/commit/00c4c99ed88e0a8672f81068f2eb83df9b8698ef))
+* **deps:** update dependency prettier-plugin-tailwindcss to v0.6.9 ([7e5bfb5](https://github.com/phi-ag/rvt-app/commit/7e5bfb50f6a36a074b8675fb1544f042a790478c))
+* **deps:** update dependency typescript-eslint to v8.15.0 ([9b1e616](https://github.com/phi-ag/rvt-app/commit/9b1e61693c6b93da0b14d71675ddc7a3e576013e))
+* **deps:** update dependency wrangler to v3.88.0 ([0e6478d](https://github.com/phi-ag/rvt-app/commit/0e6478dde6f0d21e71080794127bbd41bbc117cd))
+* **deps:** update phi-ag/run-playwright digest to a2a216e ([4a47004](https://github.com/phi-ag/rvt-app/commit/4a47004a8db52cab8969f704bf8deed5d94ba225))
+* **deps:** update playwright to v1.49.0 ([fa6aaa5](https://github.com/phi-ag/rvt-app/commit/fa6aaa599231141ff62956d3509c8432f6d6f03f))
+* **deps:** update pnpm to v9.14.2 ([3bde8b0](https://github.com/phi-ag/rvt-app/commit/3bde8b0eb95a5416254d8301d12b47fd40872c39))
+* **renovate:** add phi-ag/run-playwright to playwright group ([a204a3d](https://github.com/phi-ag/rvt-app/commit/a204a3d2fd67be25c35065268f9f51137fcfbd2a))
+* **renovate:** disable minimum release age for playwright ([e5735fc](https://github.com/phi-ag/rvt-app/commit/e5735fc2e2c4a663bc4005911a8dccfa2d9f80eb))
+
+
+### Code Refactoring
+
+* move cfb to folder ([4583775](https://github.com/phi-ag/rvt-app/commit/4583775d854ddf48fa201fd5b5117dffed5b81f3))
+* split cfb into multiple files ([0ebfb2b](https://github.com/phi-ag/rvt-app/commit/0ebfb2be3f76908719b73d54f8615533fb6b3819))
+
+
+### Continuous Integration
+
+* don't continue on format error ([d79fadd](https://github.com/phi-ag/rvt-app/commit/d79fadd2fd7427ac0fa17e08d290c02a929e0db4))
+* use specific playwright version ([a72537c](https://github.com/phi-ag/rvt-app/commit/a72537c0b8d8c69401c78e50de882d20ad8a6349))
+
 ## [0.6.2](https://github.com/phi-ag/rvt-app/compare/v0.6.1...v0.6.2) (2024-11-18)
 
 
