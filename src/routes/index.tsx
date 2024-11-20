@@ -37,7 +37,7 @@ export default function () {
           </p>
           <p>{extensions}</p>
           <p class="mt-2">
-            <VerifiedUser class="mr-1 inline-flex" />
+            <VerifiedUser class="-mt-[2px] mr-1 inline-flex" />
             Files are processed locally and never transmitted over the network
           </p>
         </div>
