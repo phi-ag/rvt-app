@@ -1,6 +1,7 @@
 import { For, Match, Show, Switch, createSignal } from "solid-js";
 
 import { DropZone } from "~/components";
+import { VerifiedUser } from "~/icons/Material";
 import { type ProcessFileResult, processFiles } from "~/lib/revit";
 
 export default function () {
@@ -23,18 +24,22 @@ export default function () {
   return (
     <main class="flex flex-1 flex-col gap-4 overflow-hidden p-5">
       <DropZone
-        class="min-h-64 flex-1 items-center justify-center self-stretch bg-surface-container"
+        class="min-h-64 flex-1 self-stretch bg-surface-container"
         acceptExtensions={acceptExtensions}
         onFiles={process}
         disabled={processing()}
         data-testid="dropzone"
       >
-        <div class="flex flex-col gap-1">
+        <div class="mx-2 flex flex-col items-center gap-1">
           <h1 class="text-display-sm">Revit File Info</h1>
           <p class="text-title">
             {processing() ? "Processing ..." : "Drag 'n' drop or click to select files"}
           </p>
           <p>{extensions}</p>
+          <p class="mt-2">
+            <VerifiedUser class="mr-1 inline-flex" />
+            Files are processed locally and never transmitted over the network
+          </p>
         </div>
       </DropZone>
       <For each={results()}>
