@@ -1,5 +1,7 @@
 *.sh text eol=lf
 *.webp filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.ico filter=lfs diff=lfs merge=lfs -text
 *.rvt filter=lfs diff=lfs merge=lfs -text
 *.rte filter=lfs diff=lfs merge=lfs -text
 *.rfa filter=lfs diff=lfs merge=lfs -text
