@@ -82,7 +82,7 @@ const DropZone: ParentComponent<DropZoneProps> = (props) => {
     "onFiles"
   ]);
 
-  let inputRef: HTMLInputElement;
+  let inputRef!: HTMLInputElement;
 
   const onDrop: JSX.EventHandler<HTMLButtonElement, DragEvent> = async (event) => {
     event.preventDefault();
