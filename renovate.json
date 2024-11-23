@@ -20,14 +20,22 @@
     }
   ],
   "packageRules": [
-    { "matchDepNames": ["node", "@types/node"], "ignoreUnstable": false },
+    {
+      "matchDepNames": ["node", "@types/node"],
+      "ignoreUnstable": false
+    },
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true
     },
     {
-      "matchDepNames": ["@solidjs/router", "vinxi"],
+      "matchPackageNames": [
+        "vinxi",
+        "@solidjs/router",
+        "class-variance-authority",
+        "prettier-plugin-tailwindcss"
+      ],
       "automerge": true
     },
     {
