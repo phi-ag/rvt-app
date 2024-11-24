@@ -1,10 +1,10 @@
 import { HttpHeader } from "@solidjs/start";
 import { compact } from "lodash-es";
-import { Component, Show } from "solid-js";
+import { type Component, type JSXElement, Show } from "solid-js";
 import { getRequestEvent } from "solid-js/web";
 
 // SECURITY: seroval requires 'unsafe-eval'
-const scripts = (nonce: string) =>
+const scripts = (nonce: string): string =>
   [
     "script-src",
     "'self'",
@@ -38,7 +38,7 @@ const worker = ["worker-src", "'self'"].join(" ");
 
 const media = ["media-src", "'self'", "data:"].join(" ");
 
-const csp = (nonce: string) =>
+const csp = (nonce: string): string =>
   [
     "default-src 'none'",
     "base-uri 'none'",
@@ -61,7 +61,7 @@ const CspHeader: Component = () => {
   return <HttpHeader name="Content-Security-Policy" value={csp(nonce)} />;
 };
 
-const StrictTransportSecurity = () => {
+const StrictTransportSecurity = (): JSXElement => {
   const url = getRequestEvent()?.request?.url;
   const protocol = url ? new URL(url).protocol : undefined;
 

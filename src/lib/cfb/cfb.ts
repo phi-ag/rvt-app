@@ -117,7 +117,11 @@ const createDirectory = async (
 /**
  * NOTE: Never tested with more than one DIFAT sector
  */
-const addDiFatEntries = async (blob: Blob, header: Header, fatSectors: Uint32Array) => {
+const addDiFatEntries = async (
+  blob: Blob,
+  header: Header,
+  fatSectors: Uint32Array
+): Promise<void> => {
   for (let i = 0, current = header.diFatStart; ; i++) {
     if (current === endOfChain) {
       if (i !== header.diFatCount)
@@ -194,7 +198,7 @@ export class Cfb {
     this.#miniStreamSectors = miniStreamSectors;
   }
 
-  static initialize = async (blob: Blob) => {
+  static initialize = async (blob: Blob): Promise<Cfb> => {
     if (blob.size < 512) throw Error(`Compound file too small (${blob.size})`);
 
     const [header, fatSectors] = parseHeader(await sliceUint8(blob, 0, 512));
@@ -214,7 +218,8 @@ export class Cfb {
     return new Cfb(blob, header, directory, fat, miniFat, miniStreamSectors);
   };
 
-  findEntry = (name: string) => this.#directory.find((entry) => entry.name === name);
+  findEntry = (name: string): Entry | undefined =>
+    this.#directory.find((entry) => entry.name === name);
 
   fatBounds = (start: number, size: number): Boundaries => {
     const bounds = new Boundaries();
@@ -238,7 +243,7 @@ export class Cfb {
     return bounds;
   };
 
-  miniStreamOffset = (start: number) => {
+  miniStreamOffset = (start: number): number => {
     const subBits = this.#header.sectorSizeBits - this.#header.miniSectorSizeBits;
     const sector = start >> subBits;
     if (sector >= this.#miniStreamSectors.length)

@@ -5,7 +5,7 @@ export type BoundaryWithOffset = [start: number, end: number, offset: number];
 export class Boundaries {
   readonly items: BoundaryWithOffset[] = [];
 
-  add([start, end]: Boundary) {
+  add([start, end]: Boundary): void {
     const previous = this.items[this.items.length - 1];
     if (previous === undefined) {
       this.items.push([start, end, 0]);

@@ -7,7 +7,7 @@ export const assertEqual = (
   position: number,
   expected: ArrayLike<number>,
   message: string
-) => {
+): void => {
   const data = chunk.subarray(position, position + expected.length);
   if (!array.isEqual(data, expected))
     throw Error(`Unexpected compound file ${message} [${data}]`);
@@ -18,14 +18,14 @@ export const assertZero = (
   position: number,
   length: number,
   message: string
-) => {
+): void => {
   const data = chunk.subarray(position, position + length);
   if (!array.isZero(data))
     throw Error(`Unexpected compound file non-zero ${message} [${data}]`);
 };
 
 // see https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L669
-export const readDate = (view: DataView, offset: number) => {
+export const readDate = (view: DataView, offset: number): Date => {
   const leftShift32Factor = 4294967296; // Math.pow(2, 32)
   const filetimeOffset = 116444736e5;
 

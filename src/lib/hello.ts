@@ -1,4 +1,4 @@
-const hello = () => {
+const hello = (): void => {
   console.log(
     `%crvt.app%c
 v${import.meta.env.VERSION} ${import.meta.env.REVISION}

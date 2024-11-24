@@ -2,7 +2,7 @@ import {
   type CacheStorage,
   type IncomingRequestCfProperties
 } from "@cloudflare/workers-types/experimental";
-import { redirect } from "@solidjs/router";
+import { type CustomResponse, redirect } from "@solidjs/router";
 import { createMiddleware } from "@solidjs/start/middleware";
 import { type FetchEvent } from "@solidjs/start/server";
 import { type PlatformProxy } from "wrangler";
@@ -32,7 +32,7 @@ const ensurePlatformProxy = async (): Promise<Proxy> => {
   return proxy;
 };
 
-const cloudflare = async (event: FetchEvent) => {
+const cloudflare = async (event: FetchEvent): Promise<void> => {
   if (import.meta.env.DEV && !event.locals.cf) {
     const platformProxy = await ensurePlatformProxy();
     event.locals.cf = platformProxy.cf;
@@ -50,7 +50,9 @@ const cloudflare = async (event: FetchEvent) => {
   }
 };
 
-const redirectToDomain = async (event: FetchEvent) => {
+const redirectToDomain = async (
+  event: FetchEvent
+): Promise<CustomResponse<never> | undefined> => {
   if (import.meta.env.DEV) return;
 
   const domain = event.locals.env.DOMAIN;

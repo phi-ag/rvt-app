@@ -5,7 +5,7 @@ import Icon512 from "~/images/pwa-512x512.png";
 
 const color = "#111318";
 
-export const GET = () =>
+export const GET = (): Response =>
   Response.json({
     name: "rvt.app",
     short_name: "rvt.app",

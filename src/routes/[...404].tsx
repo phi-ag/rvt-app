@@ -1,6 +1,7 @@
 import { A } from "@solidjs/router";
+import { type JSXElement } from "solid-js";
 
-export default function NotFound() {
+export default function NotFound(): JSXElement {
   return (
     <main class="mx-2 my-4 flex flex-1 items-center justify-center">
       <div class="flex flex-col items-center">

@@ -1,14 +1,14 @@
-import { For, Match, Show, Switch, createSignal } from "solid-js";
+import { For, type JSXElement, Match, Show, Switch, createSignal } from "solid-js";
 
 import { DropZone } from "~/components";
 import { VerifiedUser } from "~/icons/Material";
 import { type ProcessFileResult, processFiles } from "~/lib/revit";
 
-export default function () {
+export default function (): JSXElement {
   const [processing, setProcessing] = createSignal(false);
   const [results, setResults] = createSignal<ProcessFileResult[]>();
 
-  const process = async (files: File[]) => {
+  const process = async (files: File[]): Promise<void> => {
     setProcessing(true);
     try {
       setResults(await processFiles(files));

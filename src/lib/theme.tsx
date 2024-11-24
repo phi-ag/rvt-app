@@ -13,31 +13,31 @@ import { getRequestEvent } from "solid-js/web";
 
 export type Theme = "dark" | "light";
 
-const setDarkStyle = () => {
+const setDarkStyle = (): void => {
   document.documentElement.style.colorScheme = "dark";
   document.documentElement.setAttribute("data-mode", "dark");
 };
 
-const setLightStyle = () => {
+const setLightStyle = (): void => {
   document.documentElement.style.colorScheme = "light";
   document.documentElement.removeAttribute("data-mode");
 };
 
-export const setDark = () => {
+export const setDark = (): void => {
   if (window?.localStorage) {
     window.localStorage.theme = "dark";
   }
   setDarkStyle();
 };
 
-export const setLight = () => {
+export const setLight = (): void => {
   if (window?.localStorage) {
     window.localStorage.theme = "light";
   }
   setLightStyle();
 };
 
-export const setSystem = () => {
+export const setSystem = (): void => {
   window?.localStorage.removeItem("theme");
 
   if (window?.matchMedia("(prefers-color-scheme: dark)")?.matches) {
@@ -96,7 +96,8 @@ export const ThemeProvider: ParentComponent = (props) => {
 
   createEffect(() => (theme() === "dark" ? setDark() : setLight()));
 
-  const toggle = () => setTheme((current) => (current === "dark" ? "light" : "dark"));
+  const toggle = (): string =>
+    setTheme((current) => (current === "dark" ? "light" : "dark"));
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, toggle }}>
@@ -105,4 +106,4 @@ export const ThemeProvider: ParentComponent = (props) => {
   );
 };
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = (): ThemeContextValue => useContext(ThemeContext);

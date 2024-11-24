@@ -3,12 +3,12 @@ import { bench, describe } from "vitest";
 import { toHex } from "./utils";
 
 describe.skip("toHex", async () => {
-  const toHexArrays = (array: Uint8Array) =>
+  const toHexArrays = (array: Uint8Array): string =>
     Array.from(array)
       .map((b) => b.toString(16).padStart(2, "0"))
       .join("");
 
-  const toHexReduce = (array: Uint8Array) =>
+  const toHexReduce = (array: Uint8Array): string =>
     array.reduce((result, value) => (result += value.toString(16).padStart(2, "0")), "");
 
   const data = new Uint8Array([0x50, 0xc2, 0xc2, 0x53, 0x46, 0xba, 0xd9, 0x01]);

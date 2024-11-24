@@ -10,7 +10,7 @@ export const isEqual = <T>(lhs: ArrayLike<T>, rhs: ArrayLike<T>): boolean => {
   return true;
 };
 
-export const isZero = <T>(array: ArrayLike<T>) => {
+export const isZero = <T>(array: ArrayLike<T>): boolean => {
   if (!array?.length) return false;
 
   // eslint-disable-next-line @typescript-eslint/prefer-for-of

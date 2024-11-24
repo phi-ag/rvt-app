@@ -3,7 +3,7 @@ import { bench, describe } from "vitest";
 import { readDate } from "./utils";
 
 describe.skip("read date", async () => {
-  const readDateBigInt = (view: DataView, offset: number) => {
+  const readDateBigInt = (view: DataView, offset: number): Date => {
     const filetime = view.getBigUint64(offset, true);
     return new Date(Number(filetime) / 1e4 - 116444736e5);
   };
@@ -21,7 +21,7 @@ describe.skip("read date", async () => {
 });
 
 describe.skip("uint32le", async () => {
-  const readUint32LE = function (b: Uint8Array, idx: number) {
+  const readUint32LE = function (b: Uint8Array, idx: number): number {
     return b[idx + 3] * (1 << 24) + (b[idx + 2] << 16) + (b[idx + 1] << 8) + b[idx];
   };
 
