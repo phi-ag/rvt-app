@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20241127.0",
-    "@eslint/js": "9.15.0",
+    "@eslint/js": "9.16.0",
     "@playwright/test": "1.49.0",
     "@testing-library/jest-dom": "6.6.3",
     "@trivago/prettier-plugin-sort-imports": "4.3.0",
@@ -54,7 +54,7 @@
     "@vite-pwa/assets-generator": "0.2.6",
     "@vitest/coverage-v8": "2.1.6",
     "autoprefixer": "10.4.20",
-    "eslint": "9.15.0",
+    "eslint": "9.16.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-solid": "0.14.4",
     "globals": "15.12.0",
