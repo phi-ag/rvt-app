@@ -1,5 +1,63 @@
 # Changelog
 
+## [0.6.4](https://github.com/phi-ag/rvt-app/compare/v0.6.3...v0.6.4) (2024-12-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency class-variance-authority to v0.7.1 ([f740985](https://github.com/phi-ag/rvt-app/commit/f74098553348798b973c126f0f98065003a41ee5))
+
+
+### Styles
+
+* generate pwa assets and add web app manifest ([a337b7b](https://github.com/phi-ag/rvt-app/commit/a337b7ba0d954e13afc082c9c95d3ae905551a26))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/cache digest to 1bd1e32 ([a02ce72](https://github.com/phi-ag/rvt-app/commit/a02ce72cd8d21e405e9d9eb796ad1dd5452164de))
+* **deps:** update codecov/codecov-action digest to 015f24e ([a3c6372](https://github.com/phi-ag/rvt-app/commit/a3c63728927d1399d7cb6e86176039effbd15870))
+* **deps:** update codecov/codecov-action digest to 7f8b4b4 ([b3a5b74](https://github.com/phi-ag/rvt-app/commit/b3a5b742685015acd521263134ea1886531622a7))
+* **deps:** update dependency @cloudflare/workers-types to v4.20241127.0 ([a331234](https://github.com/phi-ag/rvt-app/commit/a33123460c95e8d9c9a605e282aad9e38d8b7b80))
+* **deps:** update dependency @cloudflare/workers-types to v4.20241202.0 ([a4146a0](https://github.com/phi-ag/rvt-app/commit/a4146a0c21ef5a6dfb5c7f238d3531d853301f81))
+* **deps:** update dependency @cloudflare/workers-types to v4.20241205.0 ([07de249](https://github.com/phi-ag/rvt-app/commit/07de249e315168d8e66291c99f93388a53daf744))
+* **deps:** update dependency @types/eslint-plugin-jsx-a11y to v6.10.0 ([1f3f1c0](https://github.com/phi-ag/rvt-app/commit/1f3f1c0c5c242046ee97066fb49b862f201768cf))
+* **deps:** update dependency @types/node to v22.10.0 ([15639fb](https://github.com/phi-ag/rvt-app/commit/15639fb30ed4ec1ccdcafbeae4b1c664da786a01))
+* **deps:** update dependency @types/node to v22.10.1 ([e972454](https://github.com/phi-ag/rvt-app/commit/e972454470dd75e8209fad0227b88b6f7cbe54f4))
+* **deps:** update dependency @types/node to v22.9.2 ([dee970c](https://github.com/phi-ag/rvt-app/commit/dee970c656697ac4cafd61d2908492f252a69d65))
+* **deps:** update dependency @types/node to v22.9.3 ([ff4e7ab](https://github.com/phi-ag/rvt-app/commit/ff4e7abcd9ef4cafa492b024c738fdbc80daf265))
+* **deps:** update dependency @types/node to v22.9.4 ([efc6cb8](https://github.com/phi-ag/rvt-app/commit/efc6cb841632442acbbc3abf5d3856a236ce9a69))
+* **deps:** update dependency globals to v15.13.0 ([0acd615](https://github.com/phi-ag/rvt-app/commit/0acd615806a6f91cc49083a89d22db3a82a45b05))
+* **deps:** update dependency prettier to v3.4.0 ([4fd0b9f](https://github.com/phi-ag/rvt-app/commit/4fd0b9f2a958eb06638fb752e320e18e1f024a50))
+* **deps:** update dependency prettier to v3.4.1 ([2e60d2f](https://github.com/phi-ag/rvt-app/commit/2e60d2fd144d00965ee0cf36c8791a5901ab8918))
+* **deps:** update dependency prettier to v3.4.2 ([eae3504](https://github.com/phi-ag/rvt-app/commit/eae3504bbfe02ba4ab7035b6b9cb25f1a567c225))
+* **deps:** update dependency tailwindcss to v3.4.16 ([f79fa3a](https://github.com/phi-ag/rvt-app/commit/f79fa3a38f2739fe0fcce4cc86e6f3f526c0ff9d))
+* **deps:** update dependency typescript to v5.7.2 ([e91a73a](https://github.com/phi-ag/rvt-app/commit/e91a73addd1753a024cd8e90d4c7e47fcb7bcf60))
+* **deps:** update dependency typescript-eslint to v8.16.0 ([1760d21](https://github.com/phi-ag/rvt-app/commit/1760d212e5a73d781ee95658b34a101010b7a34e))
+* **deps:** update dependency typescript-eslint to v8.17.0 ([5ed5f2a](https://github.com/phi-ag/rvt-app/commit/5ed5f2ae6d88286d9d7b0db7a40cb37dae39dff9))
+* **deps:** update dependency wrangler to v3.89.0 ([520ffd9](https://github.com/phi-ag/rvt-app/commit/520ffd968ff54b0a6755f06da09816ad178fe1cc))
+* **deps:** update dependency wrangler to v3.90.0 ([7233d2a](https://github.com/phi-ag/rvt-app/commit/7233d2aa80d9961aaa10d4d7247000bda93a39c5))
+* **deps:** update dependency wrangler to v3.91.0 ([798562f](https://github.com/phi-ag/rvt-app/commit/798562f7929dbcf8b3cd12612c4ba8b00390ae93))
+* **deps:** update dependency wrangler to v3.92.0 ([e6a28ff](https://github.com/phi-ag/rvt-app/commit/e6a28ffe06128b60f4183c415006bedfeadd26be))
+* **deps:** update dependency wrangler to v3.93.0 ([b6d1278](https://github.com/phi-ag/rvt-app/commit/b6d1278cc86f3872571e1156267eb6c93e267ad9))
+* **deps:** update eslint monorepo to v9.16.0 ([766cc79](https://github.com/phi-ag/rvt-app/commit/766cc79c7c940b56e0d0fcee3d24e1e9e42aa3ef))
+* **deps:** update node.js to v23.3.0 ([09fb82c](https://github.com/phi-ag/rvt-app/commit/09fb82c4e4435eaf94157be3a96452c27170b4c0))
+* **deps:** update pnpm to v9.14.3 ([e455db9](https://github.com/phi-ag/rvt-app/commit/e455db9d8071c6c9ac13720268194d72625eaf63))
+* **deps:** update pnpm to v9.14.4 ([59ee84c](https://github.com/phi-ag/rvt-app/commit/59ee84c0d5145bcdec692602ca1b756ed5cf5879))
+* **deps:** update pnpm to v9.15.0 ([0050c59](https://github.com/phi-ag/rvt-app/commit/0050c59548a1e3f1f97dc5892adec47a41debb0d))
+* **deps:** update terraform cloudflare to v4.47.0 ([4b05710](https://github.com/phi-ag/rvt-app/commit/4b05710ef7994a8d0a01346bd6e471fbf5cc9fad))
+* **deps:** update vitest monorepo to v2.1.6 ([ec15714](https://github.com/phi-ag/rvt-app/commit/ec15714751d9aafaa894e149accbec70d275e15d))
+* **deps:** update vitest monorepo to v2.1.7 ([e2c400d](https://github.com/phi-ag/rvt-app/commit/e2c400d1ef3c642e2b9925a57f5c7fa6237b97c9))
+* **deps:** update vitest monorepo to v2.1.8 ([252559a](https://github.com/phi-ag/rvt-app/commit/252559ad72f06281b0150f5a74897164288d7368))
+* enforce function return types ([6cd8e2d](https://github.com/phi-ag/rvt-app/commit/6cd8e2d7171f00df1d984352ca371baa07778a42))
+* fix dropzone type issue ([dda7970](https://github.com/phi-ag/rvt-app/commit/dda797082b63c010081784de8692a5ce1eb85fd2))
+* improve hex string performance ([83fa905](https://github.com/phi-ag/rvt-app/commit/83fa905feecc9ed952b027cc5e202e5445c35042))
+
+
+### Continuous Integration
+
+* **renovate:** enable automerge for cva and prettier-plugin-tailwindcss ([cd60899](https://github.com/phi-ag/rvt-app/commit/cd60899562b234b2858862f70332c0615115ef9a))
+
 ## [0.6.3](https://github.com/phi-ag/rvt-app/compare/v0.6.2...v0.6.3) (2024-11-20)
 
 
