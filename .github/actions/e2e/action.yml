@@ -6,7 +6,7 @@ runs:
     - name: End-to-End
       uses: phi-ag/run-playwright@a2a216e53d9746d636d32b81504eac257c73e2ae # v1
       with:
-        version: v1.49.0-noble@sha256:0fc07c73230cb7c376a528d7ffc83c4bdcdcd3fc7efbe54a2eed72b1ec118377
+        version: v1.49.1-noble@sha256:70e367e0cbf60340a5b5fd562f6247a34eb3196efab9f88a3dd56482d9fe09d2
         options: -v ${STORE_PATH}:${STORE_PATH}
         run: |
           corepack enable

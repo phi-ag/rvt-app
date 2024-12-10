@@ -44,7 +44,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "4.20241205.0",
     "@eslint/js": "9.16.0",
-    "@playwright/test": "1.49.0",
+    "@playwright/test": "1.49.1",
     "@testing-library/jest-dom": "6.6.3",
     "@trivago/prettier-plugin-sort-imports": "5.2.0",
     "@types/eslint-plugin-jsx-a11y": "6.10.0",
