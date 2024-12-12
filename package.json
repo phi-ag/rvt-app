@@ -64,10 +64,16 @@
     "tailwindcss": "3.4.16",
     "typescript": "5.7.2",
     "typescript-eslint": "8.18.0",
-    "vinxi": "0.4.3",
-    "vite": "5.4.11",
+    "vinxi": "0.5.1",
+    "vite": "6.0.3",
+    "vite-plugin-solid": "2.11.0",
     "vitest": "2.1.8",
     "wrangler": "3.95.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "vinxi": "$vinxi"
+    }
   },
   "engines": {
     "node": "23.4.0"
