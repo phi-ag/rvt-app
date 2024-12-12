@@ -56,7 +56,7 @@
     "autoprefixer": "10.4.20",
     "eslint": "9.16.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-solid": "0.14.4",
+    "eslint-plugin-solid": "0.14.5",
     "globals": "15.13.0",
     "postcss": "8.4.49",
     "prettier": "3.4.2",
