@@ -1,6 +1,8 @@
 import { defineConfig } from "@solidjs/start/config";
 
-import { revision, version } from "./utils/version.js";
+import { version } from "./package.json";
+
+export const revision = process.env.GITHUB_SHA?.slice(0, 7) ?? "deadbeef";
 
 export default defineConfig({
   middleware: "./src/middleware.ts",
