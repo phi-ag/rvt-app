@@ -1,7 +1,3 @@
-import {
-  type CacheStorage,
-  type IncomingRequestCfProperties
-} from "@cloudflare/workers-types/experimental";
 import { type CustomResponse, redirect } from "@solidjs/router";
 import { createMiddleware } from "@solidjs/start/middleware";
 import { type FetchEvent } from "@solidjs/start/server";

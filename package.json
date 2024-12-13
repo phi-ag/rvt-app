@@ -22,7 +22,7 @@
     "test:e2e": "playwright test",
     "test:e2e:dev": "PWTEST_WATCH=1 playwright test",
     "bench": "pnpm vitest bench --run",
-    "typegen": "wrangler types src/worker-configuration.d.ts",
+    "typegen": "wrangler types --experimental-include-runtime=src/worker.d.ts src/env.d.ts",
     "deploy": "wrangler pages deploy --branch main",
     "deploy:production": "wrangler pages deploy --branch production",
     "tail": "wrangler pages deployment tail --project-name rvt-app --environment preview",
@@ -42,7 +42,6 @@
     "uuid": "11.0.3"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20241205.0",
     "@eslint/js": "9.16.0",
     "@playwright/test": "1.49.1",
     "@testing-library/jest-dom": "6.6.3",

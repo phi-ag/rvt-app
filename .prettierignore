@@ -1,2 +1,3 @@
 pnpm-lock.yaml
-src/worker-configuration.d.ts
+src/env.d.ts
+src/worker.d.ts

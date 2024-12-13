@@ -44,10 +44,6 @@
       "matchPackageNames": ["@solidjs/start", "vinxi"]
     },
     {
-      "groupName": "wrangler",
-      "matchPackageNames": ["wrangler", "@cloudflare/workers-types"]
-    },
-    {
       "groupName": "playwright",
       "matchPackageNames": [
         "phi-ag/run-playwright",
