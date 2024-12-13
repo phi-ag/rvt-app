@@ -42,7 +42,7 @@
     "uuid": "11.0.3"
   },
   "devDependencies": {
-    "@eslint/js": "9.16.0",
+    "@eslint/js": "9.17.0",
     "@playwright/test": "1.49.1",
     "@testing-library/jest-dom": "6.6.3",
     "@trivago/prettier-plugin-sort-imports": "5.2.0",
@@ -53,7 +53,7 @@
     "@vite-pwa/assets-generator": "0.2.6",
     "@vitest/coverage-v8": "2.1.8",
     "autoprefixer": "10.4.20",
-    "eslint": "9.16.0",
+    "eslint": "9.17.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-solid": "0.14.5",
     "globals": "15.13.0",
