@@ -43,8 +43,8 @@ importers:
         specifier: 6.6.3
         version: 6.6.3
       '@trivago/prettier-plugin-sort-imports':
-        specifier: 5.2.0
-        version: 5.2.0(prettier@3.4.2)
+        specifier: 5.2.1
+        version: 5.2.1(prettier@3.4.2)
       '@types/eslint-plugin-jsx-a11y':
         specifier: 6.10.0
         version: 6.10.0
@@ -86,7 +86,7 @@ importers:
         version: 3.4.2
       prettier-plugin-tailwindcss:
         specifier: 0.6.9
-        version: 0.6.9(@trivago/prettier-plugin-sort-imports@5.2.0(prettier@3.4.2))(prettier@3.4.2)
+        version: 0.6.9(@trivago/prettier-plugin-sort-imports@5.2.1(prettier@3.4.2))(prettier@3.4.2)
       tailwindcss:
         specifier: 3.4.17
         version: 3.4.17
@@ -1258,14 +1258,14 @@ packages:
     resolution: {integrity: sha512-IteBhl4XqYNkM54f4ejhLRJiZNqcSCoXUOG2CPK7qbD322KjQozM4kHQOfkG2oln9b9HTYqs+Sae8vBATubxxA==}
     engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
 
-  '@trivago/prettier-plugin-sort-imports@5.2.0':
-    resolution: {integrity: sha512-yEIJ7xMKYQwyNRjxSdi4Gs37iszikAjxfky+3hu9bn24u8eHLJNDMAoOTyowp8p6EpSl8IQMdkfBx+WnJTttsw==}
+  '@trivago/prettier-plugin-sort-imports@5.2.1':
+    resolution: {integrity: sha512-NDZndt0fmVThIx/8cExuJHLZagUVzfGCoVrwH9x6aZvwfBdkrDFTYujecek6X2WpG4uUFsVaPg5+aNQPSyjcmw==}
     engines: {node: '>18.12'}
     peerDependencies:
       '@vue/compiler-sfc': 3.x
       prettier: 2.x - 3.x
       prettier-plugin-svelte: 3.x
-      svelte: 4.x
+      svelte: 4.x || 5.x
     peerDependenciesMeta:
       '@vue/compiler-sfc':
         optional: true
@@ -5073,7 +5073,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@trivago/prettier-plugin-sort-imports@5.2.0(prettier@3.4.2)':
+  '@trivago/prettier-plugin-sort-imports@5.2.1(prettier@3.4.2)':
     dependencies:
       '@babel/generator': 7.26.3
       '@babel/parser': 7.26.3
@@ -7334,11 +7334,11 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-tailwindcss@0.6.9(@trivago/prettier-plugin-sort-imports@5.2.0(prettier@3.4.2))(prettier@3.4.2):
+  prettier-plugin-tailwindcss@0.6.9(@trivago/prettier-plugin-sort-imports@5.2.1(prettier@3.4.2))(prettier@3.4.2):
     dependencies:
       prettier: 3.4.2
     optionalDependencies:
-      '@trivago/prettier-plugin-sort-imports': 5.2.0(prettier@3.4.2)
+      '@trivago/prettier-plugin-sort-imports': 5.2.1(prettier@3.4.2)
 
   prettier@3.4.2: {}
 
