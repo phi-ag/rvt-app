@@ -1,8 +1,3 @@
-import MaskableIcon from "~/images/maskable-icon-512x512.png";
-import Icon64 from "~/images/pwa-64x64.png";
-import Icon192 from "~/images/pwa-192x192.png";
-import Icon512 from "~/images/pwa-512x512.png";
-
 const color = "#111318";
 
 export const GET = (): Response =>
@@ -12,22 +7,22 @@ export const GET = (): Response =>
     description: "Display Revit file information",
     icons: [
       {
-        src: Icon64,
+        src: "/pwa-64x64.png",
         sizes: "64x64",
         type: "image/png"
       },
       {
-        src: Icon192,
+        src: "/pwa-192x192.png",
         sizes: "192x192",
         type: "image/png"
       },
       {
-        src: Icon512,
+        src: "/pwa-512x512.png",
         sizes: "512x512",
         type: "image/png"
       },
       {
-        src: MaskableIcon,
+        src: "/maskable-icon-512x512.png",
         sizes: "512x512",
         type: "image/png",
         purpose: "maskable"

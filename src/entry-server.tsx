@@ -3,9 +3,6 @@ import { StartServer, createHandler } from "@solidjs/start/server";
 import { v7 as uuidv7 } from "uuid";
 
 import { Analytics } from "~/components";
-import FaviconSvg from "~/images/Phi.svg";
-import AppleIcon from "~/images/apple-touch-icon-180x180.png";
-import FaviconIco from "~/images/favicon.ico";
 import { SecurityHeader } from "~/lib/security";
 import { ThemeHeaderScript } from "~/lib/theme";
 
@@ -28,9 +25,9 @@ export default createHandler(
                 content="Display Revit file information in the browser"
               />
               <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <link rel="icon" href={FaviconIco} sizes="48x48" />
-              <link rel="icon" href={FaviconSvg} sizes="any" type="image/svg+xml" />
-              <link rel="apple-touch-icon" href={AppleIcon} />
+              <link rel="icon" href="/favicon.ico" sizes="48x48" />
+              <link rel="icon" href="/Phi.svg" sizes="any" type="image/svg+xml" />
+              <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
               <link rel="manifest" href="/site.webmanifest" />
               <title>rvt.app</title>
               <ThemeHeaderScript />

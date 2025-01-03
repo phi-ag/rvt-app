@@ -14,5 +14,5 @@ export default defineConfig({
       resizeOptions: { fit: "contain", background }
     }
   },
-  images: ["src/images/Phi.svg"]
+  images: ["public/Phi.svg"]
 });
