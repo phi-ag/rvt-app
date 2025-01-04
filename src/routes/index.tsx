@@ -44,9 +44,9 @@ export default function (): JSXElement {
   const extensions = acceptExtensions.map((ext) => `.${ext}`).join(" | ");
 
   return (
-    <div class="flex flex-1 flex-col">
+    <div class="flex flex-1 flex-col overflow-hidden">
       <Top />
-      <main class="flex flex-1 flex-col gap-4 overflow-hidden p-5 pb-5 pt-1">
+      <main class="flex flex-1 flex-col gap-4 p-5 pb-5 pt-1">
         <DropZone
           class="min-h-64 flex-1 self-stretch bg-surface-container"
           acceptExtensions={acceptExtensions}
