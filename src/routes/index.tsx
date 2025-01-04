@@ -9,22 +9,31 @@ import {
 } from "solid-js";
 
 import { DropZone } from "~/components";
+import { ThemeToggle } from "~/icons/Animated";
+import { GitHub } from "~/icons/GitHub";
 import { VerifiedUser } from "~/icons/Material";
-import GitHub from "~/images/GithHub.svg";
 import { type ProcessFileResult, processFiles } from "~/lib/revit";
+import { useTheme } from "~/lib/theme";
 
-const Top: Component = () => (
-  <header class="mx-5 flex h-12 flex-none items-center justify-end">
-    <a
-      class="h-7 w-7 lg:h-5 lg:w-5"
-      href="https://github.com/phi-ag/rvt-app"
-      target="_blank"
-      aria-label="GitHub"
-    >
-      <img src={GitHub} alt="GitHub" />
-    </a>
-  </header>
-);
+const Navigation: Component = () => {
+  const { theme, toggle } = useTheme();
+
+  return (
+    <header class="flex h-12 flex-none items-center justify-end gap-3 px-5">
+      <button aria-label="Toggle theme" onClick={() => toggle()}>
+        <ThemeToggle theme={theme()} />
+      </button>
+      <a
+        class="h-6 w-6"
+        href="https://github.com/phi-ag/rvt-app"
+        target="_blank"
+        aria-label="GitHub"
+      >
+        <GitHub />
+      </a>
+    </header>
+  );
+};
 
 export default function (): JSXElement {
   const [processing, setProcessing] = createSignal(false);
@@ -45,7 +54,7 @@ export default function (): JSXElement {
 
   return (
     <div class="flex flex-1 flex-col overflow-hidden">
-      <Top />
+      <Navigation />
       <main class="flex flex-1 flex-col gap-4 p-5 pb-5 pt-1">
         <DropZone
           class="min-h-64 flex-1 self-stretch bg-surface-container"
