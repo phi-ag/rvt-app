@@ -1,7 +1,7 @@
 # rvt.app
 
-[![Production](https://shields.io/badge/production-blue?style=for-the-badge)](https://rvt.app)
-[![Preview](https://shields.io/badge/preview-orange?style=for-the-badge)](https://preview.rvt.app)
+[![Production](https://shields.io/badge/production-0369a1?style=for-the-badge)](https://rvt.app)
+[![Preview](https://shields.io/badge/preview-c2410c?style=for-the-badge)](https://preview.rvt.app)
 [![Coverage](https://img.shields.io/codecov/c/github/phi-ag/rvt-app?style=for-the-badge)](https://app.codecov.io/github/phi-ag/rvt-app)
 
 Display [Revit](https://www.autodesk.com/products/revit) file information in the browser
