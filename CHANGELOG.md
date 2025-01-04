@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.6.5](https://github.com/phi-ag/rvt-app/compare/v0.6.4...v0.6.5) (2025-01-04)
+
+
+### Bug Fixes
+
+* overflow for small screen size ([3ff6a91](https://github.com/phi-ag/rvt-app/commit/3ff6a9163442d1c67c44da13404b0e5c30bf7b3d))
+
+
+### Documentation
+
+* use tailwind colors for badges ([92054b4](https://github.com/phi-ag/rvt-app/commit/92054b49bbbe5f8b8d8387122b203841f514dcc9))
+
+
+### Miscellaneous Chores
+
+* add theme toggle ([5df03b4](https://github.com/phi-ag/rvt-app/commit/5df03b48fec3bb5bff708e9316f5fd00a5cada57))
+* **deps:** update dependency @trivago/prettier-plugin-sort-imports to v5.2.1 ([b19e5fd](https://github.com/phi-ag/rvt-app/commit/b19e5fd14d04bf5ce24269dbe721cc720a0e7b17))
+* **deps:** update dependency @types/node to v22.10.5 ([c760b0c](https://github.com/phi-ag/rvt-app/commit/c760b0cdcc1461b930ae82febad669dc7228b243))
+* **deps:** update dependency vite to v6.0.7 ([6879bda](https://github.com/phi-ag/rvt-app/commit/6879bdad9957893d77d52ccaaafb22102b03f5fd))
+
 ## [0.6.4](https://github.com/phi-ag/rvt-app/compare/v0.6.3...v0.6.4) (2025-01-03)
 
 
