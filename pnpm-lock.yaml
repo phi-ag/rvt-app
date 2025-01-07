@@ -18,8 +18,8 @@ importers:
         specifier: 0.15.2
         version: 0.15.2(solid-js@1.9.3)
       '@solidjs/start':
-        specifier: 1.0.10
-        version: 1.0.10(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vinxi@0.5.1(@types/node@22.10.5)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.0))(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.1)(terser@5.37.0)(yaml@2.6.0))
+        specifier: 1.0.11
+        version: 1.0.11(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vinxi@0.5.1(@types/node@22.10.5)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.0))(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.1)(terser@5.37.0)(yaml@2.6.0))
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -1251,8 +1251,8 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@1.0.10':
-    resolution: {integrity: sha512-3yg4KraSxc4rXs9dy/3kkqjDhU0JCPsZFLmDl5n6hHRPwtLLac6WUhs2k5VxGzitHaaJM/ZQCfT7i544Mf+4tw==}
+  '@solidjs/start@1.0.11':
+    resolution: {integrity: sha512-ZkrHtwxnmaVGItah13BtmST6rh3PtATcj0RyXM19Shj6MK/cIpDBBsDTsgwqCbZoa/AT8/JLM5xUHFjQyBjRCA==}
 
   '@testing-library/jest-dom@6.6.3':
     resolution: {integrity: sha512-IteBhl4XqYNkM54f4ejhLRJiZNqcSCoXUOG2CPK7qbD322KjQozM4kHQOfkG2oln9b9HTYqs+Sae8vBATubxxA==}
@@ -5040,7 +5040,7 @@ snapshots:
     dependencies:
       solid-js: 1.9.3
 
-  '@solidjs/start@1.0.10(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vinxi@0.5.1(@types/node@22.10.5)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.0))(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.1)(terser@5.37.0)(yaml@2.6.0))':
+  '@solidjs/start@1.0.11(@testing-library/jest-dom@6.6.3)(solid-js@1.9.3)(vinxi@0.5.1(@types/node@22.10.5)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.0))(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.1)(terser@5.37.0)(yaml@2.6.0))':
     dependencies:
       '@vinxi/plugin-directives': 0.4.3(vinxi@0.5.1(@types/node@22.10.5)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.0))
       '@vinxi/server-components': 0.4.3(vinxi@0.5.1(@types/node@22.10.5)(ioredis@5.4.1)(jiti@2.4.1)(terser@5.37.0)(typescript@5.7.2)(yaml@2.6.0))

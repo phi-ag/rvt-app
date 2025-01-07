@@ -35,7 +35,7 @@
   "dependencies": {
     "@fontsource/roboto": "5.1.1",
     "@solidjs/router": "0.15.2",
-    "@solidjs/start": "1.0.10",
+    "@solidjs/start": "1.0.11",
     "class-variance-authority": "0.7.1",
     "lodash-es": "4.17.21",
     "solid-js": "1.9.3",
