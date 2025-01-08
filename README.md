@@ -4,7 +4,9 @@
 [![Preview](https://shields.io/badge/preview-c2410c?style=for-the-badge)](https://preview.rvt.app)
 [![Coverage](https://img.shields.io/codecov/c/github/phi-ag/rvt-app?style=for-the-badge)](https://app.codecov.io/github/phi-ag/rvt-app)
 
-Display [Revit](https://www.autodesk.com/products/revit) file information in the browser
+rvt-app displays the basic [Revit](https://www.autodesk.com/products/revit) `RVT` or `RFA` file information contained in `BasicFileInfo` in the browser using TypeScript. 
+
+You can try it out by simply dropping an `RVT` BIM file into the [rvt.app](https://rvt.app/) web site.
 
 ## Development
 
