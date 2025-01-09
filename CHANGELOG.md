@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.6.6](https://github.com/phi-ag/rvt-app/compare/v0.6.5...v0.6.6) (2025-01-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @solidjs/start to v1.0.11 ([98318fa](https://github.com/phi-ag/rvt-app/commit/98318fad4b56a3f2ecb3f5dc522cb56094c74c46))
+* **deps:** update dependency solid-js to v1.9.4 ([38f1600](https://github.com/phi-ag/rvt-app/commit/38f16009cbecce5c51e08d09fba4eeebbd7dd9cc))
+* **deps:** update dependency uuid to v11.0.4 ([feb51c3](https://github.com/phi-ag/rvt-app/commit/feb51c3cc47bb0c4863fb745ef76a72b90f44e46))
+
+
+### Miscellaneous Chores
+
+* **deps:** update codecov/test-results-action digest to 4e79e65 ([768d8df](https://github.com/phi-ag/rvt-app/commit/768d8df035b910bf382fe07cd37d6de7596e3026))
+* **deps:** update dependency typescript to v5.7.3 ([405ea6b](https://github.com/phi-ag/rvt-app/commit/405ea6b570afbd4afb27bae1562ed10a86ea9ffd))
+* **deps:** update dependency typescript-eslint to v8.19.1 ([f4ad0e2](https://github.com/phi-ag/rvt-app/commit/f4ad0e288c7a0e09b156dda187cbf229c95b8aa9))
+* **deps:** update dependency wrangler to v3.100.0 ([b06c4d0](https://github.com/phi-ag/rvt-app/commit/b06c4d05f5b3928c7cc877e6b4807d5a4acf06f8))
+* **deps:** update node.js to v23.6.0 ([35d8502](https://github.com/phi-ag/rvt-app/commit/35d8502d2315dfabc88dbbd15ec46aa3b9be31db))
+* **deps:** update pnpm to v9.15.3 ([da2d8b0](https://github.com/phi-ag/rvt-app/commit/da2d8b0ddd45605176fa1ce21e7fa6cb1c90b0c0))
+* **deps:** update terraform cloudflare to v4.50.0 ([81ca625](https://github.com/phi-ag/rvt-app/commit/81ca625805d2af637c4aed444dfe48da4048ad18))
+
 ## [0.6.5](https://github.com/phi-ag/rvt-app/compare/v0.6.4...v0.6.5) (2025-01-04)
 
 
