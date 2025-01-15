@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.6.7](https://github.com/phi-ag/rvt-app/compare/v0.6.6...v0.6.7) (2025-01-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @solidjs/router to v0.15.3 ([b2bf7e8](https://github.com/phi-ag/rvt-app/commit/b2bf7e8cf35d5748e44c4fab87313471f3340276))
+* **deps:** update dependency uuid to v11.0.5 ([09853da](https://github.com/phi-ag/rvt-app/commit/09853da0e9b89ac60d60bfa63fe706df5b723dd0))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v22.10.6 ([b38d9da](https://github.com/phi-ag/rvt-app/commit/b38d9da8cb853be70c9d6c79a73d2b12e24c8c90))
+* **deps:** update dependency postcss to v8.5.0 ([1d1ac30](https://github.com/phi-ag/rvt-app/commit/1d1ac30d84f8b671075579f4de91ba28c1509dd2))
+* **deps:** update dependency postcss to v8.5.1 ([493b18d](https://github.com/phi-ag/rvt-app/commit/493b18dd57602ab7a7d13b5c1ae4bf9c0f27ed9f))
+* **deps:** update dependency typescript-eslint to v8.20.0 ([d1eb5a1](https://github.com/phi-ag/rvt-app/commit/d1eb5a1ce2884101d9d81c2b66a75a8fe01c481e))
+* **deps:** update dependency wrangler to v3.101.0 ([c5d5395](https://github.com/phi-ag/rvt-app/commit/c5d53955d631394a930cba07ca5f6e80fd0ad73e))
+* **deps:** update dependency wrangler to v3.102.0 ([93526ba](https://github.com/phi-ag/rvt-app/commit/93526baf0626644bf4409bbe6896e3bc4870c3d5))
+* **deps:** update eslint monorepo to v9.18.0 ([53500ce](https://github.com/phi-ag/rvt-app/commit/53500ce9ba5bb995eea3bb5d8b934fe10277d92b))
+* **deps:** update pnpm to v9.15.4 ([157d5f0](https://github.com/phi-ag/rvt-app/commit/157d5f0fb2a6f40a5f1272b0adebe0e6ac20a5f2))
+
 ## [0.6.6](https://github.com/phi-ag/rvt-app/compare/v0.6.5...v0.6.6) (2025-01-09)
 
 
