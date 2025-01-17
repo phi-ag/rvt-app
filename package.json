@@ -67,7 +67,7 @@
     "vite": "6.0.7",
     "vite-plugin-solid": "2.11.0",
     "vitest": "3.0.1",
-    "wrangler": "3.103.1"
+    "wrangler": "3.103.2"
   },
   "pnpm": {
     "overrides": {
