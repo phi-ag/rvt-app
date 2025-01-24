@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@eslint/js": "9.18.0",
-    "@playwright/test": "1.49.1",
+    "@playwright/test": "1.50.0",
     "@testing-library/jest-dom": "6.6.3",
     "@trivago/prettier-plugin-sort-imports": "5.2.1",
     "@types/eslint-plugin-jsx-a11y": "6.10.0",
