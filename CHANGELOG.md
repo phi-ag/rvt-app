@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.6.8](https://github.com/phi-ag/rvt-app/compare/v0.6.7...v0.6.8) (2025-01-25)
+
+
+### Miscellaneous Chores
+
+* **deps:** update codecov/codecov-action digest to 0da7aa6 ([b140b45](https://github.com/phi-ag/rvt-app/commit/b140b450f26c11e28a222a0697c6d6df03ad28ab))
+* **deps:** update codecov/codecov-action digest to 13ce06b ([0149dea](https://github.com/phi-ag/rvt-app/commit/0149dead20d6eb6e3438fd1a0daea3ab08992e87))
+* **deps:** update codecov/codecov-action digest to 5a605bd ([d101e5f](https://github.com/phi-ag/rvt-app/commit/d101e5f7d8ba2d3d48fca8a90a5aeed2eeff0f68))
+* **deps:** update dependency @types/node to v22.10.10 ([6073b7f](https://github.com/phi-ag/rvt-app/commit/6073b7f124451db7af8c1e9411970b7e3fd9baa3))
+* **deps:** update dependency @types/node to v22.10.7 ([7865f9d](https://github.com/phi-ag/rvt-app/commit/7865f9d15235b6bcdc4ca919592405b1d0376fe5))
+* **deps:** update dependency @types/node to v22.10.8 ([6866c05](https://github.com/phi-ag/rvt-app/commit/6866c05139a56fb8481072289598661ded2f07f3))
+* **deps:** update dependency @types/node to v22.10.9 ([1db220b](https://github.com/phi-ag/rvt-app/commit/1db220b41a4712fb5b0ce7a3e45c118d076e1532))
+* **deps:** update dependency prettier-plugin-tailwindcss to v0.6.10 ([1ac779e](https://github.com/phi-ag/rvt-app/commit/1ac779edb0346bf354741a7f445cc218102b650a))
+* **deps:** update dependency prettier-plugin-tailwindcss to v0.6.11 ([f042b61](https://github.com/phi-ag/rvt-app/commit/f042b61f1fb41f502225c8b0fd028d53d3694ab0))
+* **deps:** update dependency typescript-eslint to v8.21.0 ([baa931c](https://github.com/phi-ag/rvt-app/commit/baa931c595cb7339bf25e4e4b5f1fa35a5b10159))
+* **deps:** update dependency vite to v6.0.10 ([994189b](https://github.com/phi-ag/rvt-app/commit/994189b4f3f80e9258828cc4e07260e0751555e9))
+* **deps:** update dependency vite to v6.0.11 ([a1d9a61](https://github.com/phi-ag/rvt-app/commit/a1d9a61a210be7845cd1054e31c31ad1d352f8c9))
+* **deps:** update dependency vite to v6.0.9 ([b92956a](https://github.com/phi-ag/rvt-app/commit/b92956a4829cb41ac27527d398bd89e79cf59d62))
+* **deps:** update dependency wrangler to v3.103.1 ([5881021](https://github.com/phi-ag/rvt-app/commit/58810211c39c8d8d47877ac88d6245df9d5eff5f))
+* **deps:** update dependency wrangler to v3.103.2 ([e741bed](https://github.com/phi-ag/rvt-app/commit/e741bedfaca909059b2f93170f02000c31f6403c))
+* **deps:** update dependency wrangler to v3.104.0 ([33599da](https://github.com/phi-ag/rvt-app/commit/33599dab48e28e579fa3d4795313393520e7a4fb))
+* **deps:** update dependency wrangler to v3.105.0 ([7398113](https://github.com/phi-ag/rvt-app/commit/7398113469061abdfa0070ab0f6e116a2fd21148))
+* **deps:** update dependency wrangler to v3.105.1 ([7b02356](https://github.com/phi-ag/rvt-app/commit/7b02356a59ba791e6abbb664570bfd11f5611a92))
+* **deps:** update eslint monorepo to v9.19.0 ([1c719f8](https://github.com/phi-ag/rvt-app/commit/1c719f8da358ecaa407e6dba852189b527bd4782))
+* **deps:** update node.js to v23.6.1 ([bc27bee](https://github.com/phi-ag/rvt-app/commit/bc27bee9b06d9bef851bfb90326a7ef0a6c457b2))
+* **deps:** update playwright ([05df63d](https://github.com/phi-ag/rvt-app/commit/05df63d10c00b49915fa4143cf682422c5c0d278))
+* **deps:** update terraform cloudflare to v4.51.0 ([5b96e31](https://github.com/phi-ag/rvt-app/commit/5b96e31245dc702ba921cb7ca264dfe2229af879))
+* **deps:** update vitest monorepo to v3 ([593cb16](https://github.com/phi-ag/rvt-app/commit/593cb1696dce3067f8c52de9cb800c0435f26d51))
+* **deps:** update vitest monorepo to v3.0.2 ([8a06279](https://github.com/phi-ag/rvt-app/commit/8a062793ef415764b8d1a5df4aae87658e2fb520))
+* **deps:** update vitest monorepo to v3.0.3 ([54299b0](https://github.com/phi-ag/rvt-app/commit/54299b04e0674b90464b86ff02551dcb126b8be1))
+* **deps:** update vitest monorepo to v3.0.4 ([a188718](https://github.com/phi-ag/rvt-app/commit/a188718e0029df8e72c38d06c2f713e22ab021ba))
+
 ## [0.6.7](https://github.com/phi-ag/rvt-app/compare/v0.6.6...v0.6.7) (2025-01-15)
 
 
