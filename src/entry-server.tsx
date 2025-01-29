@@ -33,9 +33,9 @@ export default createHandler(
               <ThemeHeaderScript />
               {assets}
             </head>
-            <body class="flex h-full w-full flex-col bg-surface-dim text-base text-on-surface antialiased">
+            <body class="bg-surface-dim text-on-surface flex h-full w-full flex-col text-base antialiased">
               <noscript class="mx-2 my-4 flex flex-col items-center gap-2">
-                <span class="text-center text-title-lg">
+                <span class="text-title-lg text-center">
                   This app requires JavaScript ⚡
                 </span>
                 <span>Please enable it in your browser settings.</span>

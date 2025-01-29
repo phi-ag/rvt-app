@@ -55,9 +55,9 @@ export default function (): JSXElement {
   return (
     <div class="flex flex-1 flex-col overflow-hidden">
       <Navigation />
-      <main class="flex flex-1 flex-col gap-4 p-5 pb-5 pt-1">
+      <main class="flex flex-1 flex-col gap-4 p-5 pt-1 pb-5">
         <DropZone
-          class="min-h-64 flex-1 self-stretch bg-surface-container"
+          class="bg-surface-container min-h-64 flex-1 self-stretch"
           acceptExtensions={acceptExtensions}
           onFiles={process}
           disabled={processing()}
@@ -78,7 +78,7 @@ export default function (): JSXElement {
         <For each={results()}>
           {(result) => (
             <div class="flex flex-col gap-1 [&>div]:truncate">
-              <h2 class="truncate text-headline-sm" data-testid="name">
+              <h2 class="text-headline-sm truncate" data-testid="name">
                 {result.name}
               </h2>
               <Switch>
@@ -113,7 +113,7 @@ export default function (): JSXElement {
                     Path: <span data-testid="path">{result.info?.path}</span>
                   </div>
                   <pre
-                    class="mt-2 truncate whitespace-pre-wrap break-words"
+                    class="mt-2 truncate break-words whitespace-pre-wrap"
                     data-testid="content"
                   >
                     {result.info?.content}

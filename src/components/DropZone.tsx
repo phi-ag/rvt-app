@@ -15,7 +15,7 @@ const dropZone = cva([
   "rounded-2xl",
   "border-2",
   "border-dashed",
-  "outline-none",
+  "outline-hidden",
   "border-gray-400",
   "dark:border-gray-600",
   "hover:ring-4",
@@ -115,7 +115,7 @@ const DropZone: ParentComponent<DropZoneProps> = (props) => {
         dropZone({
           class: local.class
         }),
-        dragging() ? "ring-4 ring-secondary" : "ring-primary"
+        dragging() ? "ring-secondary ring-4" : "ring-primary"
       )}
     >
       <input
