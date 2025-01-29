@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.9](https://github.com/phi-ag/rvt-app/compare/v0.6.8...v0.6.9) (2025-01-29)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/setup-node digest to 1d0ff46 ([327da7f](https://github.com/phi-ag/rvt-app/commit/327da7f76183beeb818fe4940dee80556ad2b9ce))
+* **deps:** update dependency @trivago/prettier-plugin-sort-imports to v5.2.2 ([fe4da74](https://github.com/phi-ag/rvt-app/commit/fe4da74cb88235ea9303b620e85a1bfbd10bd7a6))
+* **deps:** update dependency @types/node to v22.12.0 ([f759b2c](https://github.com/phi-ag/rvt-app/commit/f759b2c9dce71aea632c04daeea0dbb5aace5bcf))
+* **deps:** update dependency typescript-eslint to v8.22.0 ([686f43d](https://github.com/phi-ag/rvt-app/commit/686f43dd356b11309b3e2ce94295f67804a04c56))
+* **deps:** update dependency wrangler to v3.106.0 ([71d1334](https://github.com/phi-ag/rvt-app/commit/71d13347c8b201990fc001358b36abdcd38592d7))
+* **deps:** update tailwind to v4 ([0fa0be9](https://github.com/phi-ag/rvt-app/commit/0fa0be94e66c0b1bc79f44f9dfc4703a254e6094))
+
 ## [0.6.8](https://github.com/phi-ag/rvt-app/compare/v0.6.7...v0.6.8) (2025-01-25)
 
 
