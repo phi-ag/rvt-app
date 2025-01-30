@@ -69,39 +69,41 @@ resource "cloudflare_pages_project" "page" {
 resource "cloudflare_pages_domain" "preview" {
   account_id   = var.cloudflare_account_id
   project_name = var.pages_project_name
-  domain       = var.pages_preview_domain
+  name         = var.pages_preview_domain
   depends_on   = [cloudflare_pages_project.page]
 }
 
 resource "cloudflare_pages_domain" "production" {
   account_id   = var.cloudflare_account_id
   project_name = var.pages_project_name
-  domain       = var.pages_production_domain
+  name         = var.pages_production_domain
   depends_on   = [cloudflare_pages_project.page]
 }
 
-resource "cloudflare_record" "preview" {
+resource "cloudflare_dns_record" "preview" {
   zone_id = var.cloudflare_zone_id
-  name    = cloudflare_pages_domain.preview.domain
+  name    = cloudflare_pages_domain.preview.name
   content = "${var.pages_preview_branch}.${cloudflare_pages_project.page.subdomain}"
   type    = "CNAME"
   proxied = true
+  ttl     = 1
 }
 
-resource "cloudflare_record" "production" {
+resource "cloudflare_dns_record" "production" {
   zone_id = var.cloudflare_zone_id
-  name    = cloudflare_pages_domain.production.domain
+  name    = cloudflare_pages_domain.production.name
   content = cloudflare_pages_project.page.subdomain
   type    = "CNAME"
   proxied = true
+  ttl     = 1
 }
 
 output "domain_preview" {
-  value = cloudflare_pages_domain.preview.domain
+  value = cloudflare_pages_domain.preview.name
 }
 
 output "domain_production" {
-  value = cloudflare_pages_domain.production.domain
+  value = cloudflare_pages_domain.production.name
 }
 
 output "web_analytics_tag" {
