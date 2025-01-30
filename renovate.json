@@ -44,6 +44,10 @@
       "matchPackageNames": ["@solidjs/start", "vinxi"]
     },
     {
+      "groupName": "tailwindcss",
+      "matchPackageNames": ["tailwindcss", "@tailwindcss/vite"]
+    },
+    {
       "groupName": "playwright",
       "matchPackageNames": [
         "phi-ag/run-playwright",
