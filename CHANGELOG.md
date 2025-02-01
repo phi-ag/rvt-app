@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.10](https://github.com/phi-ag/rvt-app/compare/v0.6.9...v0.6.10) (2025-02-01)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency wrangler to v3.107.0 ([3452574](https://github.com/phi-ag/rvt-app/commit/34525742618d3e7d0e65300313f5faf68226bef9))
+* **deps:** update dependency wrangler to v3.107.2 ([9a78a33](https://github.com/phi-ag/rvt-app/commit/9a78a3371f8767bb3c10f365aad4c997ea684bf8))
+* **deps:** update node.js to v23.7.0 ([05363e4](https://github.com/phi-ag/rvt-app/commit/05363e4baea101b7fde42da06b1f759bf85a8671))
+* **deps:** update playwright ([353afd9](https://github.com/phi-ag/rvt-app/commit/353afd90fa94d055a2eea51e7f23f17e945a00e6))
+* **renovate:** add tailwindcss group ([51aaf55](https://github.com/phi-ag/rvt-app/commit/51aaf5566ddef5a613fd8d55b45b54362a1bc744))
+* **renovate:** remove tailwindcss group ([2ef2d21](https://github.com/phi-ag/rvt-app/commit/2ef2d219eb78c68ff47d249b200e609ea9788d27))
+
 ## [0.6.9](https://github.com/phi-ag/rvt-app/compare/v0.6.8...v0.6.9) (2025-01-29)
 
 
