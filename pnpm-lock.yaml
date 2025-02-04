@@ -106,8 +106,8 @@ importers:
         specifier: 3.0.5
         version: 3.0.5(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0)
       wrangler:
-        specifier: 3.107.2
-        version: 3.107.2
+        specifier: 3.107.3
+        version: 3.107.3
 
 packages:
 
@@ -4094,8 +4094,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  wrangler@3.107.2:
-    resolution: {integrity: sha512-YOSfx0pETj18qcBD4aLvHjlcoV1sCVxYm9En8YphymW5rlTYD0Lc4MR3kzN1AGiWCjJ/ydrvA7eZuF/zPBotiw==}
+  wrangler@3.107.3:
+    resolution: {integrity: sha512-N9ZMDHZ+DI5/B0yclr3bG57U/Zw7wSzGdpO2l7j6+3q8yUf+4Fk0Rvneo2t8rjLewKlvqgt9D9siFuo8MXJ55Q==}
     engines: {node: '>=16.17.0'}
     hasBin: true
     peerDependencies:
@@ -8284,7 +8284,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20250129.0
       '@cloudflare/workerd-windows-64': 1.20250129.0
 
-  wrangler@3.107.2:
+  wrangler@3.107.3:
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
