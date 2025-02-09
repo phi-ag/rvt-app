@@ -69,6 +69,10 @@
     "wrangler": "3.107.3"
   },
   "pnpm": {
+    "onlyBuiltDependencies": [
+      "@vite-pwa/assets-generator",
+      "sharp"
+    ],
     "overrides": {
       "vinxi": "$vinxi"
     }
