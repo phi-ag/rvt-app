@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.6.10](https://github.com/phi-ag/rvt-app/compare/v0.6.9...v0.6.10) (2025-02-10)
+
+
+### Miscellaneous Chores
+
+* allow build of sharp for @vite-pwa/assets-generator ([b54c30c](https://github.com/phi-ag/rvt-app/commit/b54c30cca806af130dda6cd6793b1aab508c0cd1))
+* **deps:** update codecov/test-results-action digest to 44ecb3a ([74eb368](https://github.com/phi-ag/rvt-app/commit/74eb368b103d7e8b8d02674bbf2fd210c98858cb))
+* **deps:** update dependency @types/node to v22.13.0 ([78b35a3](https://github.com/phi-ag/rvt-app/commit/78b35a30d04d98051512cbf41bc4813592dfed28))
+* **deps:** update dependency @types/node to v22.13.1 ([0334c08](https://github.com/phi-ag/rvt-app/commit/0334c0869d9ed1b3499aabb8c01bf50d40166ffb))
+* **deps:** update dependency prettier to v3.5.0 ([8c32b56](https://github.com/phi-ag/rvt-app/commit/8c32b56284e77c8fdcb280321854867ebfd47b97))
+* **deps:** update dependency typescript-eslint to v8.23.0 ([a46a335](https://github.com/phi-ag/rvt-app/commit/a46a335eb501ecd4aaba05b0b6e8b2518ccc90fd))
+* **deps:** update dependency vinxi to v0.5.2 ([1f15c5c](https://github.com/phi-ag/rvt-app/commit/1f15c5c2dbc522ab40d3651c8945372178614a15))
+* **deps:** update dependency vinxi to v0.5.3 ([9b9e6c9](https://github.com/phi-ag/rvt-app/commit/9b9e6c9e585d86fdf735b633222e39d4fc7b6b25))
+* **deps:** update dependency vite to v6.1.0 ([0de0639](https://github.com/phi-ag/rvt-app/commit/0de063936bc79211536286b44a5693f371353f3b))
+* **deps:** update dependency vite-plugin-solid to v2.11.1 ([3051e7a](https://github.com/phi-ag/rvt-app/commit/3051e7a6614cea2cfab57fc003c14c6cbec7b42f))
+* **deps:** update dependency wrangler to v3.107.0 ([3452574](https://github.com/phi-ag/rvt-app/commit/34525742618d3e7d0e65300313f5faf68226bef9))
+* **deps:** update dependency wrangler to v3.107.2 ([9a78a33](https://github.com/phi-ag/rvt-app/commit/9a78a3371f8767bb3c10f365aad4c997ea684bf8))
+* **deps:** update dependency wrangler to v3.107.3 ([956be43](https://github.com/phi-ag/rvt-app/commit/956be43d649101021973f724d509223714b4c35c))
+* **deps:** update eslint monorepo to v9.20.0 ([a4f5968](https://github.com/phi-ag/rvt-app/commit/a4f59689fb6135c36c2876859a46330bf1676412))
+* **deps:** update node.js to v23.7.0 ([05363e4](https://github.com/phi-ag/rvt-app/commit/05363e4baea101b7fde42da06b1f759bf85a8671))
+* **deps:** update playwright ([353afd9](https://github.com/phi-ag/rvt-app/commit/353afd90fa94d055a2eea51e7f23f17e945a00e6))
+* **deps:** update pnpm to v10 ([9175384](https://github.com/phi-ag/rvt-app/commit/91753842b19d6e88115e4070b4baec45e6828e5f))
+* **deps:** update pnpm to v10.2.1 ([1202979](https://github.com/phi-ag/rvt-app/commit/12029794988e964398bdb55ef479369877aa680d))
+* **deps:** update pnpm to v9.15.5 ([2c66e43](https://github.com/phi-ag/rvt-app/commit/2c66e43a6d846a41c2a4ea7bc862c95de65db7a3))
+* **deps:** update tailwindcss monorepo to v4.0.2 ([c7ca6d2](https://github.com/phi-ag/rvt-app/commit/c7ca6d2e7e8fff5b442c3a2f48f3ffe48790757d))
+* **deps:** update tailwindcss monorepo to v4.0.3 ([f10e5e4](https://github.com/phi-ag/rvt-app/commit/f10e5e4475690cc956e273441d4c43eb9d4e8361))
+* **deps:** update tailwindcss monorepo to v4.0.4 ([3b259a9](https://github.com/phi-ag/rvt-app/commit/3b259a98206471a9fdd6131f936f1c30df613582))
+* **deps:** update tailwindcss monorepo to v4.0.5 ([5883efd](https://github.com/phi-ag/rvt-app/commit/5883efd382ed930851c9b4e1164c90b82e8d90d1))
+* **deps:** update terraform cloudflare to v4.52.0 ([ebc9922](https://github.com/phi-ag/rvt-app/commit/ebc99227d77a40895e8a9611f8419de6da3346a3))
+* **deps:** update vitest monorepo to v3.0.5 ([2034962](https://github.com/phi-ag/rvt-app/commit/2034962cc27a7c47a594aafbeac3e538df88686b))
+* **renovate:** add tailwindcss group ([51aaf55](https://github.com/phi-ag/rvt-app/commit/51aaf5566ddef5a613fd8d55b45b54362a1bc744))
+* **renovate:** remove tailwindcss group ([2ef2d21](https://github.com/phi-ag/rvt-app/commit/2ef2d219eb78c68ff47d249b200e609ea9788d27))
+* **terraform:** handle empty build_config array ([18ca394](https://github.com/phi-ag/rvt-app/commit/18ca394a26c3eaa26d4142f1362df2d60ba2e7de))
+
 ## [0.6.9](https://github.com/phi-ag/rvt-app/compare/v0.6.8...v0.6.9) (2025-01-29)
 
 
