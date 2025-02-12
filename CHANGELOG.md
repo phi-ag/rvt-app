@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.6.11](https://github.com/phi-ag/rvt-app/compare/v0.6.10...v0.6.11) (2025-02-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @solidjs/start to v1.1.0 ([49ce1a3](https://github.com/phi-ag/rvt-app/commit/49ce1a3f8f0e6067156feed4a8906f6cc352f97f))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency eslint to v9.20.1 ([687a8ea](https://github.com/phi-ag/rvt-app/commit/687a8ea18dc38e7c250b4cbe17289178e106bbe8))
+* **deps:** update dependency typescript-eslint to v8.24.0 ([43cc556](https://github.com/phi-ag/rvt-app/commit/43cc556dcc6b5f7f526f30f44c4a7c331d523bd3))
+* **deps:** update dependency wrangler to v3.108.0 ([2a69e81](https://github.com/phi-ag/rvt-app/commit/2a69e817d3055c8566eed2c4d7eef3dafc373f19))
+* **deps:** update dependency wrangler to v3.108.1 ([734fc11](https://github.com/phi-ag/rvt-app/commit/734fc118fa6dd7c085c414d2ade6db37ecb00347))
+* **deps:** update pnpm to v10.3.0 ([ba3671d](https://github.com/phi-ag/rvt-app/commit/ba3671dc168828f27e688231ae4a6d5f564f7a69))
+* **deps:** update tailwindcss monorepo to v4.0.6 ([a42a64d](https://github.com/phi-ag/rvt-app/commit/a42a64d0027cc945fbc5c38087e5926565ebb257))
+
 ## [0.6.10](https://github.com/phi-ag/rvt-app/compare/v0.6.9...v0.6.10) (2025-02-10)
 
 
