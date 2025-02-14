@@ -18,8 +18,8 @@ importers:
         specifier: 0.15.3
         version: 0.15.3(solid-js@1.9.4)
       '@solidjs/start':
-        specifier: 1.1.0
-        version: 1.1.0(@testing-library/jest-dom@6.6.3)(solid-js@1.9.4)(vinxi@0.5.3(@types/node@22.13.4)(ioredis@5.4.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0)(typescript@5.7.3))(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0))
+        specifier: 1.1.1
+        version: 1.1.1(@testing-library/jest-dom@6.6.3)(solid-js@1.9.4)(vinxi@0.5.3(@types/node@22.13.4)(ioredis@5.4.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0)(typescript@5.7.3))(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0))
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -1240,8 +1240,8 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@1.1.0':
-    resolution: {integrity: sha512-7MNhNVt8uF7tdvLkvJhj4357vg3Ha+yqJP8XhQ6IbSZbsyk/xMkYmfc1h6w4GWiWZ5tn1DvS1uqGXjLFbKRy6g==}
+  '@solidjs/start@1.1.1':
+    resolution: {integrity: sha512-vJuXJlhHvP/hSdKQ+iuvBU2bw0S+IKQYOyldnRoCvrX7Nmu1p3npnACSlhNNkN06IqSX3MVde8D8Lr9xXEMjRQ==}
     peerDependencies:
       vinxi: 0.5.3
 
@@ -1323,16 +1323,16 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6
 
-  '@tanstack/directive-functions-plugin@1.102.2':
-    resolution: {integrity: sha512-wM4ovyuYx0rBvcaR9ay+CtuPK8AEqFv6rF4LbPqHx7EufzBi7aJt70RqPdHt3bP3dcEuJbcRGFxthZ+WUt/Q5Q==}
+  '@tanstack/directive-functions-plugin@1.103.1':
+    resolution: {integrity: sha512-HzeX+fLWj4oT/07ImAZFIWHX/tfhbs89VSZEIuH8vTaJZ3/P/gN7pQ6ZWfdD/1NWpkrtJqhxrwT9LJlBG5rPiQ==}
     engines: {node: '>=12'}
 
   '@tanstack/router-utils@1.102.2':
     resolution: {integrity: sha512-Uwl2nbrxhCzviaHHBLNPhSC/OMpZLdOTxTJndUSsXTzWUP4IoQcVmngaIsxi9iriE3ArC1VXuanUAkfGmimNOQ==}
     engines: {node: '>=12'}
 
-  '@tanstack/server-functions-plugin@1.102.2':
-    resolution: {integrity: sha512-l7nPcYjUaiO4ogjfE5hAPsuByFsn/5LqtdsC7f0I1VVgMxHp08OVVRH2rrgdR24ehRr3RkrUQoFviVyBSxcfCA==}
+  '@tanstack/server-functions-plugin@1.103.1':
+    resolution: {integrity: sha512-FtbC3JbdWI8IE29wTxNBkS7vFQJqovxNWk5Saq046zQxgxzNTgILaAU/Woz+b88lqMUWu6S+XxLt/+yIlqp63g==}
     engines: {node: '>=12'}
 
   '@testing-library/jest-dom@6.6.3':
@@ -5201,9 +5201,9 @@ snapshots:
     dependencies:
       solid-js: 1.9.4
 
-  '@solidjs/start@1.1.0(@testing-library/jest-dom@6.6.3)(solid-js@1.9.4)(vinxi@0.5.3(@types/node@22.13.4)(ioredis@5.4.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0)(typescript@5.7.3))(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0))':
+  '@solidjs/start@1.1.1(@testing-library/jest-dom@6.6.3)(solid-js@1.9.4)(vinxi@0.5.3(@types/node@22.13.4)(ioredis@5.4.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0)(typescript@5.7.3))(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0))':
     dependencies:
-      '@tanstack/server-functions-plugin': 1.102.2
+      '@tanstack/server-functions-plugin': 1.103.1
       '@vinxi/plugin-directives': 0.5.0(vinxi@0.5.3(@types/node@22.13.4)(ioredis@5.4.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0)(typescript@5.7.3))
       '@vinxi/server-components': 0.5.0(vinxi@0.5.3(@types/node@22.13.4)(ioredis@5.4.1)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0)(typescript@5.7.3))
       defu: 6.1.4
@@ -5286,7 +5286,7 @@ snapshots:
       tailwindcss: 4.0.6
       vite: 6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.37.0)
 
-  '@tanstack/directive-functions-plugin@1.102.2':
+  '@tanstack/directive-functions-plugin@1.103.1':
     dependencies:
       '@babel/code-frame': 7.26.2
       '@babel/core': 7.26.8
@@ -5314,7 +5314,7 @@ snapshots:
       ansis: 3.12.0
       diff: 7.0.0
 
-  '@tanstack/server-functions-plugin@1.102.2':
+  '@tanstack/server-functions-plugin@1.103.1':
     dependencies:
       '@babel/code-frame': 7.26.2
       '@babel/core': 7.26.8
@@ -5323,7 +5323,7 @@ snapshots:
       '@babel/template': 7.26.8
       '@babel/traverse': 7.26.8
       '@babel/types': 7.26.8
-      '@tanstack/directive-functions-plugin': 1.102.2
+      '@tanstack/directive-functions-plugin': 1.103.1
       '@types/babel__code-frame': 7.0.6
       '@types/babel__core': 7.20.5
       '@types/babel__template': 7.4.4
