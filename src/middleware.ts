@@ -49,12 +49,12 @@ const cloudflare = async (event: FetchEvent): Promise<void> => {
 const redirectToDomain = async (
   event: FetchEvent
 ): Promise<CustomResponse<never> | undefined> => {
-  if (import.meta.env.DEV) return;
+  if (import.meta.env.DEV || event.locals.env.LOCAL) return;
 
   const domain = event.locals.env.DOMAIN;
   const url = new URL(event.request.url);
 
-  if (url.hostname !== "localhost" && url.host !== domain) {
+  if (url.host !== domain) {
     url.host = domain;
     url.protocol = "https:";
     return redirect(url.href);

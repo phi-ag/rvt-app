@@ -13,7 +13,8 @@ export default tseslint.config(
       ".output/**",
       ".wrangler/**",
       "reports/**",
-      "app.config.timestamp_*"
+      "app.config.timestamp_*",
+      "src/worker.d.ts"
     ]
   },
   eslint.configs.recommended,

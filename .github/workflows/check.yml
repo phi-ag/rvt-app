@@ -1,12 +1,12 @@
-name: Preview
+name: Check
 
 on:
   push:
-    branches:
+    branches-ignore:
       - main
 
 jobs:
-  preview:
+  check:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
@@ -36,20 +36,11 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Deploy
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: >
-          pnpm wrangler pages deploy
-          --branch main
-          --commit-hash ${GITHUB_SHA}
-          --commit-message "[${GITHUB_SHA::7}] ${{ github.event.head_commit.message }}"
+      - name: Environment variables
+        run: cp .dev.vars.template .dev.vars
 
       - name: End-to-End
         uses: ./.github/actions/e2e
-        env:
-          BASE_URL: https://preview.rvt.app
 
       - name: Codecov test results
         uses: codecov/test-results-action@44ecb3a270cd942bdf0fa8f2ce14cb32493e810a # v1
