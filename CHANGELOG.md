@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.6.12](https://github.com/phi-ag/rvt-app/compare/v0.6.11...v0.6.12) (2025-02-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @solidjs/start to v1.1.1 ([0ea08a5](https://github.com/phi-ag/rvt-app/commit/0ea08a5758ac7f779784aea38955ed13d613dfd1))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v22.13.2 ([e4c38ad](https://github.com/phi-ag/rvt-app/commit/e4c38ad32410e172abb60a1fc9a97d5df000ecd3))
+* **deps:** update dependency @types/node to v22.13.4 ([18364b5](https://github.com/phi-ag/rvt-app/commit/18364b5a353c72afb9e3984f630c9092d22e16de))
+* **deps:** update dependency globals to v15.15.0 ([12c6d8c](https://github.com/phi-ag/rvt-app/commit/12c6d8c280b8aa375e7fb8a9cc2f3cc5eb558c40))
+* **deps:** update dependency prettier to v3.5.1 ([52914a0](https://github.com/phi-ag/rvt-app/commit/52914a01a567ef547401f2582aebec1542eeda1a))
+* **deps:** update dependency wrangler to v3.109.0 ([68720a7](https://github.com/phi-ag/rvt-app/commit/68720a7d2595535cae8b08bcb0184177a6c46f3c))
+* **deps:** update dependency wrangler to v3.109.1 ([b5443f9](https://github.com/phi-ag/rvt-app/commit/b5443f938623d9f0534f75f4bcbeeb966120302b))
+* **deps:** update node.js to v23.8.0 ([74f9d10](https://github.com/phi-ag/rvt-app/commit/74f9d10d584c0f64cc1112cbf8ee17c99a671577))
+* **deps:** update pnpm to v10.4.0 ([4548656](https://github.com/phi-ag/rvt-app/commit/45486563af9dba810e5b0e23ead746226155b422))
+* use dev secret to check if running locally ([fdfcb08](https://github.com/phi-ag/rvt-app/commit/fdfcb08e46ca354d0baa9ea5f25706ebdc56e20a))
+
 ## [0.6.11](https://github.com/phi-ag/rvt-app/compare/v0.6.10...v0.6.11) (2025-02-12)
 
 
