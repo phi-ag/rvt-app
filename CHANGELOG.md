@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.13](https://github.com/phi-ag/rvt-app/compare/v0.6.12...v0.6.13) (2025-02-17)
+
+
+### Miscellaneous Chores
+
+* **deps:** update pnpm to v10.4.1 ([777aaa7](https://github.com/phi-ag/rvt-app/commit/777aaa7952a60fd2fba27f720808687818b72f91))
+
 ## [0.6.12](https://github.com/phi-ag/rvt-app/compare/v0.6.11...v0.6.12) (2025-02-16)
 
 
