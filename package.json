@@ -64,7 +64,7 @@
     "typescript-eslint": "8.24.1",
     "vinxi": "0.5.3",
     "vite": "6.1.1",
-    "vite-plugin-solid": "2.11.1",
+    "vite-plugin-solid": "2.11.2",
     "vitest": "3.0.6",
     "wrangler": "3.109.2"
   },
