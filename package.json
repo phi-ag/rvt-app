@@ -70,8 +70,8 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "@vite-pwa/assets-generator",
-      "sharp"
+      "sharp",
+      "workerd"
     ],
     "overrides": {
       "vinxi": "$vinxi"
