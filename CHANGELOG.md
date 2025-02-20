@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.6.13](https://github.com/phi-ag/rvt-app/compare/v0.6.12...v0.6.13) (2025-02-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency uuid to v11.1.0 ([ae2dc35](https://github.com/phi-ag/rvt-app/commit/ae2dc35a92abe9600e001f53f5bba3146a1a9078))
+
+
+### Miscellaneous Chores
+
+* approve workerd postinstall ([a8ae218](https://github.com/phi-ag/rvt-app/commit/a8ae2182b0cefd993d7f51be589e544264a34329))
+* **deps:** update actions/cache digest to 0c907a7 ([f52070c](https://github.com/phi-ag/rvt-app/commit/f52070c726481ca67ba3bcde2432214424a1ff2b))
+* **deps:** update codecov/test-results-action digest to 5c441a7 ([c28b665](https://github.com/phi-ag/rvt-app/commit/c28b665f26666419afe796c624d188db29014fd6))
+* **deps:** update dependency globals to v16 ([e683d13](https://github.com/phi-ag/rvt-app/commit/e683d13706494b85dd86aaa2aa3ee70b82a453e9))
+* **deps:** update dependency typescript-eslint to v8.24.1 ([933ee7b](https://github.com/phi-ag/rvt-app/commit/933ee7bb012d219bc926d489bab3c7a4bc44bd95))
+* **deps:** update dependency vite to v6.1.1 ([dbaee66](https://github.com/phi-ag/rvt-app/commit/dbaee6685b68b4c73f2b8821dc4bd00e55d772c7))
+* **deps:** update dependency vite-plugin-solid to v2.11.2 ([7f16924](https://github.com/phi-ag/rvt-app/commit/7f16924b62d6ede24525c66210692aabc68a0d4f))
+* **deps:** update dependency wrangler to v3.109.2 ([daad93e](https://github.com/phi-ag/rvt-app/commit/daad93eb4c63343f018f002123b9dc97c40948a9))
+* **deps:** update pnpm to v10.4.1 ([777aaa7](https://github.com/phi-ag/rvt-app/commit/777aaa7952a60fd2fba27f720808687818b72f91))
+* **deps:** update tailwindcss monorepo to v4.0.7 ([5469053](https://github.com/phi-ag/rvt-app/commit/5469053741e84f21a1cf3b3f708a48a6d64c2ef0))
+* **deps:** update vitest monorepo to v3.0.6 ([5347a6f](https://github.com/phi-ag/rvt-app/commit/5347a6f345bda85d5c6ac535f8f31fa718cce15c))
+
 ## [0.6.12](https://github.com/phi-ag/rvt-app/compare/v0.6.11...v0.6.12) (2025-02-16)
 
 
