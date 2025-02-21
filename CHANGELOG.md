@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.14](https://github.com/phi-ag/rvt-app/compare/v0.6.13...v0.6.14) (2025-02-21)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/eslint__js to v9 ([d60be9e](https://github.com/phi-ag/rvt-app/commit/d60be9e6ff05374cecee86cddfc000df717e6536))
+
 ## [0.6.13](https://github.com/phi-ag/rvt-app/compare/v0.6.12...v0.6.13) (2025-02-20)
 
 
