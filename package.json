@@ -48,7 +48,6 @@
     "@testing-library/jest-dom": "6.6.3",
     "@trivago/prettier-plugin-sort-imports": "5.2.2",
     "@types/eslint-plugin-jsx-a11y": "6.10.0",
-    "@types/eslint__js": "9.14.0",
     "@types/lodash-es": "4.17.12",
     "@types/node": "22.13.5",
     "@vite-pwa/assets-generator": "0.2.6",
