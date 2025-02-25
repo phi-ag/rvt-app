@@ -65,7 +65,7 @@
     "vite": "6.2.0",
     "vite-plugin-solid": "2.11.2",
     "vitest": "3.0.7",
-    "wrangler": "3.109.3"
+    "wrangler": "3.110.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
