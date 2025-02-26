@@ -68,13 +68,16 @@
     "wrangler": "3.110.0"
   },
   "pnpm": {
+    "overrides": {
+      "vinxi": "$vinxi"
+    },
     "onlyBuiltDependencies": [
       "sharp",
       "workerd"
     ],
-    "overrides": {
-      "vinxi": "$vinxi"
-    }
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ]
   },
   "engines": {
     "node": "23.8.0"
