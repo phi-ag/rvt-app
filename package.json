@@ -76,6 +76,7 @@
       "workerd"
     ],
     "ignoredBuiltDependencies": [
+      "@parcel/watcher",
       "esbuild"
     ]
   },
