@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.6.15](https://github.com/phi-ag/rvt-app/compare/v0.6.14...v0.6.15) (2025-03-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @fontsource/roboto to v5.2.5 ([b5108e8](https://github.com/phi-ag/rvt-app/commit/b5108e8003129102338e2d6ff71b763aa056f691))
+* **deps:** update dependency @solidjs/start to v1.1.2 ([0964547](https://github.com/phi-ag/rvt-app/commit/0964547fef1b40e28584393c503f1bd558b60e83))
+* **deps:** update dependency @solidjs/start to v1.1.3 ([cdc0e13](https://github.com/phi-ag/rvt-app/commit/cdc0e130506f71a82f9b26b5e15890fac760c9ce))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/cache digest to d4323d4 ([33ab76c](https://github.com/phi-ag/rvt-app/commit/33ab76c2790760a89e55ac943f9a4fbee1bca455))
+* **deps:** update codecov/codecov-action digest to 0565863 ([7374320](https://github.com/phi-ag/rvt-app/commit/7374320b7d183fc39fccb5f827f2509bfbf0d208))
+* **deps:** update dependency @types/node to v22.13.7 ([89c9e96](https://github.com/phi-ag/rvt-app/commit/89c9e963991bc0a2d3a72591469a0fb4640e7f05))
+* **deps:** update dependency @types/node to v22.13.8 ([51bd5cf](https://github.com/phi-ag/rvt-app/commit/51bd5cf5a7d4814140c9fa1ae2ad8e7471bfa861))
+* **deps:** update dependency @types/node to v22.13.9 ([4e13949](https://github.com/phi-ag/rvt-app/commit/4e13949872f678c2d28ed345a66730a16150a1c2))
+* **deps:** update dependency prettier to v3.5.3 ([591ffbf](https://github.com/phi-ag/rvt-app/commit/591ffbf03ff568747e10b98e66a4f17b652fab84))
+* **deps:** update dependency typescript to v5.8.2 ([e569e3e](https://github.com/phi-ag/rvt-app/commit/e569e3ea1cfa72d50d96b2594584e1eedbb7c739))
+* **deps:** update dependency typescript-eslint to v8.26.0 ([f96516b](https://github.com/phi-ag/rvt-app/commit/f96516b3b16751b90d92a3f572fa9689d1880526))
+* **deps:** update dependency vite-plugin-solid to v2.11.4 ([eb966dc](https://github.com/phi-ag/rvt-app/commit/eb966dcfe267bb53a8f93addccd1364e9c9627cd))
+* **deps:** update dependency vite-plugin-solid to v2.11.5 ([b7b040e](https://github.com/phi-ag/rvt-app/commit/b7b040e8a0f7773916517f1d70ca8aa385535751))
+* **deps:** update dependency vite-plugin-solid to v2.11.6 ([b55a5b5](https://github.com/phi-ag/rvt-app/commit/b55a5b54c2e730ce47885d97028d0a970966e037))
+* **deps:** update dependency wrangler to v3.111.0 ([ae1973e](https://github.com/phi-ag/rvt-app/commit/ae1973e76c9fc9106f4b2ff188be55588c0fc527))
+* **deps:** update dependency wrangler to v3.112.0 ([7ab5901](https://github.com/phi-ag/rvt-app/commit/7ab590120c75f608c3a1d19e47962e16e7da7687))
+* **deps:** update node.js to v23.9.0 ([4df16e4](https://github.com/phi-ag/rvt-app/commit/4df16e45de25e3a7a09d619113bdb3137fbf8e0d))
+* **deps:** update pnpm to v10.5.1 ([891b15b](https://github.com/phi-ag/rvt-app/commit/891b15b4b2e602b558a23346f76f2ccb3345a5a8))
+* **deps:** update pnpm to v10.5.2 ([1950928](https://github.com/phi-ag/rvt-app/commit/1950928128106f18fc09b0fb047756d36e01ec3f))
+
 ## [0.6.14](https://github.com/phi-ag/rvt-app/compare/v0.6.13...v0.6.14) (2025-02-26)
 
 
