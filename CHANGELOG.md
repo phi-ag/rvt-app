@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.6.16](https://github.com/phi-ag/rvt-app/compare/v0.6.15...v0.6.16) (2025-03-10)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v22.13.10 ([4f2a617](https://github.com/phi-ag/rvt-app/commit/4f2a6170f306e185f74bebe38350d29f04790b6a))
+* **deps:** update dependency typescript-eslint to v8.26.1 ([d937b6e](https://github.com/phi-ag/rvt-app/commit/d937b6ef098c923f5bbeeb7f330fc0a13ef17ab5))
+* **deps:** update dependency vite to v6.2.1 ([b759572](https://github.com/phi-ag/rvt-app/commit/b75957279b006fa22d9aad84de5c6b2be4aa109a))
+* **deps:** update dependency wrangler to v3.113.0 ([ccb42af](https://github.com/phi-ag/rvt-app/commit/ccb42af3744bdf0f07750e2abf1498321445bf7c))
+* **deps:** update dependency wrangler to v3.114.0 ([1b232a6](https://github.com/phi-ag/rvt-app/commit/1b232a6e1d9a74f4f31aaea890e7421b82a21f22))
+* **deps:** update eslint monorepo to v9.22.0 ([d013bff](https://github.com/phi-ag/rvt-app/commit/d013bffb82dec9e96e1d646edd442ad8ceffb6ad))
+* **deps:** update googleapis/release-please-action digest to 26ac09b ([1c5cdc5](https://github.com/phi-ag/rvt-app/commit/1c5cdc5a3077f0d6ebac0c507a03a68a46f7908f))
+* **deps:** update googleapis/release-please-action digest to a02a34c ([1762053](https://github.com/phi-ag/rvt-app/commit/1762053c20e8d024b92c6214582152a441763003))
+* **deps:** update playwright ([ef7d11e](https://github.com/phi-ag/rvt-app/commit/ef7d11e6642edf39939f8497a98ce9a5475013f6))
+* **deps:** update pnpm to v10.6.1 ([bb9c3fb](https://github.com/phi-ag/rvt-app/commit/bb9c3fb3e356778686ad82d26cbad563b0171448))
+* **deps:** update pnpm to v10.6.2 ([53a8d3f](https://github.com/phi-ag/rvt-app/commit/53a8d3f776a19499dfb11a55be912e4c643fa506))
+* **deps:** update tailwindcss monorepo to v4.0.10 ([0dfd337](https://github.com/phi-ag/rvt-app/commit/0dfd337214b9af346405345802892db103565add))
+* **deps:** update tailwindcss monorepo to v4.0.11 ([2d4eaea](https://github.com/phi-ag/rvt-app/commit/2d4eaeaf2b629999b799b6ed7fcdb4ec5a9b82ac))
+* **deps:** update tailwindcss monorepo to v4.0.12 ([192338f](https://github.com/phi-ag/rvt-app/commit/192338f4bf7e650a5917953ab30261e037bfc2af))
+* **deps:** update vitest monorepo to v3.0.8 ([efebb13](https://github.com/phi-ag/rvt-app/commit/efebb136ea9d0ac191199950ce9a162d4406ccad))
+
 ## [0.6.15](https://github.com/phi-ag/rvt-app/compare/v0.6.14...v0.6.15) (2025-03-04)
 
 
