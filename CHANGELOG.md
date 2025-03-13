@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.17](https://github.com/phi-ag/rvt-app/compare/v0.6.16...v0.6.17) (2025-03-13)
+
+
+### Miscellaneous Chores
+
+* **deps:** update codecov/test-results-action digest to f2dba72 ([9c2fd1a](https://github.com/phi-ag/rvt-app/commit/9c2fd1ab17cee889ee056444e4a88ed00323bd05))
+* **deps:** update dependency wrangler to v3.114.1 ([adadd43](https://github.com/phi-ag/rvt-app/commit/adadd43ef1eebef765373c4cd5da68221bfa0161))
+* **deps:** update dependency wrangler to v4 ([4607a81](https://github.com/phi-ag/rvt-app/commit/4607a81c3f94b9c46f100b0069354b2ad594a55d))
+* **deps:** update pnpm to v10.6.3 ([43a57ad](https://github.com/phi-ag/rvt-app/commit/43a57ad9be6f7137b742423b81ab1dc6e45cbdb9))
+* **deps:** update tailwindcss monorepo to v4.0.13 ([9751904](https://github.com/phi-ag/rvt-app/commit/9751904f443e46b83d4edb86bf3465ad32165f3c))
+* **deps:** update tailwindcss monorepo to v4.0.14 ([a54fd04](https://github.com/phi-ag/rvt-app/commit/a54fd04ce9fbd812efd88444c37f5c2f0f2cc17c))
+
 ## [0.6.16](https://github.com/phi-ag/rvt-app/compare/v0.6.15...v0.6.16) (2025-03-10)
 
 
