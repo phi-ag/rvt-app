@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.18](https://github.com/phi-ag/rvt-app/compare/v0.6.17...v0.6.18) (2025-03-14)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency vite to v6.2.2 ([6db51a4](https://github.com/phi-ag/rvt-app/commit/6db51a4cd65ba0144585af9c71a0d7398bfb4dc2))
+* **deps:** update node.js to v23.10.0 ([77925d6](https://github.com/phi-ag/rvt-app/commit/77925d624217af6d3e8dec5fdb8335e812fc0cae))
+
 ## [0.6.17](https://github.com/phi-ag/rvt-app/compare/v0.6.16...v0.6.17) (2025-03-13)
 
 
