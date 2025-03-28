@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.19](https://github.com/phi-ag/rvt-app/compare/v0.6.18...v0.6.19) (2025-03-28)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v22.13.14 ([a2e9531](https://github.com/phi-ag/rvt-app/commit/a2e95313c1d1ff96c55c78aa3be74aba11421213))
+* **deps:** update dependency wrangler to v4.4.1 ([72fcd88](https://github.com/phi-ag/rvt-app/commit/72fcd8849cb7747123b4248fdf9ab0338785f167))
+* **deps:** update dependency wrangler to v4.5.0 ([cb4ea6e](https://github.com/phi-ag/rvt-app/commit/cb4ea6e06f3026f6c0939c1a60cab267658b1ab8))
+* **deps:** update dependency wrangler to v4.5.1 ([9f6a972](https://github.com/phi-ag/rvt-app/commit/9f6a972c3814641721a1d3462f05ef389c8a781c))
+* **deps:** update dependency wrangler to v4.6.0 ([6d0ba28](https://github.com/phi-ag/rvt-app/commit/6d0ba28cb549599582a4b08644df0a5fdb724773))
+* **deps:** update pnpm to v10.7.0 ([6122e91](https://github.com/phi-ag/rvt-app/commit/6122e910487449bd86f32d79f18bbfc15aac8d2c))
+* **deps:** update tailwindcss monorepo to v4.0.16 ([c3195f5](https://github.com/phi-ag/rvt-app/commit/c3195f58ee489e70214d7324ff878202c8e24535))
+* **deps:** update tailwindcss monorepo to v4.0.17 ([5c9cf69](https://github.com/phi-ag/rvt-app/commit/5c9cf69892b09f6a3f404cf4d9a3860d35e90d49))
+
 ## [0.6.18](https://github.com/phi-ag/rvt-app/compare/v0.6.17...v0.6.18) (2025-03-25)
 
 
