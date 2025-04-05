@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.6.19](https://github.com/phi-ag/rvt-app/compare/v0.6.18...v0.6.19) (2025-04-05)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v22.13.14 ([a2e9531](https://github.com/phi-ag/rvt-app/commit/a2e95313c1d1ff96c55c78aa3be74aba11421213))
+* **deps:** update dependency @types/node to v22.13.17 ([e16b241](https://github.com/phi-ag/rvt-app/commit/e16b241b783ec2f7cd61570a2c832bfb30e537af))
+* **deps:** update dependency @types/node to v22.14.0 ([ab91656](https://github.com/phi-ag/rvt-app/commit/ab916561a9968547c874da3d7c10af8446618b3b))
+* **deps:** update dependency @vite-pwa/assets-generator to v1 ([b7cdd1e](https://github.com/phi-ag/rvt-app/commit/b7cdd1e025642e3e8f7dd4c04b608ced8afb24b4))
+* **deps:** update dependency typescript to v5.8.3 ([8247b63](https://github.com/phi-ag/rvt-app/commit/8247b6399f056d0b55c6084ee5719d417e71ee9d))
+* **deps:** update dependency typescript-eslint to v8.29.0 ([d3bbd58](https://github.com/phi-ag/rvt-app/commit/d3bbd58fb3059c8cc0e086aff77884bb7936ccba))
+* **deps:** update dependency vite to v6.2.4 ([54e089d](https://github.com/phi-ag/rvt-app/commit/54e089d0e6601c991bacf311c262ea67eedaf888))
+* **deps:** update dependency vite to v6.2.5 ([f4393f4](https://github.com/phi-ag/rvt-app/commit/f4393f4521c3453d968956c2e747b2c398010921))
+* **deps:** update dependency wrangler to v4.4.1 ([72fcd88](https://github.com/phi-ag/rvt-app/commit/72fcd8849cb7747123b4248fdf9ab0338785f167))
+* **deps:** update dependency wrangler to v4.5.0 ([cb4ea6e](https://github.com/phi-ag/rvt-app/commit/cb4ea6e06f3026f6c0939c1a60cab267658b1ab8))
+* **deps:** update dependency wrangler to v4.5.1 ([9f6a972](https://github.com/phi-ag/rvt-app/commit/9f6a972c3814641721a1d3462f05ef389c8a781c))
+* **deps:** update dependency wrangler to v4.6.0 ([6d0ba28](https://github.com/phi-ag/rvt-app/commit/6d0ba28cb549599582a4b08644df0a5fdb724773))
+* **deps:** update dependency wrangler to v4.7.0 ([d3a0424](https://github.com/phi-ag/rvt-app/commit/d3a04245d75c3b0dd7c12c033a499854fb9b28ef))
+* **deps:** update dependency wrangler to v4.7.1 ([1123edc](https://github.com/phi-ag/rvt-app/commit/1123edca2d1fdc5d50152165c06de2010df18276))
+* **deps:** update dependency wrangler to v4.7.2 ([bd76634](https://github.com/phi-ag/rvt-app/commit/bd76634355bd93e73fe9c850d1179cc7b41a70b5))
+* **deps:** update eslint monorepo to v9.24.0 ([a9f2577](https://github.com/phi-ag/rvt-app/commit/a9f2577f0bbf46316212dd51355a1cb28fa79725))
+* **deps:** update node.js to v23.11.0 ([197985b](https://github.com/phi-ag/rvt-app/commit/197985b40b5453cd8d0a329708a5f37d44dfa7f3))
+* **deps:** update pnpm to v10.7.0 ([6122e91](https://github.com/phi-ag/rvt-app/commit/6122e910487449bd86f32d79f18bbfc15aac8d2c))
+* **deps:** update pnpm to v10.7.1 ([d194538](https://github.com/phi-ag/rvt-app/commit/d19453832f6adcbb47c603f4dacca38a6363f1c4))
+* **deps:** update tailwindcss monorepo to v4.0.16 ([c3195f5](https://github.com/phi-ag/rvt-app/commit/c3195f58ee489e70214d7324ff878202c8e24535))
+* **deps:** update tailwindcss monorepo to v4.0.17 ([5c9cf69](https://github.com/phi-ag/rvt-app/commit/5c9cf69892b09f6a3f404cf4d9a3860d35e90d49))
+* **deps:** update tailwindcss monorepo to v4.1.1 ([2fa4437](https://github.com/phi-ag/rvt-app/commit/2fa443716f3e518aac83e8002e7d912d47b2d905))
+* **deps:** update tailwindcss monorepo to v4.1.2 ([ee7b4fa](https://github.com/phi-ag/rvt-app/commit/ee7b4fa86333f681f44cbf0d8c7252d60f9b4d37))
+* **deps:** update tailwindcss monorepo to v4.1.3 ([446392f](https://github.com/phi-ag/rvt-app/commit/446392f3cbe2ed600fc3656e58c8a34d6b3dcfe7))
+* **deps:** update vitest monorepo to v3.1.1 ([2b59d9c](https://github.com/phi-ag/rvt-app/commit/2b59d9cad38f7f4ff5b452439087a1db7e470b76))
+* regenerate pwa assets ([17e6f77](https://github.com/phi-ag/rvt-app/commit/17e6f775dc7d8e5480786932b657e40d86825799))
+
 ## [0.6.18](https://github.com/phi-ag/rvt-app/compare/v0.6.17...v0.6.18) (2025-03-25)
 
 
