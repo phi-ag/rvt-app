@@ -127,6 +127,17 @@ describe("revit", () => {
         documentId: "192933d0-a868-4367-b6b5-ae53e4e948c4",
         path: "C:\\Users\\hansonje\\Desktop\\Downloadable Files\\racbasicsamplefamily.rfa"
       }
+    ],
+    [
+      "racbasicsamplefamily-2026.rfa",
+      {
+        version: "2026",
+        build: "20250227_1515(x64)",
+        locale: "ENU",
+        identityId: "00000000-0000-0000-0000-000000000000",
+        documentId: "5ee56283-7ce7-4af9-8c63-7265dce3247d",
+        path: "C:\\Users\\hansonje\\Desktop\\Downloadable Files\\racbasicsamplefamily.rfa"
+      }
     ]
   ];
 

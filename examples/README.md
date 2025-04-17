@@ -18,3 +18,4 @@ The example files are licensed under [Creative Commons Attribution-NonCommercial
 - [2023](https://revit.downloads.autodesk.com/download/2023RVT_RTM/Docs/InProd/racbasicsamplefamily.rfa)
 - [2024](https://revit.downloads.autodesk.com/download/2024RVT_RTM/Docs/InProd/racbasicsamplefamily.rfa)
 - [2025](https://revit.downloads.autodesk.com/download/2025RVT_RTM/Docs/InProd/racbasicsamplefamily.rfa)
+- [2026](https://revit.downloads.autodesk.com/download/2026RVT_RTM/Docs/InProd/racbasicsamplefamily.rfa)
