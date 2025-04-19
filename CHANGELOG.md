@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.20](https://github.com/phi-ag/rvt-app/compare/v0.6.19...v0.6.20) (2025-04-19)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency vite to v6.3.2 ([3198de9](https://github.com/phi-ag/rvt-app/commit/3198de9b860bd899df1df056bdac76798b0b2fd0))
+* **deps:** update eslint monorepo to v9.25.0 ([4f75565](https://github.com/phi-ag/rvt-app/commit/4f75565cb89379f0bc2b3c8c559280a7e719c106))
+
 ## [0.6.19](https://github.com/phi-ag/rvt-app/compare/v0.6.18...v0.6.19) (2025-04-18)
 
 
