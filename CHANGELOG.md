@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.6.20](https://github.com/phi-ag/rvt-app/compare/v0.6.19...v0.6.20) (2025-04-29)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v22.15.0 ([432cccf](https://github.com/phi-ag/rvt-app/commit/432cccf0b2b50daf0cf9cbf28413d42236c8f94b))
+* **deps:** update dependency @types/node to v22.15.2 ([87d6ad7](https://github.com/phi-ag/rvt-app/commit/87d6ad7cdb285a597f8590859271ca332be93bca))
+* **deps:** update dependency @types/node to v22.15.3 ([8261b90](https://github.com/phi-ag/rvt-app/commit/8261b90c52aeb6590d255c82be62252e232c8179))
+* **deps:** update dependency typescript-eslint to v8.31.0 ([6311b7d](https://github.com/phi-ag/rvt-app/commit/6311b7d6132191ec7d037de1a653012c16deb958))
+* **deps:** update dependency typescript-eslint to v8.31.1 ([d384ad3](https://github.com/phi-ag/rvt-app/commit/d384ad31d5426eeab5414271e81f18c1ba794e39))
+* **deps:** update dependency vinxi to v0.5.6 ([063023c](https://github.com/phi-ag/rvt-app/commit/063023c7eee4a11d1b01dd7e6ac69615519f3afc))
+* **deps:** update dependency vite to v6.3.2 ([3198de9](https://github.com/phi-ag/rvt-app/commit/3198de9b860bd899df1df056bdac76798b0b2fd0))
+* **deps:** update dependency vite to v6.3.3 ([6fe7db1](https://github.com/phi-ag/rvt-app/commit/6fe7db17daf766af4c341c2b390e47da752d5db9))
+* **deps:** update dependency wrangler to v4.12.1 ([e7a5701](https://github.com/phi-ag/rvt-app/commit/e7a57013e8621700b7eb68b271cd03c1f5ebbd5d))
+* **deps:** update dependency wrangler to v4.13.0 ([f74ca6d](https://github.com/phi-ag/rvt-app/commit/f74ca6dff32a81e8c9f38aeb8a1245d147b7f1e3))
+* **deps:** update dependency wrangler to v4.13.1 ([edddebe](https://github.com/phi-ag/rvt-app/commit/edddebee3846734c3cac19fb1bf02275ac623419))
+* **deps:** update dependency wrangler to v4.13.2 ([ccf17b6](https://github.com/phi-ag/rvt-app/commit/ccf17b690b19e5cc3dd51a626ffedd443caa94ba))
+* **deps:** update eslint monorepo to v9.25.0 ([4f75565](https://github.com/phi-ag/rvt-app/commit/4f75565cb89379f0bc2b3c8c559280a7e719c106))
+* **deps:** update eslint monorepo to v9.25.1 ([d91ccfc](https://github.com/phi-ag/rvt-app/commit/d91ccfc8ada0d04e85ef3b8cd1ca5a301c27b747))
+* **deps:** update pnpm to v10.10.0 ([1c759ab](https://github.com/phi-ag/rvt-app/commit/1c759abc7853fef958febbfdb8b1a4d0a77c7ea6))
+* **deps:** update pnpm to v10.9.0 ([c197c75](https://github.com/phi-ag/rvt-app/commit/c197c753431df1e1dfd7c5b4614fef2657717c8c))
+* **deps:** update vitest monorepo to v3.1.2 ([485b665](https://github.com/phi-ag/rvt-app/commit/485b6652cc51866bba18bbe2027691ab3278e89d))
+* use @phi-ag/rvt ([27a2adc](https://github.com/phi-ag/rvt-app/commit/27a2adc3eaeb355f2d843d41bf1a36e6f5ef44e3))
+
 ## [0.6.19](https://github.com/phi-ag/rvt-app/compare/v0.6.18...v0.6.19) (2025-04-18)
 
 
