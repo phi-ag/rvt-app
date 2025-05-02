@@ -31,11 +31,12 @@
     },
     {
       "matchPackageNames": [
-        "vinxi",
+        "@phi-ag/rvt",
         "@solidjs/router",
         "class-variance-authority",
         "eslint-plugin-solid",
-        "prettier-plugin-tailwindcss"
+        "prettier-plugin-tailwindcss",
+        "vinxi"
       ],
       "automerge": true
     },
