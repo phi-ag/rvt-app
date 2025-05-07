@@ -10,7 +10,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^e2e_docker\\.sh$", "^\\.github/actions/e2e/action\\.yml$"],
+      "managerFilePatterns": ["e2e_docker.sh", ".github/actions/e2e/action.yml"],
       "matchStrings": [
         "VERSION=(?<currentValue>[^@\\s]+)(@(?<currentDigest>[^\\s]+))?",
         "version: (?<currentValue>[^@\\s]+)(@(?<currentDigest>[^\\s]+))?"
@@ -21,7 +21,7 @@
   ],
   "packageRules": [
     {
-      "matchDepNames": ["node", "@types/node"],
+      "matchDepNames": ["node"],
       "ignoreUnstable": false
     },
     {
