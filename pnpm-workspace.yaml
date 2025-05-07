@@ -1,0 +1,10 @@
+autoInstallPeers: false
+strictPeerDependencies: true
+overrides:
+  vinxi: "$vinxi"
+ignoredBuiltDependencies:
+  - "@parcel/watcher"
+  - esbuild
+onlyBuiltDependencies:
+  - sharp
+  - workerd
