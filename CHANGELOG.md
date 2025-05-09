@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.6.22](https://github.com/phi-ag/rvt-app/compare/v0.6.21...v0.6.22) (2025-05-09)
+
+
+### Miscellaneous Chores
+
+* **config:** migrate renovate config ([b04c826](https://github.com/phi-ag/rvt-app/commit/b04c826daa4a366479943d261f2c7f767cf1b93a))
+* **config:** move pnpm save-prefix setting ([bd38a6c](https://github.com/phi-ag/rvt-app/commit/bd38a6cdf0cc3c5c2dcf0f56cec8bee3e2d894fe))
+* **deps:** update dependency @types/node to v22.15.15 ([44e3f8a](https://github.com/phi-ag/rvt-app/commit/44e3f8ac3f9a4c3d63dd9351f142589f83ff13bd))
+* **deps:** update dependency @types/node to v22.15.17 ([5f8f26a](https://github.com/phi-ag/rvt-app/commit/5f8f26a779dd2a4dfa4253e76ad4bf53d489921b))
+* **deps:** update dependency globals to v16.1.0 ([823e38c](https://github.com/phi-ag/rvt-app/commit/823e38cf667b605ac4760a50a769cd9d566bb1ac))
+* **deps:** update dependency wrangler to v4.14.3 ([37bffd4](https://github.com/phi-ag/rvt-app/commit/37bffd4af625950f628754cf132350eafc837990))
+* **deps:** update dependency wrangler to v4.14.4 ([947b676](https://github.com/phi-ag/rvt-app/commit/947b676da8c4802d4298f115fbc5b7f2e48752eb))
+* **deps:** update node.js to v24.0.1 ([fb2f208](https://github.com/phi-ag/rvt-app/commit/fb2f208a37a5de12efdfd9d8427698155e664460))
+* **deps:** update tailwindcss monorepo to v4.1.6 ([4a26ac3](https://github.com/phi-ag/rvt-app/commit/4a26ac3f339211af1c5528f4454e1bb203d0cf12))
+
 ## [0.6.21](https://github.com/phi-ag/rvt-app/compare/v0.6.20...v0.6.21) (2025-05-07)
 
 
