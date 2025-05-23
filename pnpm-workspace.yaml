@@ -5,6 +5,7 @@ overrides:
   vinxi: "$vinxi"
 ignoredBuiltDependencies:
   - "@parcel/watcher"
+  - "@tailwindcss/oxide"
   - esbuild
 onlyBuiltDependencies:
   - sharp
