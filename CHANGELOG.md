@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.23](https://github.com/phi-ag/rvt-app/compare/v0.6.22...v0.6.23) (2025-05-24)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([5670c10](https://github.com/phi-ag/rvt-app/commit/5670c10fc652bb0a459831ba71a48289651a5026))
+* **renovate:** enable lock file maintenance ([309044f](https://github.com/phi-ag/rvt-app/commit/309044f7a2a3277e8e6c113eb211d18dc1ddbef3))
+
 ## [0.6.22](https://github.com/phi-ag/rvt-app/compare/v0.6.21...v0.6.22) (2025-05-24)
 
 
