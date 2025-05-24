@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@phi-ag/rvt-app",
-  "version": "0.6.21",
+  "version": "0.6.22",
   "description": "Display Revit file information in the browser",
   "license": "MIT",
   "private": true,
