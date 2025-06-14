@@ -1,5 +1,40 @@
 # Changelog
 
+## [0.6.23](https://github.com/phi-ag/rvt-app/compare/v0.6.22...v0.6.23) (2025-06-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @fontsource/roboto to v5.2.6 ([b8058a2](https://github.com/phi-ag/rvt-app/commit/b8058a2e55ec4131b5d5285396662753401e4089))
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([9d69dda](https://github.com/phi-ag/rvt-app/commit/9d69dda50ee2cd2bfadc2ca449b5ed4fcf8bad8d))
+* **deps:** lock file maintenance ([5670c10](https://github.com/phi-ag/rvt-app/commit/5670c10fc652bb0a459831ba71a48289651a5026))
+* **deps:** update dependency @types/node to v22.15.23 ([1e15cfb](https://github.com/phi-ag/rvt-app/commit/1e15cfbf1547e1d3e2f59b08a331df72cbcf32c4))
+* **deps:** update dependency @types/node to v22.15.24 ([fde3071](https://github.com/phi-ag/rvt-app/commit/fde3071c9a654d76fd780f206a74d237e7c1a173))
+* **deps:** update dependency @types/node to v22.15.27 ([947e0ea](https://github.com/phi-ag/rvt-app/commit/947e0ea9c5e3a98dfdc30bd0f2b48a5cd1113bd7))
+* **deps:** update dependency @types/node to v22.15.29 ([b27266d](https://github.com/phi-ag/rvt-app/commit/b27266d36909ea0f81d5c392b181d838a8e32c77))
+* **deps:** update dependency @types/node to v22.15.30 ([e50ebce](https://github.com/phi-ag/rvt-app/commit/e50ebcefbf7e19c95448bf8789c63bb6246a4e51))
+* **deps:** update dependency @types/node to v22.15.31 ([681d893](https://github.com/phi-ag/rvt-app/commit/681d89342fa12739dec500bd1f1701cd6d528081))
+* **deps:** update dependency globals to v16.2.0 ([6c005ff](https://github.com/phi-ag/rvt-app/commit/6c005ff3242f9d55ad9f22d624009d253b572545))
+* **deps:** update dependency prettier-plugin-tailwindcss to v0.6.12 ([ea2eb0f](https://github.com/phi-ag/rvt-app/commit/ea2eb0f799af5eaad697d770989f3dfd23e8da26))
+* **deps:** update dependency typescript-eslint to v8.33.0 ([10265b9](https://github.com/phi-ag/rvt-app/commit/10265b956a88517d9a7fd94931050bca5f818fe7))
+* **deps:** update dependency typescript-eslint to v8.33.1 ([0883d0e](https://github.com/phi-ag/rvt-app/commit/0883d0ee501ce9184a56a9860386829bace2d2c3))
+* **deps:** update dependency typescript-eslint to v8.34.0 ([b94f555](https://github.com/phi-ag/rvt-app/commit/b94f555dfc5ee836aeb296ebb3a0034e52559288))
+* **deps:** update dependency vinxi to v0.5.7 ([31121c2](https://github.com/phi-ag/rvt-app/commit/31121c2c37d17ec62173469af59aff322f8cc8ca))
+* **deps:** update dependency wrangler to v4.17.0 ([0bfb95b](https://github.com/phi-ag/rvt-app/commit/0bfb95b2cd89f1bbb81cc99dadd869042f60d8d4))
+* **deps:** update dependency wrangler to v4.18.0 ([f33ac8e](https://github.com/phi-ag/rvt-app/commit/f33ac8ef96d5ec3f52b4d5b80088999d6284a536))
+* **deps:** update dependency wrangler to v4.20.0 ([77d0ee5](https://github.com/phi-ag/rvt-app/commit/77d0ee5bc4e6545c4e4cda7a5b544a9db3fb60c7))
+* **deps:** update eslint monorepo to v9.28.0 ([af8c31f](https://github.com/phi-ag/rvt-app/commit/af8c31f0ba85a27f3a6e8119416714058938df29))
+* **deps:** update node.js to v24.2.0 ([d185d5e](https://github.com/phi-ag/rvt-app/commit/d185d5e9eb33ebf3154bcb98d425642dd1c3ed6d))
+* **deps:** update playwright ([5f4e3b7](https://github.com/phi-ag/rvt-app/commit/5f4e3b7c133f99820e7715ac8697abef4677d917))
+* **deps:** update tailwindcss monorepo to v4.1.10 ([9f6bc44](https://github.com/phi-ag/rvt-app/commit/9f6bc440e8c29437b28b6cec2c5b41786cc0bf4f))
+* **deps:** update tailwindcss monorepo to v4.1.8 ([eaf41a3](https://github.com/phi-ag/rvt-app/commit/eaf41a331661bf801ba6f4676937e867c9e64e04))
+* **deps:** update vitest monorepo to v3.2.3 ([d744776](https://github.com/phi-ag/rvt-app/commit/d744776340e38baab1f1ff85446a8e865ee859b5))
+* **renovate:** enable lock file maintenance ([309044f](https://github.com/phi-ag/rvt-app/commit/309044f7a2a3277e8e6c113eb211d18dc1ddbef3))
+
 ## [0.6.22](https://github.com/phi-ag/rvt-app/compare/v0.6.21...v0.6.22) (2025-05-24)
 
 
