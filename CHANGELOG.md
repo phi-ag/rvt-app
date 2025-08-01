@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.6.24](https://github.com/phi-ag/rvt-app/compare/v0.6.23...v0.6.24) (2025-08-01)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([56cfcce](https://github.com/phi-ag/rvt-app/commit/56cfccea63817175f256d0bc507c151e88b874d5))
+* **deps:** update dependency @testing-library/jest-dom to v6.6.4 ([a005476](https://github.com/phi-ag/rvt-app/commit/a00547600fbd396690dbf1cebaca93b72bf6676d))
+* **deps:** update dependency @types/node to v22.17.0 ([c74dae4](https://github.com/phi-ag/rvt-app/commit/c74dae427d85b6fceb47b52d1496f5da8eb7381b))
+* **deps:** update dependency vite-plugin-solid to v2.11.8 ([0e9b549](https://github.com/phi-ag/rvt-app/commit/0e9b5496c123345879c410af3666d999f473f077))
+* **deps:** update dependency wrangler to v4.26.0 ([dfcd2aa](https://github.com/phi-ag/rvt-app/commit/dfcd2aa04c97f8703e508e39725009aac31d8d8d))
+* **deps:** update dependency wrangler to v4.26.1 ([599e771](https://github.com/phi-ag/rvt-app/commit/599e7717c6c1ec96184083140509e266eea03265))
+* **deps:** update dependency wrangler to v4.27.0 ([f81ba6c](https://github.com/phi-ag/rvt-app/commit/f81ba6c8dd5b3e06427886859e02d8d9924479a7))
+* **deps:** update node.js to v24.5.0 ([3c0dace](https://github.com/phi-ag/rvt-app/commit/3c0dacefba1b8b81dbb2763051fd33e1ce3fae68))
+* **deps:** update playwright ([26fca2d](https://github.com/phi-ag/rvt-app/commit/26fca2d8ce13e08c98326f1577f9f09ad35eb176))
+* **deps:** update pnpm to v10.14.0 ([964760f](https://github.com/phi-ag/rvt-app/commit/964760f7b4c2125c5794564b79b0a0e656efa057))
+
 ## [0.6.23](https://github.com/phi-ag/rvt-app/compare/v0.6.22...v0.6.23) (2025-07-23)
 
 
