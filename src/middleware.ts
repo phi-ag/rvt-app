@@ -6,7 +6,6 @@ import { type PlatformProxy } from "wrangler";
 type Proxy = PlatformProxy<Env, IncomingRequestCfProperties>;
 
 declare global {
-  // eslint-disable-next-line no-var
   var cfPlatformProxy: Proxy;
 }
 
