@@ -18,8 +18,8 @@ export default tseslint.config(
     ]
   },
   eslint.configs.recommended,
-  ...tseslint.configs.strict,
-  ...tseslint.configs.stylistic,
+  tseslint.configs.strict,
+  tseslint.configs.stylistic,
   jsxA11y.flatConfigs.recommended,
   solid.configs["flat/typescript"],
   {
