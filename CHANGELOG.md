@@ -1,5 +1,45 @@
 # Changelog
 
+## [0.6.24](https://github.com/phi-ag/rvt-app/compare/v0.6.23...v0.6.24) (2025-08-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency solid-js to v1.9.8 ([e2aa923](https://github.com/phi-ag/rvt-app/commit/e2aa923bf086bd8afac10f5bcf11d65fa6e847de))
+* **deps:** update dependency solid-js to v1.9.9 ([5187428](https://github.com/phi-ag/rvt-app/commit/51874287c5297fcaf0fefc67389d10ba4a3a8eb1))
+
+
+### Miscellaneous Chores
+
+* allow global type declaration in no-var ([7585a7b](https://github.com/phi-ag/rvt-app/commit/7585a7b48a87d8077fca96e60b06a62efb81f283))
+* **config:** remove unnecessary expand in eslint config ([4c25478](https://github.com/phi-ag/rvt-app/commit/4c2547895cc7348be66904eea52b2406ed611505))
+* **deps:** lock file maintenance ([27671fa](https://github.com/phi-ag/rvt-app/commit/27671fa11e093a9bc720b13e825ee437c82ea1d1))
+* **deps:** lock file maintenance ([56cfcce](https://github.com/phi-ag/rvt-app/commit/56cfccea63817175f256d0bc507c151e88b874d5))
+* **deps:** update actions/cache digest to 0400d5f ([323110e](https://github.com/phi-ag/rvt-app/commit/323110ed79012418899585989ec92b13bfec9da9))
+* **deps:** update actions/checkout action to v5 ([a8e2776](https://github.com/phi-ag/rvt-app/commit/a8e2776341c18c1accc769cae8f553056b3c191b))
+* **deps:** update actions/checkout digest to 08eba0b ([076d5fe](https://github.com/phi-ag/rvt-app/commit/076d5fe78b0d5d6bd410074eb8f67a100f0f84bb))
+* **deps:** update dependency @testing-library/jest-dom to v6.6.4 ([a005476](https://github.com/phi-ag/rvt-app/commit/a00547600fbd396690dbf1cebaca93b72bf6676d))
+* **deps:** update dependency @testing-library/jest-dom to v6.7.0 ([43eb906](https://github.com/phi-ag/rvt-app/commit/43eb90663286969762ad5db7b71f65bcc76f7c48))
+* **deps:** update dependency @types/node to v22.17.0 ([c74dae4](https://github.com/phi-ag/rvt-app/commit/c74dae427d85b6fceb47b52d1496f5da8eb7381b))
+* **deps:** update dependency @types/node to v22.17.1 ([fa9840f](https://github.com/phi-ag/rvt-app/commit/fa9840f74dd991d11bd1694f00f8f5d26bc21809))
+* **deps:** update dependency typescript to v5.9.2 ([8caa52c](https://github.com/phi-ag/rvt-app/commit/8caa52c8d44a2dd0f473127bc2f8780febb97839))
+* **deps:** update dependency typescript-eslint to v8.39.0 ([fa09445](https://github.com/phi-ag/rvt-app/commit/fa0944597b6ff46896119fb7d5469195cb0abac6))
+* **deps:** update dependency typescript-eslint to v8.39.1 ([bd5462b](https://github.com/phi-ag/rvt-app/commit/bd5462b607bdd990946891f1e6e249509fe424ca))
+* **deps:** update dependency vite-plugin-solid to v2.11.8 ([0e9b549](https://github.com/phi-ag/rvt-app/commit/0e9b5496c123345879c410af3666d999f473f077))
+* **deps:** update dependency wrangler to v4.26.0 ([dfcd2aa](https://github.com/phi-ag/rvt-app/commit/dfcd2aa04c97f8703e508e39725009aac31d8d8d))
+* **deps:** update dependency wrangler to v4.26.1 ([599e771](https://github.com/phi-ag/rvt-app/commit/599e7717c6c1ec96184083140509e266eea03265))
+* **deps:** update dependency wrangler to v4.27.0 ([f81ba6c](https://github.com/phi-ag/rvt-app/commit/f81ba6c8dd5b3e06427886859e02d8d9924479a7))
+* **deps:** update dependency wrangler to v4.28.0 ([d8184a3](https://github.com/phi-ag/rvt-app/commit/d8184a3d2b907ca26a4539d050cb0c1e085a1b57))
+* **deps:** update dependency wrangler to v4.28.1 ([c1e0cbb](https://github.com/phi-ag/rvt-app/commit/c1e0cbb30a01ee1b5f0e91e6b8f5b0bccd870189))
+* **deps:** update dependency wrangler to v4.29.0 ([bfe8c14](https://github.com/phi-ag/rvt-app/commit/bfe8c142b1f0abeb6ac1ab89bd5e52035b14c474))
+* **deps:** update dependency wrangler to v4.29.1 ([1f1ffd1](https://github.com/phi-ag/rvt-app/commit/1f1ffd1c13ea902da0b0141b631de1c19561b9bd))
+* **deps:** update dependency wrangler to v4.30.0 ([7fbb636](https://github.com/phi-ag/rvt-app/commit/7fbb6365b8e488258d374d66ca442fd316b565a8))
+* **deps:** update eslint monorepo to v9.33.0 ([fee6052](https://github.com/phi-ag/rvt-app/commit/fee6052da45a723a96280aa31020e3564b0b7059))
+* **deps:** update node.js to v24.5.0 ([3c0dace](https://github.com/phi-ag/rvt-app/commit/3c0dacefba1b8b81dbb2763051fd33e1ce3fae68))
+* **deps:** update playwright ([26fca2d](https://github.com/phi-ag/rvt-app/commit/26fca2d8ce13e08c98326f1577f9f09ad35eb176))
+* **deps:** update pnpm to v10.14.0 ([964760f](https://github.com/phi-ag/rvt-app/commit/964760f7b4c2125c5794564b79b0a0e656efa057))
+* **deps:** update tailwindcss monorepo to v4.1.12 ([7947779](https://github.com/phi-ag/rvt-app/commit/7947779bd3ecf8f29fe2a2bfeac948466e0bd2db))
+
 ## [0.6.23](https://github.com/phi-ag/rvt-app/compare/v0.6.22...v0.6.23) (2025-07-23)
 
 
