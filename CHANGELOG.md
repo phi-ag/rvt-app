@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.25](https://github.com/phi-ag/rvt-app/compare/v0.6.24...v0.6.25) (2025-08-15)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v22.17.2 ([cc57a7f](https://github.com/phi-ag/rvt-app/commit/cc57a7f6aa8d468827c767dd353eaa2e36efe7db))
+* **deps:** update node.js to v24.6.0 ([e023020](https://github.com/phi-ag/rvt-app/commit/e02302046bfc67c25af657d5856eedec38a11329))
+
 ## [0.6.24](https://github.com/phi-ag/rvt-app/compare/v0.6.23...v0.6.24) (2025-08-14)
 
 
