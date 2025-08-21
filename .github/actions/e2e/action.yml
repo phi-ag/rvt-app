@@ -4,9 +4,9 @@ runs:
   using: composite
   steps:
     - name: End-to-End
-      uses: phi-ag/run-playwright@128f1acbb01b9d8fbe039e8d706fb09523119638 # v1
+      uses: phi-ag/run-playwright@e8f4883a52a97e208a939fa9b46f524743be544d # v1
       with:
-        version: v1.54.2-noble@sha256:18b4bcff4f8ba0ac8c44b09f09def6a4f6cb8579e5f26381c21f38b50935d5d8
+        version: v1.55.0-noble@sha256:b27e719ecbfef153e13fd24e8341736733bf2658b229677eb21ff57ff5d7fb29
         options: -v ${STORE_PATH}:${STORE_PATH}
         run: |
           corepack enable
