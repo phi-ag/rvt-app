@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.6.25](https://github.com/phi-ag/rvt-app/compare/v0.6.24...v0.6.25) (2025-08-28)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([6fb443d](https://github.com/phi-ag/rvt-app/commit/6fb443da6977ce7593b2f719252a5b17c72da47b))
+* **deps:** lock file maintenance ([9b86f49](https://github.com/phi-ag/rvt-app/commit/9b86f4996a21dfe407c02be92a52e8464032b8b2))
+* **deps:** update codecov/codecov-action digest to fdcc847 ([2d0729d](https://github.com/phi-ag/rvt-app/commit/2d0729d9b9315302600df662bc61236cd3e49cff))
+* **deps:** update dependency @testing-library/jest-dom to v6.8.0 ([60a87c2](https://github.com/phi-ag/rvt-app/commit/60a87c2bf5a48ddbcf6f6aaa01e14841722dd8e6))
+* **deps:** update dependency @types/node to v22.17.2 ([cc57a7f](https://github.com/phi-ag/rvt-app/commit/cc57a7f6aa8d468827c767dd353eaa2e36efe7db))
+* **deps:** update dependency @types/node to v22.18.0 ([8d3fcbb](https://github.com/phi-ag/rvt-app/commit/8d3fcbb2fb506351875efaf93e3b1fc196863c53))
+* **deps:** update dependency typescript-eslint to v8.40.0 ([39cfb11](https://github.com/phi-ag/rvt-app/commit/39cfb11a92ec8d72c638c77e6b5792f51ea9f875))
+* **deps:** update dependency typescript-eslint to v8.41.0 ([d34ba6c](https://github.com/phi-ag/rvt-app/commit/d34ba6cf31e07de9eca26f87d1df7ecd1b069182))
+* **deps:** update dependency wrangler to v4.31.0 ([94d448d](https://github.com/phi-ag/rvt-app/commit/94d448d6d917e6e1b56a4000ab63025f82d86b1e))
+* **deps:** update dependency wrangler to v4.32.0 ([424f816](https://github.com/phi-ag/rvt-app/commit/424f8166360527e71327bf1df48a6c43f7f59d38))
+* **deps:** update dependency wrangler to v4.33.0 ([dbb0759](https://github.com/phi-ag/rvt-app/commit/dbb07592c16aa88c222aad8ec79a2a0e8a4595f9))
+* **deps:** update eslint monorepo to v9.34.0 ([e2cb0a1](https://github.com/phi-ag/rvt-app/commit/e2cb0a1856a693422349776e4a0ae38d0d2b7f30))
+* **deps:** update googleapis/release-please-action digest to c2a5a2b ([df4770a](https://github.com/phi-ag/rvt-app/commit/df4770a550f9a4ea48dfb1f4ce74137375c9fb54))
+* **deps:** update node.js to v24.6.0 ([e023020](https://github.com/phi-ag/rvt-app/commit/e02302046bfc67c25af657d5856eedec38a11329))
+* **deps:** update node.js to v24.7.0 ([a62e248](https://github.com/phi-ag/rvt-app/commit/a62e2489b001ede4618042a97db931ac0cc8970d))
+* **deps:** update playwright ([692d8ee](https://github.com/phi-ag/rvt-app/commit/692d8ee1c519d75f8df2d4e477f130b8e4295d48))
+* **deps:** update pnpm to v10.15.0 ([7965f50](https://github.com/phi-ag/rvt-app/commit/7965f500d7626bccf363e1812ffc0e928a35807b))
+
 ## [0.6.24](https://github.com/phi-ag/rvt-app/compare/v0.6.23...v0.6.24) (2025-08-14)
 
 
