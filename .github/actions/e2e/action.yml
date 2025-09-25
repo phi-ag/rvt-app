@@ -4,7 +4,7 @@ runs:
   using: composite
   steps:
     - name: End-to-End
-      uses: phi-ag/run-playwright@e8f4883a52a97e208a939fa9b46f524743be544d # v1
+      uses: phi-ag/run-playwright@b6abb2a8912d9fbbb4d8d49e7b980d51a689c85a # v1
       with:
         version: v1.55.1-noble@sha256:2f29369043d81d6d69a815ceb80760f55e85f5020371ad06a4d996f18503ad1c
         options: -v ${STORE_PATH}:${STORE_PATH}
