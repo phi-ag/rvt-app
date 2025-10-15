@@ -57,7 +57,7 @@
     "eslint-plugin-solid": "0.14.5",
     "globals": "16.4.0",
     "prettier": "3.6.2",
-    "prettier-plugin-tailwindcss": "0.6.14",
+    "prettier-plugin-tailwindcss": "0.7.0",
     "tailwindcss": "4.1.14",
     "typescript": "5.9.3",
     "typescript-eslint": "8.46.1",
