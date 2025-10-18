@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.26](https://github.com/phi-ag/rvt-app/compare/v0.6.25...v0.6.26) (2025-10-18)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v22.18.11 ([d99ca90](https://github.com/phi-ag/rvt-app/commit/d99ca90a33171829cb15112f20797797923cea81))
+* **deps:** update dependency prettier-plugin-tailwindcss to v0.7.1 ([b4128d6](https://github.com/phi-ag/rvt-app/commit/b4128d6fc31b96544061f68e2c29f22510c29d3b))
+* **deps:** update dependency vite to v6.4.0 ([58a01df](https://github.com/phi-ag/rvt-app/commit/58a01dfd9483912dadcf1934027783721346b544))
+* **deps:** update eslint monorepo to v9.38.0 ([454af89](https://github.com/phi-ag/rvt-app/commit/454af89a7a4126300c31146f50deb3b421edd60f))
+* **deps:** update node.js to v25 ([948f100](https://github.com/phi-ag/rvt-app/commit/948f1001cdbe0ed1eb51de85277c8de83b4a51f6))
+* **deps:** update playwright ([4c00556](https://github.com/phi-ag/rvt-app/commit/4c005565cb7893402623203ea8aefb9b65fdf624))
+
 ## [0.6.25](https://github.com/phi-ag/rvt-app/compare/v0.6.24...v0.6.25) (2025-10-15)
 
 
