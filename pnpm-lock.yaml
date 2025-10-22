@@ -100,8 +100,8 @@ importers:
         specifier: 6.4.1
         version: 6.4.1(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)
       vite-plugin-solid:
-        specifier: 2.11.9
-        version: 2.11.9(@testing-library/jest-dom@6.9.1)(solid-js@1.9.9)(vite@6.4.1(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0))
+        specifier: 2.11.10
+        version: 2.11.10(@testing-library/jest-dom@6.9.1)(solid-js@1.9.9)(vite@6.4.1(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0))
       vitest:
         specifier: 3.2.4
         version: 3.2.4(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)
@@ -4006,8 +4006,8 @@ packages:
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
 
-  vite-plugin-solid@2.11.9:
-    resolution: {integrity: sha512-bTA6p+bspXZsuulSd2y6aTzegF8xGaJYcq1Uyh/mv+W4DQtzCgL9nN6n2fsTaxp/dMk+ZHHKgGndlNeooqHLKw==}
+  vite-plugin-solid@2.11.10:
+    resolution: {integrity: sha512-Yr1dQybmtDtDAHkii6hXuc1oVH9CPcS/Zb2jN/P36qqcrkNnVPsMTzQ06jyzFPFjj3U1IYKMVt/9ZqcwGCEbjw==}
     peerDependencies:
       '@testing-library/jest-dom': ^5.16.6 || ^5.17.0 || ^6.*
       solid-js: ^1.7.2
@@ -5116,7 +5116,7 @@ snapshots:
       terracotta: 1.0.6(solid-js@1.9.9)
       tinyglobby: 0.2.15
       vinxi: 0.5.8(@types/node@22.18.12)(db0@0.3.4)(ioredis@5.8.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)
-      vite-plugin-solid: 2.11.9(@testing-library/jest-dom@6.9.1)(solid-js@1.9.9)(vite@6.4.1(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0))
+      vite-plugin-solid: 2.11.10(@testing-library/jest-dom@6.9.1)(solid-js@1.9.9)(vite@6.4.1(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0))
     transitivePeerDependencies:
       - '@testing-library/jest-dom'
       - solid-js
@@ -8401,7 +8401,7 @@ snapshots:
       - tsx
       - yaml
 
-  vite-plugin-solid@2.11.9(@testing-library/jest-dom@6.9.1)(solid-js@1.9.9)(vite@6.4.1(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)):
+  vite-plugin-solid@2.11.10(@testing-library/jest-dom@6.9.1)(solid-js@1.9.9)(vite@6.4.1(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)):
     dependencies:
       '@babel/core': 7.28.4
       '@types/babel__core': 7.20.5
