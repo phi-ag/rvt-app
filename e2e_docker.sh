@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -eu
 
-VERSION=v1.56.1-noble@sha256:f1e7e01021efd65dd1a2c56064be399f3e4de00fd021ac561325f2bfbb2b837a
+VERSION=v1.57.0-noble@sha256:3bed4b1a12f2338642f3d8cba28e291deef3c66bd4a964bbeb3e57bbff511dbd
 STORE_PATH="$(pnpm store path --silent)"
 
 mkdir -p .run-playwright
