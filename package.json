@@ -65,7 +65,7 @@
     "vite": "6.4.1",
     "vite-plugin-solid": "2.11.10",
     "vitest": "4.0.17",
-    "wrangler": "4.59.2"
+    "wrangler": "4.59.3"
   },
   "engines": {
     "node": "25.4.0"
