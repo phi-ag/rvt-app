@@ -37,7 +37,7 @@
     "@solidjs/router": "0.16.1",
     "@solidjs/start": "1.2.0",
     "class-variance-authority": "0.7.1",
-    "lodash-es": "4.17.23",
+    "lodash-es": "4.18.1",
     "solid-js": "1.9.12",
     "uuid": "13.0.0"
   },
