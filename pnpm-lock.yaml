@@ -15,8 +15,8 @@ importers:
         specifier: 5.2.10
         version: 5.2.10
       '@phi-ag/rvt':
-        specifier: 0.2.3
-        version: 0.2.3
+        specifier: 0.2.4
+        version: 0.2.4
       '@solidjs/router':
         specifier: 0.16.1
         version: 0.16.1(solid-js@1.9.12)
@@ -1213,8 +1213,8 @@ packages:
     resolution: {integrity: sha512-tmmZ3lQxAe/k/+rNnXQRawJ4NjxO2hqiOLTHvWchtGZULp4RyFeh6aU4XdOYBFe2KE1oShQTv4AblOs2iOrNnQ==}
     engines: {node: '>= 10.0.0'}
 
-  '@phi-ag/rvt@0.2.3':
-    resolution: {integrity: sha512-RPdENCzayYegKbYXCGzAQ/L0eeUVLOa1wj1PYSCUEVjORm3pcdbWs1KKCmBIAfDyMEXL6TaJGSsZw9TmZxu/EA==}
+  '@phi-ag/rvt@0.2.4':
+    resolution: {integrity: sha512-Rj+Awqyb4LWqJUPs5WHeRFkjD10Elhk8QNauhRm1X+48L3t+JT3HhOyU5WZq+bjlvbh+m7GviHNSXlD5j3jOIA==}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -5379,7 +5379,7 @@ snapshots:
       '@parcel/watcher-win32-ia32': 2.5.6
       '@parcel/watcher-win32-x64': 2.5.6
 
-  '@phi-ag/rvt@0.2.3': {}
+  '@phi-ag/rvt@0.2.4': {}
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
