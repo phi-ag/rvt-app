@@ -42,7 +42,7 @@
     "uuid": "14.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "9.39.4",
+    "@eslint/js": "10.0.1",
     "@playwright/test": "1.59.1",
     "@tailwindcss/vite": "4.2.4",
     "@testing-library/jest-dom": "6.9.1",
@@ -52,7 +52,7 @@
     "@types/node": "24.12.2",
     "@vite-pwa/assets-generator": "1.0.2",
     "@vitest/coverage-v8": "4.1.5",
-    "eslint": "9.39.4",
+    "eslint": "10.3.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-solid": "0.14.5",
     "globals": "17.5.0",
