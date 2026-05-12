@@ -1,12 +1,20 @@
 savePrefix: ""
 autoInstallPeers: false
 strictPeerDependencies: true
+minimumReleaseAge: 1440
+blockExoticSubdeps: true
+
+trustPolicy: "no-downgrade"
+trustPolicyExclude:
+  - chokidar@4.0.3
+  - semver@6.3.1
+
 overrides:
   vinxi: "$vinxi"
-ignoredBuiltDependencies:
-  - "@parcel/watcher"
-  - "@tailwindcss/oxide"
-  - esbuild
-onlyBuiltDependencies:
-  - sharp
-  - workerd
+
+allowBuilds:
+  "@parcel/watcher": false
+  "@tailwindcss/oxide": false
+  esbuild: false
+  sharp: false
+  workerd: false
