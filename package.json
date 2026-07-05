@@ -38,7 +38,7 @@
     "@solidjs/start": "1.2.0",
     "class-variance-authority": "0.7.1",
     "lodash-es": "4.18.1",
-    "solid-js": "1.9.13",
+    "solid-js": "1.9.14",
     "uuid": "14.0.1"
   },
   "devDependencies": {
