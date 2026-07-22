@@ -32,7 +32,7 @@
     "generate-pwa-assets": "pwa-assets-generator"
   },
   "dependencies": {
-    "@fontsource/roboto": "5.2.10",
+    "@fontsource/roboto": "5.3.0",
     "@phi-ag/rvt": "0.2.4",
     "@solidjs/router": "0.16.2",
     "@solidjs/start": "1.2.0",
