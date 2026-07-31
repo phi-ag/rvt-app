@@ -18,8 +18,8 @@ importers:
         specifier: 0.2.4
         version: 0.2.4
       '@solidjs/router':
-        specifier: 0.16.2
-        version: 0.16.2(solid-js@1.9.14)
+        specifier: 0.16.3
+        version: 0.16.3(solid-js@1.9.14)
       '@solidjs/start':
         specifier: 1.2.0
         version: 1.2.0(@testing-library/jest-dom@6.9.1)(solid-js@1.9.14)(supports-color@10.2.2)(vinxi@0.5.8(@parcel/watcher@2.6.0)(@types/node@24.13.3)(db0@0.3.4)(debug@4.4.3(supports-color@10.2.2))(ioredis@5.11.1(supports-color@10.2.2))(jiti@2.7.0)(lightningcss@1.32.0)(supports-color@10.2.2)(terser@5.49.0))(vite@6.4.3(@types/node@24.13.3)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.49.0))
@@ -1334,8 +1334,8 @@ packages:
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
 
-  '@solidjs/router@0.16.2':
-    resolution: {integrity: sha512-pncbV4SGUwGGlELlDWc3B4KDVB0Kt+7+7ct+GTN7D8CgetGSJMzl8RzyAFz+/TtSuFFzp9IzrjrACHUpGzxsKQ==}
+  '@solidjs/router@0.16.3':
+    resolution: {integrity: sha512-WWQkmSmSpl+15HgUktGPbeXkgWmonj4XwPOcZVHJz1EQV3dz5qWHIyQ/BKXFevor6u/0dKvC9FlUmKmDwE1QHw==}
     peerDependencies:
       solid-js: ^1.8.6
 
@@ -5435,7 +5435,7 @@ snapshots:
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
-  '@solidjs/router@0.16.2(solid-js@1.9.14)':
+  '@solidjs/router@0.16.3(solid-js@1.9.14)':
     dependencies:
       solid-js: 1.9.14
 
