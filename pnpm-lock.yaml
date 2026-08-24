@@ -73,8 +73,8 @@ importers:
         specifier: 6.10.2
         version: 6.10.2(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))
       eslint-plugin-solid:
-        specifier: 0.15.0
-        version: 0.15.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
+        specifier: 0.16.0
+        version: 0.16.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
       globals:
         specifier: 17.11.0
         version: 17.11.0
@@ -2537,8 +2537,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
-  eslint-plugin-solid@0.15.0:
-    resolution: {integrity: sha512-IMSj0HK8zu4WuHMAeH38izG8ZBgOkwUqu0W2LrTyW0m/QPuOmrq8P2Y36HDAETIgDg9j6G+TJBdfpILTVPJkFQ==}
+  eslint-plugin-solid@0.16.0:
+    resolution: {integrity: sha512-q45VUvh3kv9ZHoVWZrep/KJFA7qqBH0khHuEEp0sCzEDuM3FtHFqK6fLWFIIIDGVQ8aFouUHROaOXVi8GgzShA==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       eslint: ^9.0.0 || ^10.0.0
@@ -6953,7 +6953,7 @@ snapshots:
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
 
-  eslint-plugin-solid@0.15.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3):
+  eslint-plugin-solid@0.16.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3):
     dependencies:
       '@typescript-eslint/utils': 8.67.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
       eslint: 9.39.5(jiti@2.7.0)(supports-color@10.2.2)
