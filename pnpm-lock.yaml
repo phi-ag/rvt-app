@@ -219,8 +219,8 @@ importers:
         specifier: 24.13.4
         version: 24.13.4
       '@vite-pwa/assets-generator':
-        specifier: 1.0.4
-        version: 1.0.4(@types/node@24.13.4)
+        specifier: 2.0.0
+        version: 2.0.0(@types/node@24.13.4)
       '@vitest/coverage-v8':
         specifier: 5.0.0
         version: 5.0.0(vitest@5.0.0)
@@ -1817,9 +1817,9 @@ packages:
     peerDependencies:
       vinxi: 0.5.8
 
-  '@vite-pwa/assets-generator@1.0.4':
-    resolution: {integrity: sha512-LlYM5CEmFmdl7le4B0Pr9+NPipQgStFOslvfxEQ/1LW3wUquZ3s3ec2z132lzfVEYAiJAmfFhQ0EVs6ntO7RKw==}
-    engines: {node: '>=16.14.0'}
+  '@vite-pwa/assets-generator@2.0.0':
+    resolution: {integrity: sha512-GBjHBLBzOP1GDJTc7MjeDdeJTi+PS9eFjw3HYjNHXnEbkS7vRS/YFwl8VW5/4vWF0Fo35Mji1yXAABvSVzu0Ew==}
+    engines: {node: '>=20.19.0'}
     hasBin: true
 
   '@vitest/coverage-v8@5.0.0':
@@ -2122,9 +2122,9 @@ packages:
       magicast:
         optional: true
 
-  cac@6.7.14:
-    resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
-    engines: {node: '>=8'}
+  cac@7.0.0:
+    resolution: {integrity: sha512-tixWYgm5ZoOD+3g6UTea91eow5z6AAHaho3g0V9CNSNb45gM8SmflpAc+GRd1InC4AqN/07Unrgp56Y94N9hJQ==}
+    engines: {node: '>=20.19.0'}
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
@@ -2217,9 +2217,6 @@ packages:
 
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
-
-  colorette@2.0.20:
-    resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
 
   comma-separated-tokens@2.0.3:
     resolution: {integrity: sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==}
@@ -6016,11 +6013,11 @@ snapshots:
       recast: 0.23.21
       vinxi: 0.5.8(@parcel/watcher@2.6.0)(@types/node@24.13.4)(db0@0.3.4)(debug@4.4.3(supports-color@10.2.2))(ioredis@5.11.1(supports-color@10.2.2))(jiti@2.7.0)(lightningcss@1.32.0)(supports-color@10.2.2)(terser@5.51.2)
 
-  '@vite-pwa/assets-generator@1.0.4(@types/node@24.13.4)':
+  '@vite-pwa/assets-generator@2.0.0(@types/node@24.13.4)':
     dependencies:
-      cac: 6.7.14
-      colorette: 2.0.20
+      cac: 7.0.0
       consola: 3.4.2
+      picocolors: 1.1.1
       sharp: 0.35.4(@types/node@24.13.4)
       sharp-ico: 0.1.5(@types/node@24.13.4)
       unconfig: 7.5.0
@@ -6344,7 +6341,7 @@ snapshots:
     optionalDependencies:
       magicast: 0.5.5
 
-  cac@6.7.14: {}
+  cac@7.0.0: {}
 
   call-bind-apply-helpers@1.0.2:
     dependencies:
@@ -6427,8 +6424,6 @@ snapshots:
       color-name: 1.1.4
 
   color-name@1.1.4: {}
-
-  colorette@2.0.20: {}
 
   comma-separated-tokens@2.0.3: {}
 
