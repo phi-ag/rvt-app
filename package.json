@@ -49,7 +49,7 @@
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
     "@types/eslint-plugin-jsx-a11y": "6.10.1",
     "@types/lodash-es": "4.17.12",
-    "@types/node": "24.19.2",
+    "@types/node": "26.6.6",
     "@vite-pwa/assets-generator": "2.0.0",
     "@vitest/coverage-v8": "5.0.5",
     "eslint": "9.39.5",
@@ -68,7 +68,7 @@
     "wrangler": "4.154.0"
   },
   "engines": {
-    "node": "26.12.1"
+    "node": "26.13.0"
   },
   "packageManager": "pnpm@12.16.1+sha512.091d1dee7927575661b25dab3c2ae31cafc1c54d6b71ed6a6600cf0c1cb10434a447eae14015f1b23e2e6bedeed79df94a932e2164d2832280dce3fb32f656d1"
 }
